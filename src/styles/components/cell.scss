@@ -6,6 +6,7 @@
   &:not(:last-child){
     @include line(0, $padding-md, 0);
   }
+  background-color: $theme-background-color;
 }
 .omi-cell__title, .omi-cell__content{
   flex: 1;
@@ -14,4 +15,23 @@
 .omi-cell__content{
   word-wrap: break-word;
   text-align: right;
+}
+.omi-cell__clickable{
+  &:active {
+    background-color: $color-grey1;
+  }
+}
+.omi-cell__label{
+  font-size: $font-size-base;
+  color: $color-grey2;
+}
+.omi-cell__content--body{
+  display: flex;
+  align-items: center;
+  .omi-input{
+    flex: 1;
+  }
+}
+.omi-cell__right--icon, .omi-cell__extra{
+  margin-left: $cell-content-body-margin;
 }

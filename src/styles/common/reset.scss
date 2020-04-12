@@ -4,3 +4,6 @@ body{
   -webkit-font-smoothing: antialiased;
   overflow-x: auto;
 }
+a:focus, input:focus, button:focus, textarea:focus, [class*='omi-']:focus{
+  outline: none;
+}

@@ -3,4 +3,9 @@
   line-height: $input-line-height;
   border: 0;
   resize: none;
+  &:read-only {
+    cursor: not-allowed;
+    color: $color-grey2;
+    pointer-events: none;
+  }
 }

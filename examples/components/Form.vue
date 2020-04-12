@@ -1,12 +1,12 @@
 <template>
   <div class="form">
-    <omi-form ref="form" :model="result" @validate="onValidate" label-with="90">
+    <omi-form ref="form" :model="result" @validate="onValidate">
       <omi-form-item
         name="data"
         label="文本1"
         :rules="rules1"
       >
-        <omi-input v-model="result.data" placeholder="请输入文字"/>
+        <omi-input v-model="result.data" readonly placeholder="请输入文字"/>
       </omi-form-item>
       <omi-form-item
         name="data1"

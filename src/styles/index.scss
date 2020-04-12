@@ -2,6 +2,7 @@
 @import './common/index.scss';
 // mixin
 @import './mixins/line.scss';
+@import './mixins/button.scss';
 //base
 @import './common/base.scss';
 //transition
@@ -12,3 +13,4 @@
 @import './components/form.scss';
 @import './components/input.scss';
 @import './components/cell.scss';
+@import './components/button.scss';

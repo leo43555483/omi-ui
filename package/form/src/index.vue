@@ -20,9 +20,17 @@ export default {
     };
   },
   props: {
+    labelAlign: {
+      type: String,
+      default: null,
+    },
     labelWith: {
       type: [String, Number],
       default: null,
+    },
+    showStatus: {
+      type: Boolean,
+      default: true,
     },
     firstValidate: {
       type: Boolean,

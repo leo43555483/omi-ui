@@ -12,4 +12,7 @@ export default {
 
 <style lang="scss">
 @import '../src/styles/index.scss';
+body {
+  background-color: #ddd;
+}
 </style>

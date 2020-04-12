@@ -1,0 +1,40 @@
+.omi-btn{
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+//color
+.omi-btn__primary{
+  @include button-background($button-primary, $button-primary, $button-primary-color);
+}
+.omi-btn__default{
+  @include button-background($button-default, $button-default-border-color ,$button-default-color);
+}
+.omi-btn__info{
+  @include button-background($button-info, $button-info ,$button-info-color);
+}
+.omi-btn__success{
+  @include button-background($button-success, $button-success ,$button-success-color);
+}
+.omi-btn__warning{
+  @include button-background($button-warn, $button-warn, $button-warn-color);
+}
+.omi-btn__danger{
+  @include button-background($button-danger, $button-danger ,$button-danger-color);
+}
+//size
+.omi-btn__normal{
+  @include button-size($button-normal-padding, $button-normal-height);
+}
+.omi-btn__small{
+  @include button-size($button-small-padding, $button-small-height);
+}
+.omi-btn__mini{
+  @include button-size($button-mini-padding, $button-mini-height, $button-mini-font-size);
+}
+.omi-btn__block{
+  display: block;
+  width: 100%;
+}
+.omi-btn__round{
+  border-radius: $button-round-radius;
+}

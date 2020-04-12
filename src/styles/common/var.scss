@@ -1,29 +1,65 @@
 //theme
-$color-red: red;
-$theme-border-color: #ddd;
+$color-white: #fff !default;
+$color-grey1: #ddd !default;
+//font color
+$color-grey2: #969799 !default;
+$color-yellow: #fd9d0f !default;
+$color-black: #333 !default;
+$color-blue1: #2d8cf0 !default;
+$color-blue2: #38c1ff !default;
+$color-red: red !default;
+$color-success: #1fbf6f !default;
+$theme-border-color: #ddd !default;
+$theme-background-color: $color-white !default;
 
 //font
-$font-size-base: 14px;
-$font-size-lg: 16px;
-$font-size-sm: 12px;
+$font-size-base: 14px !default;
+$font-size-lg: 16px !default;
+$font-size-sm: 12px !default;
 
 //padding
-$padding-lg: 22px;
-$padding-md: 16px;
-$padding-sm: 12px;
-$padding-xs: 10px;
+$padding-lg: 22px !default;
+$padding-md: 16px !default;
+$padding-sm: 12px !default;
+$padding-xs: 10px !default;
 
 //nav-bar
-$nav-bar-line-height: 40px;
-$nav-bar-left-basis: 20%;
-$nav-bar-middle-basis: 60%;
-$nav-bar-right-basis:$nav-bar-left-basis; 
+$nav-bar-line-height: 40px !default;
+$nav-bar-left-basis: 20% !default;
+$nav-bar-middle-basis: 60% !default;
+$nav-bar-right-basis:$nav-bar-left-basis !default; 
 
 //form-item
-$form-item-title-width: 80px;
+$form-item-title-width: 80px !default;
 
 //cell
-$cell-line-height: 24px;
+$cell-line-height: 24px !default;
+$cell-content-body-margin: 4px !default;
 
 //input
-$input-line-height: $cell-line-height;
+$input-line-height: $cell-line-height !default;
+
+//button
+$button-round-radius: 40px;
+//button color
+$button-primary: $color-blue1 !default;
+$button-primary-color: $color-white !default;
+$button-default: $color-white !default;
+$button-default-color: $color-black !default;
+$button-default-border-color: $color-grey1 !default;
+$button-danger: $color-red !default;
+$button-danger-color: $color-white !default;
+$button-warn: $color-yellow !default;
+$button-warn-color: $color-white !default;
+$button-success: $color-success !default;
+$button-success-color: $color-white !default;
+$button-info: $color-blue2 !default;
+$button-info-color: $color-white !default;
+//button size
+$button-normal-height: 40px !default;
+$button-normal-padding:$padding-md !default;
+$button-small-height: 30px !default;
+$button-small-padding: $button-normal-padding - 4 !default;
+$button-mini-height: 20px !default;
+$button-mini-font-size: $font-size-sm !default;
+$button-mini-padding: $button-small-padding - 4 !default;

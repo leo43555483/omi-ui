@@ -1,0 +1,11 @@
+@mixin button-background($background, $borderColor, $color: $color-white) {
+  background-color: $background;
+  border-color: $borderColor;
+  color: $color;
+}
+@mixin button-size($padding, $height, $fontSize: $font-size-base) {
+  padding: 0 $padding;
+  height:$height;
+  line-height:$height - 2px;
+  font-size: $fontSize;
+}

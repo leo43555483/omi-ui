@@ -1,6 +1,9 @@
 <template>
   <div class="omi-form-item" :class="{'omi-form-item__error': validateMessage}">
     <omi-cell :title-class="titleClass" :title-style="titleStyle">
+      <template slot="icon-left">
+        <slot name="icon-left"></slot>
+      </template>
       <template slot="title">
         <slot name="label">
           <label :for="labelFor">{{label}}<span v-if="colon">:</span>
@@ -9,6 +12,12 @@
       </template>
       <template slot="content">
         <slot></slot>
+      </template>
+      <template slot="extra">
+        <slot name="extra"></slot>
+      </template>
+      <template slot="icon-right">
+        <slot name="icon-right"></slot>
       </template>
     </omi-cell>
     <template v-if="name">
@@ -49,6 +58,10 @@ export default {
     labelWith: {
       type: [String, Number],
       default: null,
+    },
+    showStatus: {
+      type: Boolean,
+      default: true,
     },
     showRequired: {
       type: Boolean,
@@ -142,11 +155,10 @@ export default {
       return this.rules.some((rule) => rule.required);
     },
     titleStyle() {
-      const labelWith = this.omiForm.labelWith || this.labelWith;
-      if (labelWith) {
-        return `width: ${labelWith}px`;
-      }
-      return null;
+      const { omiForm } = this;
+      const labelWith = (omiForm && omiForm.labelWith) || this.labelWith;
+      const labelAlign = (omiForm && omiForm.labelAlign) || this.labelAlign;
+      return `width: ${labelWith}px; text-align: ${labelAlign}`;
     },
     titleClass() {
       let classes = 'omi-form-item__title';

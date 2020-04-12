@@ -20,6 +20,7 @@ module.exports = merge(webpackBase, {
     publicPath: '/'
   },
   devServer: {
+    disableHostCheck: true,
     host: '0.0.0.0',
     historyApiFallback: true,
     port: 8888,

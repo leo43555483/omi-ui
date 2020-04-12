@@ -26,3 +26,14 @@ export function getValueByName(model, name) {
   }
   return temp;
 }
+export function createClassMap(prefix, classNames) {
+  if (typeof classNames === 'string') return { [classNames]: `${prefix}${classNames}` };
+  if (Array.isArray(classNames)) {
+    return classNames.reduce((map, className) => {
+      // eslint-disable-next-line no-param-reassign
+      map[className] = `${prefix}${className}`;
+      return map;
+    }, {});
+  }
+  return null;
+}

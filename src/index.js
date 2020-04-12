@@ -2,12 +2,14 @@ import Form from '../package/form';
 import FormItem from '../package/form-item';
 import Input from '../package/input';
 import Cell from '../package/cell';
+import Button from '../package/button';
 
 const components = [
   Form,
   FormItem,
   Input,
   Cell,
+  Button,
 ];
 
 const install = function (Vue) {
