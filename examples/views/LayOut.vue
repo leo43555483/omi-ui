@@ -12,7 +12,7 @@ export default {
   name: 'layOut',
   methods: {
     onClickLeft() {
-      this.$router.go(-1);
+      this.$router.replace({ name: 'home' });
     },
   },
   computed: {

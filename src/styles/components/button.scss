@@ -1,6 +1,7 @@
 .omi-btn{
   border: 1px solid transparent;
   border-radius: 4px;
+  user-select: none;
 }
 //color
 .omi-btn__primary{
@@ -37,4 +38,26 @@
 }
 .omi-btn__round{
   border-radius: $button-round-radius;
+}
+.omi-btn__ripple{
+  position: relative;
+	overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  &::after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		transition: opacity .1s;
+    user-select: none;
+	}
+
+	&:active::after {
+    opacity: .2;
+    background-color: $button-rapple-color;
+    transition: opacity .1s;
+	}
 }

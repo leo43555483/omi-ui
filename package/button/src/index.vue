@@ -3,6 +3,7 @@
     :disabled="disabled"
     :type="nativeType"
     :class="buttonClass"
+    v-on="$listeners"
   >
     <slot>
       <span v-if="showLoadingText">{{loadingText}}</span>
@@ -46,6 +47,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    ripple: {
+      type: Boolean,
+      default: true,
+    },
     text: {
       type: String,
       default: '',
@@ -86,7 +91,7 @@ export default {
     },
     buttonClass() {
       const {
-        type, size, typeClassesMap, sizeClassesMap, shapeClassesMap, block,
+        type, size, typeClassesMap, sizeClassesMap, shapeClassesMap, block, ripple,
       } = this;
       const [square, round] = BUTTON_SHAPE;
       const shape = this.round ? round : square;
@@ -94,7 +99,8 @@ export default {
       const sizeClass = sizeClassesMap ? sizeClassesMap[size] : null;
       const shapeClass = shapeClassesMap ? shapeClassesMap[shape] : null;
       const blockClass = block ? 'omi-btn__block' : null;
-      return [typeClass, sizeClass, shapeClass, blockClass];
+      const rippleClass = ripple ? 'omi-btn__ripple' : null;
+      return [typeClass, sizeClass, shapeClass, blockClass, rippleClass];
     },
   },
 };

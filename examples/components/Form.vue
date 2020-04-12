@@ -15,10 +15,17 @@
       >
         <omi-input v-model="result.data1" placeholder="请输入文字"/>
       </omi-form-item>
+      <omi-form-item cententClass="opreate-line">
+        <omi-button class="demo-button--item" round @click="onSubmit">提交</omi-button>
+        <omi-button class="demo-button--item" round type="info" @click="onReset">重置</omi-button>
+        <omi-button
+          class="demo-button--item"
+          round
+          type="success"
+          @click="toValidate"
+        >校验</omi-button>
+      </omi-form-item>
     </omi-form>
-    <button type="button" @click="onSubmit">提交</button>
-    <button type="button" @click="onReset">重置</button>
-    <button type="button" @click="toValidate">校验</button>
   </div>
 </template>
 
@@ -68,6 +75,8 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss">
+.demo-button--item{
+  margin: 0 20px;
+}
 </style>

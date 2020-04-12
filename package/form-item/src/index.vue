@@ -1,12 +1,12 @@
 <template>
   <div class="omi-form-item" :class="{'omi-form-item__error': validateMessage}">
-    <omi-cell :title-class="titleClass" :title-style="titleStyle">
+    <omi-cell :title-class="titleClass" :title-style="titleStyle" v-bind="$attrs">
       <template slot="icon-left">
         <slot name="icon-left"></slot>
       </template>
       <template slot="title">
         <slot name="label">
-          <label :for="labelFor">{{label}}<span v-if="colon">:</span>
+          <label v-if="label" :for="labelFor">{{label}}<span v-if="colon">:</span>
           </label>
         </slot>
       </template>
