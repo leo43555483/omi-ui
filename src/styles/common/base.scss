@@ -1,0 +1,10 @@
+//icons
+.omi-icon{
+  min-width: 1em;
+  font-size: 16px;
+  margin-right: 4px;
+}
+//border-bottom
+.omi-border__bottom {
+  @include line(0, -50%, -50%);
+}

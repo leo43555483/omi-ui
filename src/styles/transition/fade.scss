@@ -1,0 +1,14 @@
+.fade-to-bottom-enter, .fade-to-bottom-leave-to {
+  opacity: 0;
+  transform: translate3d(0, -4px, 0);
+}
+.fade-to-bottom-enter-active {
+  transition: all .2s ease-in;
+}
+.fade-to-bottom-leave-active {
+  transition: all .10s ease-in;
+}
+.fade-to-bottom-enter-to, .fade-to-bottom-leave{
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}

@@ -1,0 +1,19 @@
+{
+  "env": {
+    "development": {
+      "presets": [
+				"@vue/babel-preset-jsx",
+        ["@babel/preset-env", { "modules": false }]
+      ]
+    },
+    "test": {
+      "presets": [
+        ["@babel/preset-env", {
+          "modules": false,
+          "targets": { "node": "current" }
+        }]
+      ],
+      "plugins": ["istanbul"]
+    }
+  }
+}

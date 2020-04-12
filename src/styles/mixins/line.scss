@@ -1,0 +1,13 @@
+@mixin line($bottom, $left, $right) {
+  position: relative;
+  &::after{
+    content: "";
+    position: absolute;
+    bottom: $bottom;
+    left: $left;
+    right: $right;
+    box-sizing: border-box;
+    border-bottom: 1px solid $theme-border-color;
+    transform: scaleY(.5);
+  }
+}

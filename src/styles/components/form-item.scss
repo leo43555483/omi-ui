@@ -1,0 +1,42 @@
+.omi-form-item{
+  position: relative;
+  overflow: hidden;
+  .omi-form-item__title{
+    flex: none;
+    width: $form-item-title-width;
+    box-sizing: border-box;
+  }
+  .omi-cell{
+    padding-bottom: $padding-md;
+    @include line(0, $padding-md, 0);
+  }
+  &:last-child {
+    .omi-cell::after {
+      display: none;
+    }
+  }
+}
+.omi-form-item__message{
+  position: absolute;
+  bottom: 2px;
+  left: $padding-md;
+  color:$color-red;
+  font-size: $font-size-sm;
+}
+.omi-form-title__required{
+  position: relative;
+  &::before {
+    content: "*";
+    position: absolute;
+    color: $color-red;
+    left: -10px;
+    
+  }
+}
+.omi-form-item__error{
+  .omi-input__inner{
+    &::placeholder {
+      color: $color-red;
+    }
+  }
+}

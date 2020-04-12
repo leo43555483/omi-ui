@@ -1,0 +1,41 @@
+<template>
+  <div class="omi-nav-bar omi-border__bottom">
+    <div class="omi-nav-bar__left" @click="(e) => onClick(e, 'clickLeft')">
+      <i class="omi-icon" v-if="showLeftArrow">></i>
+      {{left}}
+    </div>
+    <div class="omi-nav-bar__middle">{{title}}</div>
+    <div class="omi-nav-bar__right" @click="(e) => onClick(e, 'clickLeft')">
+      <slot name="right">{{right}}</slot>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'NavBar',
+  props: {
+    showLeftArrow: {
+      type: Boolean,
+      default: true,
+    },
+    title: {
+      type: String,
+    },
+    right: {
+      type: String,
+    },
+    left: {
+      type: String,
+    },
+  },
+  methods: {
+    onClick(e, type) {
+      this.$emit(type, e);
+    },
+  },
+};
+</script>
+
+<style>
+</style>

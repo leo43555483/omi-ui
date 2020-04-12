@@ -1,0 +1,29 @@
+//theme
+$color-red: red;
+$theme-border-color: #ddd;
+
+//font
+$font-size-base: 14px;
+$font-size-lg: 16px;
+$font-size-sm: 12px;
+
+//padding
+$padding-lg: 22px;
+$padding-md: 16px;
+$padding-sm: 12px;
+$padding-xs: 10px;
+
+//nav-bar
+$nav-bar-line-height: 40px;
+$nav-bar-left-basis: 20%;
+$nav-bar-middle-basis: 60%;
+$nav-bar-right-basis:$nav-bar-left-basis; 
+
+//form-item
+$form-item-title-width: 80px;
+
+//cell
+$cell-line-height: 24px;
+
+//input
+$input-line-height: $cell-line-height;

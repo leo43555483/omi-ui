@@ -1,0 +1,17 @@
+.omi-cell{
+  display: flex;
+  padding:$padding-xs $padding-md;
+  line-height: $cell-line-height;
+  font-size: $font-size-base;
+  &:not(:last-child){
+    @include line(0, $padding-md, 0);
+  }
+}
+.omi-cell__title, .omi-cell__content{
+  flex: 1;
+  vertical-align: middle;
+}
+.omi-cell__content{
+  word-wrap: break-word;
+  text-align: right;
+}

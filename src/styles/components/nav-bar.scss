@@ -1,0 +1,18 @@
+.omi-nav-bar__left{
+  flex-basis: $nav-bar-left-basis;
+  padding: 0 $padding-md;
+}
+.omi-nav-bar__middle{
+  flex-basis: $nav-bar-middle-basis;
+  text-align: center;
+}
+.omi-nav-bar__right{
+  flex-basis: $nav-bar-right-basis;
+  padding: 0 $padding-md;
+}
+.omi-nav-bar{
+  display: flex;
+  justify-content: center;
+  line-height: $nav-bar-line-height;
+  font-size: $font-size-base;
+}
