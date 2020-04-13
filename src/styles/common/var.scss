@@ -64,3 +64,8 @@ $button-small-padding: $button-normal-padding - 4 !default;
 $button-mini-height: 20px !default;
 $button-mini-font-size: $font-size-sm !default;
 $button-mini-padding: $button-small-padding - 4 !default;
+
+//loading
+$circular-default-size: 22px !default;
+$circular-stroke-width: 3px !default;
+$loading-default-color: #c5c7ce !default;

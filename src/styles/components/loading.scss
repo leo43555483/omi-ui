@@ -1,0 +1,57 @@
+.omi-loading{
+  display: inline-block;
+  margin-right: 4px;
+  text-align: center;
+  font-size: 0;
+}
+.omi-loading__vertical{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+.omi-loading__text{
+  margin-top: 10px;
+  color: $loading-default-color;
+  font-size: $font-size-base;
+}
+.omi-loading__spinner{
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+  width: $circular-default-size;
+  height: $circular-default-size;
+  vertical-align: middle;
+  color: $loading-default-color;
+  font-size: 0;
+  animation: loading-rotate 1.3s linear infinite;
+  circle{
+    stroke: currentColor;
+    stroke-width: $circular-stroke-width;
+    stroke-linecap: round;
+    animation: circular 1.5s ease-in-out infinite;
+  }
+  //spinner
+  i{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // background-color: $loading-default-color;
+    &::before{
+      content: "";
+      display: block;
+      width: 2px;
+      height: 25%;
+      margin: 0 auto;
+      border-radius: 50%;
+      background-color: currentColor;
+    }
+  }
+  @for $index from 1 through 12 {
+    i:nth-of-type(#{$index}){
+      transform: rotateZ($index*30deg);
+      opacity: 1-($index - 1)*0.05;
+    }
+  }
+}

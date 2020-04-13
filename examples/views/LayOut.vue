@@ -26,6 +26,8 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss">
+  .page-layout{
+    min-height: 100vh;
+  }
 </style>

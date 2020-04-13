@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Form from '../components/Form.vue';
 import Cell from '../components/Cell.vue';
 import Button from '../components/Button.vue';
+import Loading from '../components/Loading.vue';
 
 function createView(id) {
   return (c) => import('../views/createView.js').then((r) => r.default(id, c));
@@ -30,6 +31,11 @@ export default new VueRouter({
       name: 'button',
       path: '/button',
       component: () => createView('Button')(Button),
+    },
+    {
+      name: 'loading',
+      path: '/loading',
+      component: () => createView('Loading')(Loading),
     },
   ],
 });

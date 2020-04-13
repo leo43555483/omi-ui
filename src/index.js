@@ -3,6 +3,7 @@ import FormItem from '../package/form-item';
 import Input from '../package/input';
 import Cell from '../package/cell';
 import Button from '../package/button';
+import Loading from '../package/loading';
 
 const components = [
   Form,
@@ -10,6 +11,7 @@ const components = [
   Input,
   Cell,
   Button,
+  Loading,
 ];
 
 const install = function (Vue) {

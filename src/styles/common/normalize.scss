@@ -286,10 +286,7 @@
    * 2. Correct the inability to style clickable types in iOS and Safari.
    */
   
-  button,
-  html [type="button"], /* 1 */
-  [type="reset"],
-  [type="submit"] {
+  button {
     -webkit-appearance: button; /* 2 */
   }
   

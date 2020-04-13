@@ -5,10 +5,11 @@
     :class="buttonClass"
     v-on="$listeners"
   >
-    <slot>
-      <span v-if="showLoadingText">{{loadingText}}</span>
-      <span v-else>{{text}}</span>
-    </slot>
+    <omi-loading v-show="loading" size="20" class="omi-btn__loading"/>
+    <span class="omi-btn__text" v-if="showLoadingText">{{loadingText}}</span>
+    <span class="omi-btn__text" v-else>
+      <slot>{{text}}</slot>
+    </span>
   </button>
 </template>
 
@@ -46,10 +47,6 @@ export default {
     block: {
       type: Boolean,
       default: false,
-    },
-    ripple: {
-      type: Boolean,
-      default: true,
     },
     text: {
       type: String,
@@ -91,7 +88,7 @@ export default {
     },
     buttonClass() {
       const {
-        type, size, typeClassesMap, sizeClassesMap, shapeClassesMap, block, ripple,
+        type, size, typeClassesMap, sizeClassesMap, shapeClassesMap, block,
       } = this;
       const [square, round] = BUTTON_SHAPE;
       const shape = this.round ? round : square;
@@ -99,9 +96,12 @@ export default {
       const sizeClass = sizeClassesMap ? sizeClassesMap[size] : null;
       const shapeClass = shapeClassesMap ? shapeClassesMap[shape] : null;
       const blockClass = block ? 'omi-btn__block' : null;
-      const rippleClass = ripple ? 'omi-btn__ripple' : null;
-      return [typeClass, sizeClass, shapeClass, blockClass, rippleClass];
+      // const rippleClass = ripple ? 'omi-btn__ripple' : null;
+      return [typeClass, sizeClass, shapeClass, blockClass];
     },
+  },
+  mounted() {
+    console.log('listener', this.$listeners);
   },
 };
 </script>
