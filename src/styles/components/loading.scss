@@ -23,7 +23,7 @@
   vertical-align: middle;
   color: $loading-default-color;
   font-size: 0;
-  animation: loading-rotate 1.3s linear infinite;
+  animation: loading-rotate 1s linear infinite;
   circle{
     stroke: currentColor;
     stroke-width: $circular-stroke-width;

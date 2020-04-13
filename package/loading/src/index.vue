@@ -38,10 +38,11 @@ export default {
     customStyles() {
       let [size] = /^\d+/.exec(this.size);
       size = size ? `width: ${size}px; height: ${size}px;` : null;
-      return `${size} ${this.customColor}`;
+      const step = this.spinner ? 'animation-timing-function: steps(12);' : null;
+      return `${size} ${this.customColor} ${step}`;
     },
     customColor() {
-      return `color:${this.color}`;
+      return `color:${this.color};`;
     },
   },
 };
