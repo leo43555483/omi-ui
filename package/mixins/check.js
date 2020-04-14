@@ -1,4 +1,6 @@
-export default function createMixin({ type, classPrefix, checkParent }) {
+export default function createMixin({
+  type, classPrefix, checkParent, unbindParent,
+}) {
   return {
     inject: {
       [checkParent]: {
@@ -12,6 +14,7 @@ export default function createMixin({ type, classPrefix, checkParent }) {
     },
     computed: {
       parent() {
+        if (this[unbindParent]) return null;
         return this[checkParent];
       },
       role() {

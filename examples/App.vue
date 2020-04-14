@@ -17,7 +17,7 @@ html{
   overflow-x: hidden;
 }
 body {
-  background-color: #ddd;
+  background-color: #f9f9f9;
   -webkit-text-size-adjust: none;
   max-width: 100%;
   overflow-x: hidden;

@@ -20,10 +20,10 @@ export default {
     type: 'checkbox',
     classPrefix: 'omi-checkbox',
     checkParent: 'omiCheckGroup',
+    unbindParent: 'indeterminate',
   })],
   watch: {
     value(value) {
-      console.log('check chagne', value);
       this.$emit('change', value);
     },
   },
@@ -72,7 +72,6 @@ export default {
       set(isCheck) {
         const { parent } = this;
         if (parent) {
-          console.log('togle11', this.prop, isCheck);
           this.parent.toggle(isCheck, this.prop);
         }
         this.$emit('input', isCheck);

@@ -1,6 +1,6 @@
 .omi-cell{
   display: flex;
-  padding:$padding-xs $padding-md;
+  padding:$cell-vertical-padding $cell-horizontal-padding;
   line-height: $cell-line-height;
   font-size: $font-size-base;
   &:not(:last-child){

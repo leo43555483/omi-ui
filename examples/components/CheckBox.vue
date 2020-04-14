@@ -15,23 +15,29 @@
         />
       </omi-checkbox-group>
     </div>
-    <omi-checkbox
-    v-model="checkAll2"
-    indeterminate
-    @change="(checked) => onChange(checked, 'checkbox2',result, list2)"
-    text="全选"></omi-checkbox>
     <omi-checkbox-group v-model="result" ref="checkbox2">
-      <omi-cell
-        v-for="(item,index) in list2"
-        :key="item"
-        clickable
-        title="标题 checkbox"
-        @click="() => onClick(index)"
-      >
-        <template slot="extra">
-          <omi-checkbox :prop="item" ref="checkItem"/>
-        </template>
-      </omi-cell>
+      <omi-cell-group title="配合cell使用" :description="description">
+        <omi-cell clickable>
+          <omi-checkbox
+            slot="icon-left"
+            v-model="checkAll2"
+            indeterminate
+            @change="(checked) => onChange(checked, 'checkbox2',result, list2)"
+            text="全选"
+          />
+        </omi-cell>
+        <omi-cell
+          v-for="(item,index) in list2"
+          :key="item"
+          clickable
+          title="标题 checkbox"
+          @click="() => onClick(index)"
+        >
+          <template slot="extra">
+            <omi-checkbox :prop="item" ref="checkItem"/>
+          </template>
+        </omi-cell>
+      </omi-cell-group>
     </omi-checkbox-group>
   </div>
 </template>
@@ -48,6 +54,7 @@ export default {
       checkAll: false,
       checkAll2: false,
       toggle: false,
+      description: '根据环境光线条件自动调整iphone屏幕以在不同环境下保持色彩显示一致',
     };
   },
   watch: {
@@ -78,7 +85,6 @@ export default {
 
 <style lang="scss">
 .demo-checkbox{
-  background-color: #fff;
   .omi-cell{
     .omi-checkbox{
       padding: 0;
@@ -88,5 +94,6 @@ export default {
 }
 .demo-item{
   padding-left: 16px;
+  background-color: #fff;
 }
 </style>

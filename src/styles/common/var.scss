@@ -2,7 +2,7 @@
 $color-white: #fff !default;
 $color-grey1: #ddd !default;
 //font color
-$color-grey2: #969799 !default;
+$color-grey2: #546c7799 !default;
 $color-yellow: #fd9d0f !default;
 $color-black: #333 !default;
 $color-blue1: #2d8cf0 !default;
@@ -34,7 +34,12 @@ $form-item-title-width: 80px !default;
 
 //cell
 $cell-line-height: 24px !default;
+$cell-vertical-padding: $padding-xs !default;
+$cell-horizontal-padding: $padding-md !default;
 $cell-content-body-margin: 4px !default;
+$cell-group-title-color: $color-grey2 !default;
+$cell-group-line-height: 20px !default;
+$cell-group-vertical-padding: $cell-horizontal-padding/2 !default;
 
 //input
 $input-line-height: $cell-line-height !default;

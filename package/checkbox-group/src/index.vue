@@ -57,7 +57,6 @@ export default {
       // toggle
       if (isCheck === null) {
         children = children.filter((child) => !child.isChecked);
-        console.log('togggle', children);
       }
       const model = children.map((child) => child.prop);
       this.$emit('input', model);

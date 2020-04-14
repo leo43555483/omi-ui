@@ -1,0 +1,9 @@
+.omi-cell-group{
+  width: 100%;
+}
+.omi-cell-group__title, .omi-cell-group__description{
+  padding: $cell-group-vertical-padding $cell-horizontal-padding;
+  font-size: $font-size-base;
+  line-height: $cell-group-line-height;
+  color: $cell-group-title-color
+}
