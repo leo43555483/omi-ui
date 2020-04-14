@@ -1,13 +1,14 @@
 .omi-form-item{
   position: relative;
   overflow: hidden;
+  background-color: $theme-background-color;
   .omi-form-item__title{
     flex: none;
     width: $form-item-title-width;
     box-sizing: border-box;
   }
   .omi-cell{
-    padding-bottom: $padding-md;
+    // padding-bottom: $padding-md;
     @include line(0, $padding-md, 0);
   }
   &:last-child {
@@ -17,9 +18,10 @@
   }
 }
 .omi-form-item__message{
-  position: absolute;
+  width: 100%;
   bottom: 2px;
   left: $padding-md;
+  text-align: left;
   color:$color-red;
   font-size: $font-size-sm;
 }

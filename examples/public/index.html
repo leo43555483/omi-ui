@@ -2,10 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=cover" />
+  <meta name="HandheldFriendly" content="true">
   <title>omi ui</title>
 </head>
 <body ontouchstart>
   <div id="app"></div>
+  <script>
+  document.addEventListener('touchmove', function(event) {
+    event = event.originalEvent || event;
+    if(event.scale > 1) {
+        event.preventDefault();
+    }
+  }, false);
+  </script>
 </body>
 </html>

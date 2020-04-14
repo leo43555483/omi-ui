@@ -4,12 +4,13 @@ import Form from '../components/Form.vue';
 import Cell from '../components/Cell.vue';
 import Button from '../components/Button.vue';
 import Loading from '../components/Loading.vue';
+import CheckBox from '../components/CheckBox.vue';
 
 function createView(id) {
   return (c) => import('../views/createView.js').then((r) => r.default(id, c));
 }
 Vue.use(VueRouter);
-export default new VueRouter({
+const routers = {
   mode: 'history',
   routes: [
     {
@@ -37,5 +38,11 @@ export default new VueRouter({
       path: '/loading',
       component: () => createView('Loading')(Loading),
     },
+    {
+      name: 'checkbox',
+      path: '/checkbox',
+      component: () => createView('CheckBox')(CheckBox),
+    },
   ],
-});
+};
+export default new VueRouter(routers);

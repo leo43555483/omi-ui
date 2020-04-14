@@ -1,39 +1,37 @@
 <template>
-  <div class="omi-cell" :class="clickAbleClass">
+  <div class="omi-cell" :class="clickAbleClass" v-on="$listeners">
     <div class="omi-cell__left--icon" v-if="renderSlot('icon-left')">
       <slot name="icon-left"></slot>
     </div>
     <div class="omi-cell__title"
       :class="titleClass"
       :style="customTitleStyles"
-      v-if="renderSlot('title') || renderSlot('label')"
+      v-if="renderTitle"
     >
       <slot name="title">
-        <div>{{title}}</div>
+        <div v-if="title">{{title}}</div>
       </slot>
       <slot name="label">
         <div v-if="label" class="omi-cell__label">{{label}}</div>
       </slot>
     </div>
-    <div class="omi-cell__content"
-
-    >
+    <div class="omi-cell__content">
       <div class="omi-cell__content--body"
         :style="customContentStyles"
-        :class="cententClass"
-      >
+        :class="cententClass">
         <slot name="content" v-if="renderSlot('content')">
           <span>{{content}}</span>
         </slot>
-        <div class="omi-cell__extra" v-if="renderSlot('extra')">
-          <slot name="extra"></slot>
-        </div>
-        <div class="omi-cell__right--icon" v-if="renderSlot('icon-right')">
-          <slot name="icon-right">
-            <i class="omi-icon" v-if="showArrow">></i>
-          </slot>
-        </div>
       </div>
+      <slot name="description"/>
+    </div>
+    <div class="omi-cell__extra" v-if="renderSlot('extra')">
+      <slot name="extra"></slot>
+    </div>
+    <div class="omi-cell__right--icon" v-if="renderSlot('icon-right')">
+      <slot name="icon-right">
+        <i class="omi-icon" v-if="showArrow">></i>
+      </slot>
     </div>
   </div>
 </template>
@@ -47,7 +45,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    clickAble: {
+    clickable: {
       type: Boolean,
       default: false,
     },
@@ -98,9 +96,14 @@ export default {
     },
   },
   computed: {
+    renderTitle() {
+      const { title, label } = this;
+      const { $slots } = this;
+      return title || label || $slots.title || $slots.label;
+    },
     clickAbleClass() {
-      const { clickAble } = this;
-      return clickAble ? 'omi-cell__clickable' : null;
+      const { clickable } = this;
+      return clickable ? 'omi-cell__clickable' : null;
     },
     customTitleStyles() {
       if (this.titleStyle) return this.titleStyle;

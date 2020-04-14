@@ -19,12 +19,16 @@
       <template slot="icon-right">
         <slot name="icon-right"></slot>
       </template>
+      <template v-if="name" slot="description">
+          <transition name="fade-to-bottom">
+            <div
+              v-if="validateMessage"
+              class="omi-form-item__message"
+            >{{validateMessage}}</div>
+          </transition>
+      </template>
     </omi-cell>
-    <template v-if="name">
-      <transition name="fade-to-bottom">
-        <div v-if="validateMessage" class="omi-form-item__message">{{validateMessage}}</div>
-      </transition>
-    </template>
+
   </div>
 </template>
 

@@ -1,0 +1,30 @@
+.omi-checkbox{
+  display: flex;
+  padding: $checkbox-vertical-padding 0;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+.omi-checkbox__input{
+  font-size: $font-size-lg;
+  &:not(:last-child) {
+    .omi-checkbox__inner {
+      margin-right: 8px;
+    }
+  }
+}
+.omi-checkbox__inner{
+  height: 1em;
+  width: 1em;
+  border: 1px solid $checkbox-border-color;
+  border-radius: 50%;
+  overflow: hidden;
+  color:transparent;
+}
+.omi-checkbox__checked{
+  .omi-checkbox__inner{
+    background-color: $checkbox-checked-background;
+    border-color: $checkbox-checked-background;
+    color: $checkbox-checked-color;
+  }
+}

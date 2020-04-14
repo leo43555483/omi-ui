@@ -34,5 +34,7 @@
   }
 }
 .omi-cell__right--icon, .omi-cell__extra{
+  display: flex;
+  align-items: center;
   margin-left: $cell-content-body-margin;
 }

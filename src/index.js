@@ -4,6 +4,8 @@ import Input from '../package/input';
 import Cell from '../package/cell';
 import Button from '../package/button';
 import Loading from '../package/loading';
+import Checkbox from '../package/checkbox';
+import CheckboxGroup from '../package/checkbox-group';
 
 const components = [
   Form,
@@ -12,6 +14,8 @@ const components = [
   Cell,
   Button,
   Loading,
+  Checkbox,
+  CheckboxGroup
 ];
 
 const install = function (Vue) {

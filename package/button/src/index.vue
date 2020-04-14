@@ -100,9 +100,6 @@ export default {
       return [typeClass, sizeClass, shapeClass, blockClass];
     },
   },
-  mounted() {
-    console.log('listener', this.$listeners);
-  },
 };
 </script>
 

@@ -1,10 +1,11 @@
 <template>
   <div class="home">
     <ul class="page-nav">
-      <li><router-link to="/form">Form</router-link></li>
-      <li><router-link to="/cell">Cell</router-link></li>
-      <li><router-link to="/button">Button</router-link></li>
-      <li><router-link to="/loading">loading</router-link></li>
+      <template v-for="item in routes" >
+        <li v-if="item.name !== 'home'" :key="item.name">
+          <router-link :to="item.path">{{item.name}}</router-link>
+        </li>
+      </template>
     </ul>
   </div>
 </template>
@@ -12,6 +13,11 @@
 <script>
 export default {
   name: 'Home',
+  computed: {
+    routes() {
+      return this.$router.options.routes;
+    },
+  },
 };
 </script>
 
