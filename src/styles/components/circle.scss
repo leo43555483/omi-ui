@@ -1,0 +1,28 @@
+.omi-circle{
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  svg{
+    width: 100%;
+    height: 100%;
+  }
+}
+.omi-circle__base, .omi-circle__stroke{
+  fill: none
+}
+.omi-circle__base{
+  stroke: $circle-base-color;
+}
+.omi-circle__stroke{
+  stroke-linecap: round;
+  stroke: $circle-stroke-color;
+}
+.omi-cirecle__text{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  text-align: center;
+
+}

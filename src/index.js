@@ -10,6 +10,7 @@ import CheckboxGroup from '../package/checkbox-group';
 import Redio from '../package/radio';
 import RadioGroup from '../package/radio-group';
 import Icon from '../package/icon';
+import Circle from '../package/cirlce';
 
 const components = [
   Form,
@@ -24,6 +25,7 @@ const components = [
   Redio,
   RadioGroup,
   Icon,
+  Circle,
 ];
 
 const install = function (Vue) {

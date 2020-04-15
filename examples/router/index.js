@@ -6,6 +6,7 @@ import Button from '../components/Button.vue';
 import Loading from '../components/Loading.vue';
 import CheckBox from '../components/CheckBox.vue';
 import Radio from '../components/Radio.vue';
+import Circle from '../components/Circle.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -48,6 +49,11 @@ const routers = {
       name: 'radio',
       path: '/radio',
       component: () => createView('Radio')(Radio),
+    },
+    {
+      name: 'cirlce',
+      path: '/cirlce',
+      component: () => createView('Circles')(Circle),
     },
   ],
 };
