@@ -23,10 +23,11 @@
   left: $padding-md;
   text-align: left;
   color:$color-red;
-  font-size: $font-size-sm;
+  // font-size: $font-size-sm;
 }
 .omi-form-title__required{
   position: relative;
+  margin-left: $cell-horizontal-padding;
   &::before {
     content: "*";
     position: absolute;

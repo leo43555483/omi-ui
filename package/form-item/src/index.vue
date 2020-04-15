@@ -69,7 +69,7 @@ export default {
     },
     showRequired: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     labelFor: {
       type: String,

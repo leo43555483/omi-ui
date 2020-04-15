@@ -1,8 +1,8 @@
 //icons
-.omi-icon{
-  min-width: 1em;
-  font-size: 16px;
-  margin-right: 4px;
+.omi-icon__wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 //border-bottom
 .omi-border__bottom {

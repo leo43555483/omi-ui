@@ -1,8 +1,8 @@
 <template>
   <div class="omi-nav-bar omi-border__bottom">
     <div class="omi-nav-bar__left" @click="(e) => onClick(e, 'clickLeft')">
-      <i class="omi-icon" v-if="showLeftArrow">></i>
-      {{left}}
+      <omi-icon type="return"  v-if="showLeftArrow"/>
+      <span>{{left}}</span>
     </div>
     <div class="omi-nav-bar__middle">{{title}}</div>
     <div class="omi-nav-bar__right" @click="(e) => onClick(e, 'clickLeft')">

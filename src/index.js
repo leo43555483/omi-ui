@@ -7,6 +7,9 @@ import Button from '../package/button';
 import Loading from '../package/loading';
 import Checkbox from '../package/checkbox';
 import CheckboxGroup from '../package/checkbox-group';
+import Redio from '../package/radio';
+import RadioGroup from '../package/radio-group';
+import Icon from '../package/icon';
 
 const components = [
   Form,
@@ -18,6 +21,9 @@ const components = [
   Loading,
   Checkbox,
   CheckboxGroup,
+  Redio,
+  RadioGroup,
+  Icon,
 ];
 
 const install = function (Vue) {

@@ -1,4 +1,6 @@
 .omi-nav-bar__left{
+  display: flex;
+  align-items: center;
   flex-basis: $nav-bar-left-basis;
   padding: 0 $padding-md;
 }

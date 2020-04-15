@@ -4,9 +4,10 @@
       <omi-checkbox
       v-model="checkAll"
       indeterminate
-      @change="(checked) => onChange(checked,'checkbox', model, list)"
-      text="全选"></omi-checkbox>
-      <omi-checkbox-group v-model="model" ref="checkbox">
+      @change="(checked) => onChange(checked,'checkbox', model, list.length)"
+      text="全选"
+      ></omi-checkbox>
+      <omi-checkbox-group horizontal v-model="model" ref="checkbox" active-color="red">
         <omi-checkbox
           v-for="item in list"
           :prop="item"
@@ -15,14 +16,14 @@
         />
       </omi-checkbox-group>
     </div>
-    <omi-checkbox-group v-model="result" ref="checkbox2">
+    <omi-checkbox-group v-model="result" ref="checkbox2" max="3" active-color="red">
       <omi-cell-group title="配合cell使用" :description="description">
         <omi-cell clickable>
           <omi-checkbox
             slot="icon-left"
             v-model="checkAll2"
             indeterminate
-            @change="(checked) => onChange(checked, 'checkbox2',result, list2)"
+            @change="(checked) => onChange(checked, 'checkbox2',result, 3)"
             text="全选"
           />
         </omi-cell>
@@ -70,9 +71,9 @@ export default {
     onClick(index) {
       this.$refs.checkItem[index].check();
     },
-    onChange(checked, ref, model, list) {
+    onChange(checked, ref, model, max) {
       if (checked) this.$refs[ref].toggleAll(checked);
-      else if (model.length === list.length) {
+      else if (model.length === max) {
         this.$refs[ref].toggleAll(checked);
       }
     },

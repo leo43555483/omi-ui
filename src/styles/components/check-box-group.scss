@@ -1,0 +1,7 @@
+.omi-checkbox-horizontal{
+  display: flex;
+  flex-wrap: wrap;
+  .omi-checkbox:not(:last-child) {
+    margin-right: $checkbox-input-margin*2;
+  }
+}

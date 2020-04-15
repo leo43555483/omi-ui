@@ -31,7 +31,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         use: [
           'vue-style-loader',
           'css-loader',
@@ -43,7 +43,7 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          name: path.posix.join('static', '[name].[hash:7].[ext]')
+          name: 'fonts/[name].[hash:7].[ext]',
         }
       }
     ]

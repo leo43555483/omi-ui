@@ -5,9 +5,10 @@ import Cell from '../components/Cell.vue';
 import Button from '../components/Button.vue';
 import Loading from '../components/Loading.vue';
 import CheckBox from '../components/CheckBox.vue';
+import Radio from '../components/Radio.vue';
 
 function createView(id) {
-  return (c) => import('../views/createView.js').then((r) => r.default(id, c));
+  return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
 }
 Vue.use(VueRouter);
 const routers = {
@@ -42,6 +43,11 @@ const routers = {
       name: 'checkbox',
       path: '/checkbox',
       component: () => createView('CheckBox')(CheckBox),
+    },
+    {
+      name: 'radio',
+      path: '/radio',
+      component: () => createView('Radio')(Radio),
     },
   ],
 };

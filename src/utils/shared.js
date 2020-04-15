@@ -37,3 +37,7 @@ export function createClassMap(prefix, classNames) {
   }
   return null;
 }
+export function getSizeString(string) {
+  if (string === null) return [];
+  return /^\d+/.exec(string);
+}

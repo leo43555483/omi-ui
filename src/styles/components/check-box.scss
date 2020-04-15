@@ -1,30 +1,51 @@
-.omi-checkbox{
+.omi-checkbox, .omi-radio{
   display: flex;
   padding: $checkbox-vertical-padding 0;
   align-items: center;
   user-select: none;
   cursor: pointer;
 }
-.omi-checkbox__input{
-  font-size: $font-size-lg;
-  &:not(:last-child) {
-    .omi-checkbox__inner {
-      margin-right: 8px;
-    }
-  }
-}
-.omi-checkbox__inner{
-  height: 1em;
-  width: 1em;
+.omi-checkbox__input, .omi-radio__input{
   border: 1px solid $checkbox-border-color;
   border-radius: 50%;
   overflow: hidden;
-  color:transparent;
+  font-size: $checkbox-input-size;
+  &:not(:last-child) {
+    margin-right: $checkbox-input-margin;
+  }
 }
-.omi-checkbox__checked{
-  .omi-checkbox__inner{
+.omi-checkbox__inner, .omi-radio__inner{
+  height: 1em;
+  width: 1em;
+  color:transparent;
+  border-radius: inherit;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.5);
+  transform-origin: 50%;
+  transition: all .3s cubic-bezier(0.39, 0.58, 0.57, 1);
+  .omi-icon-font{
+    font-size: .9em;
+  }
+}
+.omi-checkbox__checked, .omi-radio__checked{
+  border-color: transparent;
+  .omi-checkbox__inner, .omi-radio__inner{
+    opacity: 1;
     background-color: $checkbox-checked-background;
-    border-color: $checkbox-checked-background;
     color: $checkbox-checked-color;
+    transform: scale(1);
+  }
+}
+.omi-check__disable{
+  cursor: not-allowed;
+  .omi-checkbox__input, .omi-radio__input{
+    background-color: $check-disable-color;
+  }
+  .omi-checkbox__inner, .omi-radio__inner{
+    background-color: transparent
+  }
+  .omi-checkbox__text,.omi-radio__text {
+    color: $check-disable-color;
   }
 }

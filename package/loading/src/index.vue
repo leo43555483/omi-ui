@@ -14,6 +14,8 @@
   </div>
 </template>
 <script>
+import { getSizeString } from '../../../src/utils/shared';
+
 export default {
   name: 'OmiLoading',
   props: {
@@ -36,7 +38,7 @@ export default {
   },
   computed: {
     customStyles() {
-      let [size] = /^\d+/.exec(this.size);
+      let [size] = getSizeString(this.size);
       size = size ? `width: ${size}px; height: ${size}px;` : null;
       const step = this.spinner ? 'animation-timing-function: steps(12);' : null;
       return `${size} ${this.customColor} ${step}`;

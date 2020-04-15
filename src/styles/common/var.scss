@@ -13,9 +13,11 @@ $theme-border-color: #ddd !default;
 $theme-background-color: $color-white !default;
 
 //font
+$font-path: '/fonts' !default;
+$icon-default-size: 22px !default;
 $font-size-base: 14px !default;
-$font-size-lg: 16px !default;
 $font-size-sm: 12px !default;
+$font-size-lg: 16px !default;
 
 //padding
 $padding-lg: 22px !default;
@@ -76,7 +78,10 @@ $circular-stroke-width: 3px !default;
 $loading-default-color: #c5c7ce !default;
 
 //checkbox
+$checkbox-input-size: 18px !default;
 $checkbox-border-color:$theme-border-color !default;
 $checkbox-checked-background: $color-blue1 !default;
 $checkbox-checked-color: $color-white !default;
 $checkbox-vertical-padding: $padding-xs - 2 !default;
+$checkbox-input-margin: 8px !default;
+$check-disable-color: #dcdcdc !default;
