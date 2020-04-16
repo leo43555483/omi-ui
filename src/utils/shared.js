@@ -41,3 +41,8 @@ export function getSizeString(string) {
   if (string === null) return [];
   return /^\d+/.exec(string);
 }
+export function isObject(value) {
+  if (value === null) return false;
+  console.log('this.strokeColor', Object.prototype.toString.call(value), value);
+  return Object.prototype.toString.call(value) === '[object Object]';
+}
