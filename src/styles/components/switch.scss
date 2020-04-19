@@ -1,0 +1,42 @@
+.omi-switch{
+  display: inline-block;
+  position: relative;
+  width: 2em;
+  height: 1em;
+  border: $switch-border-size solid $switch-border-color;
+  border-radius: 1em;
+  box-sizing: content-box;
+  font-size: $switch-size;
+  background-color: $switch-empty-color;
+  transition: background-color .2s linear;
+  overflow: hidden;
+  &::before {
+    content: none;
+  }
+}
+.omi-switch__node{
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+  background-color: $switch-node-color;
+  box-sizing: content-box;
+  box-shadow: 0 0 1px $switch-node-border-color, 1px 0 1px $switch-node-border-color, 1px 1px 1px 1px $switch-node-border-color;
+  border-radius: 100%;
+  transition: transform .2s linear;
+  .omi-loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+.omi-switch__checked{
+  background-color: $switch-active-background;
+}
+.omi-switch__disable{
+  opacity: .5;
+  cursor: not-allowed;
+}

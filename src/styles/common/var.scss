@@ -2,7 +2,8 @@
 $color-white: #fff !default;
 $color-grey1: #ddd !default;
 //font color
-$color-grey2: #546c7799 !default;
+$color-grey2: #757575 !default;
+$color-grey3: #969799 !default;
 $color-yellow: #fd9d0f !default;
 $color-black: #333 !default;
 $color-blue1: #2d8cf0 !default;
@@ -38,6 +39,8 @@ $form-item-title-width: 80px !default;
 $cell-line-height: 24px !default;
 $cell-vertical-padding: $padding-xs !default;
 $cell-horizontal-padding: $padding-md !default;
+$cell-arrow-color: $color-grey2 !default;
+// $cell-content-color: $color-grey2 !default;
 $cell-content-body-margin: 4px !default;
 $cell-group-title-color: $color-grey2 !default;
 $cell-group-line-height: 20px !default;
@@ -89,3 +92,20 @@ $check-disable-color: #dcdcdc !default;
 //circle
 $circle-base-color: rgb(229, 233, 242) !default;
 $circle-stroke-color: $color-blue1 !default;
+
+$switch-size: 24px !default;
+$switch-border-size: 1px !default;
+$switch-border-color: transparent !default;
+$switch-node-border-color: rgba(210, 210, 210, 0.3) !default;
+$switch-empty-color: rgba(221, 221, 221, .8) !default;
+$switch-node-color:$color-white !default;
+$switch-active-background: $color-success !default;
+
+$toast-width: 90px !default;
+$toast-background: rgba(43, 43, 43, 0.7) !default;
+$toast-text-color: $color-white !default;
+$toast-border-radius: 4px !default;
+$toast-text-margin-top: 8px !default;
+$toast-padding: 10px !default;
+$toast-icon-font-size: 28px !default;
+$toast-text-max-width: 90% !default;

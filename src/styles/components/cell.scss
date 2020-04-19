@@ -28,7 +28,8 @@
 .omi-cell__content--body{
   display: flex;
   align-items: center;
-  justify-content: center;
+  // color: $cell-content-color;
+  // justify-content: center;
   .omi-input{
     flex: 1;
   }
@@ -37,4 +38,9 @@
   display: flex;
   align-items: center;
   margin-left: $cell-content-body-margin;
+}
+.omi-cell__right--icon{
+  .omi-enter{
+    color: $cell-arrow-color
+  }
 }

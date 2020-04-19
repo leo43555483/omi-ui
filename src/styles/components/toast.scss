@@ -1,0 +1,39 @@
+.omi-toast{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  width: $toast-width;
+  max-width:$toast-text-max-width;
+  padding: $toast-padding;
+  min-height: $toast-width;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: $toast-background;
+  color: $toast-text-color;
+  border-radius: $toast-border-radius;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  .omi-loading{
+    margin: 0;
+  }
+  .omi-icon-font{
+    font-size: $toast-icon-font-size;
+  }
+}
+.omi-toast__text{
+  margin-top: $toast-text-margin-top;
+}
+.omi-toast_custom{
+  width: fit-content;
+  min-height: auto;
+  .omi-toast__text {
+    margin: 0;
+  }
+}
+.omi-toast__noscroll{
+  overflow: hidden;
+}

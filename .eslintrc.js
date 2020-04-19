@@ -11,6 +11,7 @@ module.exports = {
     parser: 'babel-eslint',
   },
   rules: {
+    'no-param-reassign': ["error", { "props": false }],
     'no-restricted-syntax': 0,
     'import/export': 0,
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',

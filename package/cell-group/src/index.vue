@@ -1,7 +1,7 @@
 <template>
   <div class="omi-cell-group">
     <div class="omi-cell-group__title" v-if="title">{{title}}</div>
-    <slot />
+    <div><slot /></div>
     <div class="omi-cell-group__description" v-if="description">{{description}}</div>
   </div>
 </template>

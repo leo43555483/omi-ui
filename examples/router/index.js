@@ -7,6 +7,8 @@ import Loading from '../components/Loading.vue';
 import CheckBox from '../components/CheckBox.vue';
 import Radio from '../components/Radio.vue';
 import Circle from '../components/Circle.vue';
+import Switch from '../components/Switch.vue';
+import Toast from '../components/Toast.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -54,6 +56,16 @@ const routers = {
       name: 'cirlce',
       path: '/cirlce',
       component: () => createView('Circles')(Circle),
+    },
+    {
+      name: 'switch',
+      path: '/switch',
+      component: () => createView('Switches')(Switch),
+    },
+    {
+      name: 'toast',
+      path: '/toast',
+      component: () => createView('Toast')(Toast),
     },
   ],
 };

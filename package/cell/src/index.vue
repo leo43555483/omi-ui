@@ -28,9 +28,9 @@
     <div class="omi-cell__extra" v-if="renderSlot('extra')">
       <slot name="extra"></slot>
     </div>
-    <div class="omi-cell__right--icon" v-if="renderSlot('icon-right')">
+    <div class="omi-cell__right--icon" v-if="renderSlot('icon-right') || rightArrow">
       <slot name="icon-right">
-        <i class="omi-icon" v-if="showArrow">></i>
+        <omi-icon type="enter"></omi-icon>
       </slot>
     </div>
   </div>
@@ -41,7 +41,7 @@ export default {
   name: 'OmiCell',
   inheritAttrs: true,
   props: {
-    showArrow: {
+    rightArrow: {
       type: Boolean,
       default: false,
     },

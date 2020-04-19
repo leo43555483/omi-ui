@@ -1,3 +1,13 @@
+.fade-in-enter, .fade-in-leave-to{
+  opacity: 0;
+}
+.fade-in-enter-active{
+  transition: opacity .2s ease-in;
+}
+.fade-in-leave-active {
+  transition: opacity .1s ease-out;
+}
+//fade in from bottom
 .fade-to-bottom-enter, .fade-to-bottom-leave-to {
   opacity: 0;
   transform: translate3d(0, -4px, 0);

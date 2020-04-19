@@ -11,6 +11,8 @@ import Redio from '../package/radio';
 import RadioGroup from '../package/radio-group';
 import Icon from '../package/icon';
 import Circle from '../package/cirlce';
+import Switch from '../package/switch';
+import Toast from '../package/toast';
 
 const components = [
   Form,
@@ -26,6 +28,8 @@ const components = [
   RadioGroup,
   Icon,
   Circle,
+  Switch,
+  Toast,
 ];
 
 const install = function (Vue) {
@@ -36,6 +40,7 @@ const install = function (Vue) {
   if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue);
   }
+  Vue.prototype.$toast = Toast;
 };
 
 export default {

@@ -2,7 +2,7 @@
   <div class="omi-loading" :class="{'omi-loading__vertical': loadingText}">
     <div class="omi-loading__spinner" :style="customStyles">
       <template v-if="!spinner">
-        <svg viewBox="28 28 46 46" class="circular">
+        <svg viewBox="25 25 50 50" class="circular">
           <circle cx="50" cy="50" r="20" fill="none"></circle>
         </svg>
       </template>

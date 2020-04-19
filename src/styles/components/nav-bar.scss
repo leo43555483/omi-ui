@@ -14,8 +14,9 @@
 }
 .omi-nav-bar{
   display: flex;
+  padding: 5px 0;
   justify-content: center;
   line-height: $nav-bar-line-height;
-  font-size: $font-size-base;
+  font-size: $font-size-lg;
   background-color: $theme-background-color;
 }
