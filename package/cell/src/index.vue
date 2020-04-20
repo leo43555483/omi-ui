@@ -15,11 +15,11 @@
         <div v-if="label" class="omi-cell__label">{{label}}</div>
       </slot>
     </div>
-    <div class="omi-cell__content">
+    <div class="omi-cell__content" v-if="renderSlot('content') || content">
       <div class="omi-cell__content--body"
         :style="customContentStyles"
         :class="cententClass">
-        <slot name="content" v-if="renderSlot('content')">
+        <slot name="content">
           <span>{{content}}</span>
         </slot>
       </div>

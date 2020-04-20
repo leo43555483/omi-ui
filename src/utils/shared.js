@@ -49,3 +49,21 @@ export function isObject(value) {
 export function isString(value) {
   return typeof value === 'string';
 }
+
+export function throttle(fn, delay = 16) {
+  let pre = 0;
+  let timer = null;
+  return function (...args) {
+    const cur = Date.now();
+    const remaining = delay - (cur - pre);
+    if (remaining <= 0) {
+      fn.apply(this, args);
+      pre = Date.now();
+    } else {
+      timer = setTimeout(() => {
+        clearTimeout(timer);
+        fn.apply(this, args);
+      }, remaining);
+    }
+  };
+}

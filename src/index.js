@@ -13,6 +13,8 @@ import Icon from '../package/icon';
 import Circle from '../package/cirlce';
 import Switch from '../package/switch';
 import Toast from '../package/toast';
+import Collapse from '../package/collapse';
+import CollapseItem from '../package/collapse-item';
 
 const components = [
   Form,
@@ -29,7 +31,9 @@ const components = [
   Icon,
   Circle,
   Switch,
+  Collapse,
   Toast,
+  CollapseItem,
 ];
 
 const install = function (Vue) {

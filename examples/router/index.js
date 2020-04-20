@@ -9,6 +9,7 @@ import Radio from '../components/Radio.vue';
 import Circle from '../components/Circle.vue';
 import Switch from '../components/Switch.vue';
 import Toast from '../components/Toast.vue';
+import Collapse from '../components/Collapse.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -66,6 +67,11 @@ const routers = {
       name: 'toast',
       path: '/toast',
       component: () => createView('Toast')(Toast),
+    },
+    {
+      name: 'collapse',
+      path: '/collapse',
+      component: () => createView('Collapse')(Collapse),
     },
   ],
 };
