@@ -1,7 +1,7 @@
 <template>
   <div class="demo-collapse">
     <omi-collapse v-model="list">
-      <omi-collapse-item name="a" title="标题1">
+      <omi-collapse-item name="a" title="标题1" disable>
         内容1
       </omi-collapse-item >
       <omi-collapse-item name="b" title="标题2">

@@ -10,6 +10,7 @@ $color-blue1: #2d8cf0 !default;
 $color-blue2: #38c1ff !default;
 $color-red: red !default;
 $color-success: #1fbf6f !default;
+$color-disable: #c6c5c5 !default;
 $theme-border-color: #d2d2d299 !default;
 $theme-background-color: $color-white !default;
 
@@ -87,7 +88,7 @@ $checkbox-checked-background: $color-blue1 !default;
 $checkbox-checked-color: $color-white !default;
 $checkbox-vertical-padding: $padding-xs - 2 !default;
 $checkbox-input-margin: 8px !default;
-$check-disable-color: #dcdcdc !default;
+$check-disable-color: $color-disable !default;
 
 //circle
 $circle-base-color: rgb(229, 233, 242) !default;
@@ -115,3 +116,4 @@ $collapse-item-content-padding: $cell-horizontal-padding !default;
 $collapse-item-content-background: $color-white !default;
 $collapse-content-color: $color-grey2 !default;
 $collapse-content-font-size: $font-size-base !default;
+$collapse-item-disable-color:$color-disable !default;

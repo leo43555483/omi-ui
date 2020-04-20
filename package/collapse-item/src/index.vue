@@ -1,16 +1,21 @@
 <template>
   <div
     class="omi-collapse-item omi-border__bottom"
-    :aria-expanded="opened"
+    :aria-expanded="String(opened)"
     :class="wrapperClasses"
     tabindex="0"
   >
-    <omi-cell clickable rightArrow titleClass="omi-collapse-item__title" @click="onClick">
+    <omi-cell
+      :clickable="!disable"
+      rightArrow titleClass="omi-collapse-item__title"
+      @click="onClick"
+    >
       <slot name="title">
         <span slot="title">{{title}}</span>
       </slot>
     </omi-cell>
     <transition
+      name="collapse"
       @beforeEnter="onBeforeEnter"
       @enter="onEnter"
       @afterEnter="onAfterEnter"

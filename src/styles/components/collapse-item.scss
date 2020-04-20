@@ -18,3 +18,10 @@
     transform: rotate(90deg);
   }
 }
+.omi-collapse-item__disable{
+  color: $collapse-item-disable-color;
+  cursor: not-allowed;
+  .omi-cell__right--icon .omi-enter{
+    color: $collapse-item-disable-color;
+  }
+}

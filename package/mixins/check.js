@@ -134,10 +134,10 @@ export default function createMixin({
         },
         set(isCheck) {
           const { parent } = this;
+          this.$emit('input', isCheck);
           if (parent) {
             this.parent.toggle(isCheck, this.prop);
           }
-          this.$emit('input', isCheck);
         },
       },
     },

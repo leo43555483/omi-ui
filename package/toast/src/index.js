@@ -9,7 +9,7 @@ const DEFAULT_OPTION = {
   type: 'text',
   icon: '',
   content: '',
-  durations: 0,
+  durations: 2000,
   clickClose: false,
   noScroll: true,
   onClose: null,

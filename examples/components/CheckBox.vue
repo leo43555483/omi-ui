@@ -35,7 +35,7 @@
           @click="() => onClick(index)"
         >
           <template slot="extra">
-            <omi-checkbox :prop="item" ref="checkItem"/>
+            <omi-checkbox :prop="item" ref="checkItem" @input="onItemChange"/>
           </template>
         </omi-cell>
       </omi-cell-group>
@@ -68,10 +68,16 @@ export default {
     },
   },
   methods: {
+    onItemChange() {
+      if (this.result.length + 1 >= 4) {
+        this.$toast('最多选择4个');
+      }
+    },
     onClick(index) {
       this.$refs.checkItem[index].check();
     },
     onChange(checked, ref, model, max) {
+      console.log('checked', checked);
       if (checked) this.$refs[ref].toggleAll(checked);
       else if (model.length === max) {
         this.$refs[ref].toggleAll(checked);
