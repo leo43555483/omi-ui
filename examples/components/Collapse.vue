@@ -26,12 +26,14 @@ export default {
   name: 'DemoCollapse',
   data() {
     return {
-      list: [],
+      list: ['a'],
     };
   },
 };
 </script>
 
-<style>
-
+<style lang="scss">
+.demo-collapse{
+  padding: 20px 0;
+}
 </style>

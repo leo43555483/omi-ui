@@ -9,7 +9,7 @@
   }
   .omi-cell{
     // padding-bottom: $padding-md;
-    @include line(0, $padding-md, 0);
+    @include line(bottom, 0, $padding-md, 0);
   }
   &:last-child {
     .omi-cell::after {

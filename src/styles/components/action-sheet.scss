@@ -1,0 +1,48 @@
+.omi-action-sheet{
+  position: fixed;
+  width: 100%;
+  max-height: $action-sheet-max-height;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color:$action-sheet-background;
+}
+.omi-action-sheet__title{
+  height: $action-sheet-title-line-height;
+  text-align: center;
+  line-height: $action-sheet-title-line-height;
+}
+.omi-action-sheet__list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.omi-action-sheet__cancel{
+  padding-top: $action-sheet-cancel-wrapper-padding-top;
+  background-color:$action-sheet-cancel-wrapper-background;
+}
+.omi-action-sheet__cancel--button, .omi-action-sheet__item{
+  text-align: center;
+  height: $action-sheet-item-line-height;
+  padding: 0 $action-sheet-item-horizontal-padding;
+  line-height: $action-sheet-item-line-height;
+  @include button-active();
+}
+.omi-action-sheet__cancel--button{
+  background-color:$action-sheet-background;
+}
+.omi-action-sheet__item--disable{
+  color: $action-sheet-item-disable-color;
+  cursor: not-allowed;
+  &::before{
+    content: none;
+  }
+}
+.omi-action-sheet__loading{
+  text-align: center;
+  height: $action-sheet-loading-height;
+}
+.omi-action-sheet__round{
+  border-radius: $action-sheet-round-radius;
+}

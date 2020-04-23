@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueToast from './toast';
 import toastType from './toast-type';
 import { isObject, isString, isFunction } from '../../../src/utils/shared';
-import { remoteElement } from '../../../src/utils/dom';
+import { removeElement } from '../../../src/utils/dom';
 
 const isServer = () => Vue.prototype.$isServer;
 const DEFAULT_OPTION = {
@@ -45,7 +45,7 @@ function onClose(toast, option) {
     if (!isSingle && !isServer()) {
       stack = stack.filter((item) => item !== toast);
       toast.$destroy();
-      remoteElement(toast.$el);
+      removeElement(toast.$el);
     }
   };
 }

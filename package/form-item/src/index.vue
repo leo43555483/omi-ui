@@ -20,7 +20,7 @@
         <slot name="icon-right"></slot>
       </template>
       <template v-if="name" slot="description">
-          <transition name="fade-to-bottom">
+          <transition name="fade-in-bottom">
             <div
               v-if="validateMessage"
               class="omi-form-item__message"

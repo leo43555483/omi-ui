@@ -12,10 +12,20 @@
   .omi-enter{
     transition: transform .2s ease;
   }
+  .omi-cell{
+    &::after{
+      visibility: hidden;
+    }
+  }
 }
 .omi-collapse-item__open{
   .omi-enter{
     transform: rotate(90deg);
+  }
+  .omi-cell{
+    &::after{
+      visibility: visible;
+    }
   }
 }
 .omi-collapse-item__disable{

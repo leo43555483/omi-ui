@@ -1,9 +1,9 @@
-@mixin line($bottom, $left, $right) {
+@mixin line($position, $position-value, $left, $right) {
   position: relative;
   &::after{
     content: "";
     position: absolute;
-    bottom: $bottom;
+    #{$position}: $position-value;
     left: $left;
     right: $right;
     box-sizing: border-box;

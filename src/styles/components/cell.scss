@@ -4,7 +4,7 @@
   line-height: $cell-line-height;
   font-size: $font-size-base;
   &:not(:last-child){
-    @include line(0, $padding-md, 0);
+    @include line(bottom, 0, $padding-md, 0);
   }
   background-color: $theme-background-color;
 }

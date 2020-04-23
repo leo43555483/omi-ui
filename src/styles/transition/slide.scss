@@ -1,0 +1,13 @@
+.slide-in-bottom-enter, .slide-in-bottom-leave-to{
+  transform: translateY(100%);
+}
+.slide-in-bottom-enter-active, .slide-in-bottom-leave-active {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.slide-in-bottom-enter-active {
+  transition: transform .3s cubic-bezier(0.39, 0.58, 0.57, 1);
+}
+.slide-in-bottom-leave-active {
+  transition: transform .2s ease-out;
+}

@@ -8,17 +8,17 @@
   transition: opacity .1s ease-out;
 }
 //fade in from bottom
-.fade-to-bottom-enter, .fade-to-bottom-leave-to {
+.fade-in-bottom-enter, .fade-in-bottom-leave-to {
   opacity: 0;
   transform: translate3d(0, -4px, 0);
 }
-.fade-to-bottom-enter-active {
+.fade-in-bottom-enter-active {
   transition: all .2s ease-in;
 }
-.fade-to-bottom-leave-active {
+.fade-in-bottom-leave-active {
   transition: all .10s ease-in;
 }
-.fade-to-bottom-enter-to, .fade-to-bottom-leave{
+.fade-in-bottom-enter-to, .fade-in-bottom-leave{
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }

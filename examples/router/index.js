@@ -10,6 +10,7 @@ import Circle from '../components/Circle.vue';
 import Switch from '../components/Switch.vue';
 import Toast from '../components/Toast.vue';
 import Collapse from '../components/Collapse.vue';
+import ActionSheet from '../components/ActionSheet.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -72,6 +73,11 @@ const routers = {
       name: 'collapse',
       path: '/collapse',
       component: () => createView('Collapse')(Collapse),
+    },
+    {
+      name: 'action-sheet',
+      path: '/action-sheet',
+      component: () => createView('ActionSheet')(ActionSheet),
     },
   ],
 };

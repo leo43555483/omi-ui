@@ -1,7 +1,7 @@
 import { oneOf } from '../../../src/utils/shared';
 import toastType from './toast-type';
 
-const ZINDEX_BASE = 1000;
+const TOAS_ZINDEX_BASE = 2000;
 const Toast = () => ({
   name: 'OmiToast',
   data() {
@@ -42,7 +42,7 @@ const Toast = () => ({
     },
     baseZindex: {
       type: Number,
-      default: ZINDEX_BASE,
+      default: TOAS_ZINDEX_BASE,
     },
     type: {
       type: String,

@@ -15,6 +15,7 @@ import Switch from '../package/switch';
 import Toast from '../package/toast';
 import Collapse from '../package/collapse';
 import CollapseItem from '../package/collapse-item';
+import ActionSheet from '../package/action-sheet';
 
 const components = [
   Form,
@@ -34,6 +35,7 @@ const components = [
   Collapse,
   Toast,
   CollapseItem,
+  ActionSheet,
 ];
 
 const install = function (Vue) {
