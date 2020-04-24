@@ -46,8 +46,7 @@ export default function () {
         this.renderOverLay();
         this.portalTo();
         if (!this.onBindPopState && this.popClose) {
-          const { bindPopState } = this;
-          on(window, 'popstate', bindPopState.bind(this));
+          on(window, 'popstate', this.bindPopState);
           this.onBindPopState = true;
         }
       },
@@ -55,10 +54,12 @@ export default function () {
         if (!this.overlay) return;
         this.$emit('input', false);
         this.destroyOverlay();
+        this.unbindPopState();
       },
       unLoadImmediately(target) {
         target.$destroy();
         removeElement(target.$el);
+        this.unlockScroll();
       },
       renderOverLay() {
         if (this.$isServer) return;
@@ -76,14 +77,19 @@ export default function () {
         });
       },
       bindPopState() {
+        if (!this.onBindPopState) return;
         this.unLoadImmediately(this);
         this.unLoadImmediately(this.overlay);
+        this.unbindPopState();
       },
 
       unbindPopState() {
-        if (this.$isServer || !this.onBindPopState) return;
-        off(window, 'popstate', this.bindPopState);
-        this.onBindPopState = false;
+        const { $isServer, onBindPopState } = this;
+        if ($isServer || !onBindPopState) return;
+        this.$nextTick(() => {
+          off(window, 'popstate', this.bindPopState);
+          this.onBindPopState = false;
+        });
       },
     },
     computed: {
@@ -98,9 +104,6 @@ export default function () {
       if (this.shouldRender) {
         this.open();
       }
-    },
-    beforeDestroy() {
-      this.unbindPopState();
     },
   };
 }

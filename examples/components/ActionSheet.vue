@@ -42,13 +42,34 @@
       <omi-button block @click="() => onClick('open4')">圆角</omi-button>
       <omi-action-sheet
         round
+        className="demo-action-sheet"
+        title-align="left"
+        subtitle="副标题"
         v-model="open4"
         title="Action Sheet4"
+        closeIcon
         :data="data4"
         close-text="取消"
         :onCancel="() => onCancel('open4')"
         @select="onSelect"
-      ></omi-action-sheet>
+      >
+        <div slot="left-icon" class="demo-action-sheet__icon">icon</div>
+      </omi-action-sheet>
+    </div>
+
+    <div class="demo-item">
+      <omi-button block @click="() => onClick('open5')">自定义内容</omi-button>
+      <omi-action-sheet
+        round
+
+        v-model="open5"
+        closeIcon
+        close-text="取消"
+        :onCancel="() => onCancel('open5')"
+        @select="onSelect"
+      >
+        <div class="demo-action-sheet__custom">自定义内容</div>
+      </omi-action-sheet>
     </div>
   </div>
 </template>
@@ -62,6 +83,7 @@ export default {
       open2: false,
       open3: false,
       open4: false,
+      open5: false,
       data: [
         { content: '文本1', info: '1' },
         { content: '文本2' },
@@ -113,5 +135,23 @@ export default {
 <style lang="scss">
 .highlight{
   color: green
+}
+.demo-action-sheet{
+  .omi-action-sheet__header--icon{
+    display: flex;
+    align-items: center;
+  }
+}
+.demo-action-sheet__icon{
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+  color: #fff;
+  border-radius: 4px;
+  background-color: #ddd;
+}
+.demo-action-sheet__custom{
+  padding: 16px;
+  text-align: center;
 }
 </style>

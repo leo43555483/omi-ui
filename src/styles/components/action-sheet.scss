@@ -8,10 +8,42 @@
   overflow-x: hidden;
   background-color:$action-sheet-background;
 }
-.omi-action-sheet__title{
-  height: $action-sheet-title-line-height;
+.omi-action-sheet__header{
+  display: flex;
+  position: relative;
+  justify-items: center;
   text-align: center;
-  line-height: $action-sheet-title-line-height;
+  padding: $action-sheet-header-vertical-pading $action-sheet-header-horizontal-pading;
+  .omi-action-sheet__title, .omi-action-sheet__subtitle{
+    line-height: $action-sheet-title-line-height;
+  }
+  .omi-action-sheet__title{
+    font-weight: 600;
+  }
+  .omi-action-sheet__subtitle{
+    font-size: $aciont-sheet-subtitle-font-size;
+    color: $aciont-sheet-subtitle-color;
+  }
+}
+.omi-action-sheet__header--icon{
+  margin-right: 8px;
+}
+.omi-action-sheet__title--wrapper{
+  flex:1;
+}
+
+.omi-action-sheet__close{
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  right: $action-sheet-item-horizontal-padding;
+  background-color: $aciont-sheet-close-background;
+  color: $aciont-sheet-close-color;
+  border-radius: 50%;
+  .omi-close{
+    font-size: $aciont-sheet-close-size;
+    font-weight: $aciont-sheet-close-weight;
+  }
 }
 .omi-action-sheet__list{
   margin: 0;

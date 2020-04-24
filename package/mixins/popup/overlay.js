@@ -71,6 +71,14 @@ export default {
       }
       return Overlay;
     },
+    unlockScroll() {
+      if (this.lockScroll) {
+        off(document, 'touchstart', this.onTouchstart);
+        off(document, 'touchmove', this.ontouchMove);
+        if (lockCount > 0) lockCount -= 1;
+        document.body.classList.remove('omi-no-scroll');
+      }
+    },
     destroyOverlay() {
       const { overlay } = this;
       if (overlay && overlay.$el) {
@@ -80,12 +88,7 @@ export default {
           this.overlay = null;
         });
       }
-      if (this.lockScroll) {
-        lockCount -= 1;
-        off(document, 'touchstart', this.onTouchstart);
-        off(document, 'touchmove', this.ontouchMove);
-        document.body.classList.remove('omi-no-scroll');
-      }
+      this.unlockScroll();
     },
   },
 };

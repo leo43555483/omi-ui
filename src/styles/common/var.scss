@@ -80,6 +80,7 @@ $button-mini-padding: $button-small-padding - 4 !default;
 $circular-default-size: 22px !default;
 $circular-stroke-width: 3px !default;
 $loading-default-color: #c5c7ce !default;
+$loading-duration: 1s !default;
 
 //checkbox
 $checkbox-input-size: 18px !default;
@@ -119,16 +120,24 @@ $collapse-content-font-size: $font-size-base !default;
 $collapse-item-disable-color:$color-disable !default;
 
 //overlay
-$overlay-background: rgba(0,0,0, .6) !default;
+$overlay-background: rgba(0,0,0, .5) !default;
 
 //action-sheet
 $action-sheet-max-height: 50% !default;
 $action-sheet-item-disable-color: $color-disable !default;
 $action-sheet-background: $color-white !default;
-$action-sheet-title-line-height: 50px !default;
+$action-sheet-title-line-height: 1.4 !default;
+$action-sheet-header-vertical-pading: 16px !default;
 $action-sheet-item-horizontal-padding: $padding-md !default;
-$action-sheet-item-line-height: $action-sheet-title-line-height !default;
+$action-sheet-header-horizontal-pading: $action-sheet-item-horizontal-padding !default;
+$action-sheet-item-line-height: 50px !default;
 $action-sheet-cancel-wrapper-padding-top: 5px !default;
 $action-sheet-cancel-wrapper-background: $color-grey1 !default;
-$action-sheet-loading-height: $action-sheet-title-line-height*2 !default;
-$action-sheet-round-radius: 18px 18px 0 0!default;
+$action-sheet-loading-height: $action-sheet-item-line-height*2 !default;
+$action-sheet-round-radius: 10px 10px 0 0 !default;
+$aciont-sheet-subtitle-font-size: $font-size-base !default;
+$aciont-sheet-subtitle-color: $color-grey2 !default;
+$aciont-sheet-close-color: $color-grey2 !default;
+$aciont-sheet-close-background: $color-grey1 !default;
+$aciont-sheet-close-size: $font-size-lg !default;
+$aciont-sheet-close-weight: 600 !default;

@@ -1,7 +1,7 @@
 <template>
   <div class="omi-cell" :class="clickAbleClass" v-on="$listeners">
-    <div class="omi-cell__left--icon" v-if="renderSlot('icon-left')">
-      <slot name="icon-left"></slot>
+    <div class="omi-cell__left--icon" v-if="renderSlot('left-icon')">
+      <slot name="left-icon"></slot>
     </div>
     <div class="omi-cell__title"
       :class="titleClass"
@@ -28,8 +28,8 @@
     <div class="omi-cell__extra" v-if="renderSlot('extra')">
       <slot name="extra"></slot>
     </div>
-    <div class="omi-cell__right--icon" v-if="renderSlot('icon-right') || rightArrow">
-      <slot name="icon-right">
+    <div class="omi-cell__right--icon" v-if="renderSlot('right-icon') || rightArrow">
+      <slot name="right-icon">
         <omi-icon type="enter"></omi-icon>
       </slot>
     </div>

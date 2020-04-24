@@ -23,12 +23,12 @@
   vertical-align: middle;
   color: $loading-default-color;
   font-size: 0;
-  animation: loading-rotate 1.5s linear infinite;
+  animation: loading-rotate $loading-duration linear infinite;
   circle{
     stroke: currentColor;
     stroke-width: $circular-stroke-width;
     stroke-linecap: round;
-    animation: circular 1.5s ease-in-out infinite;
+    animation: circular $loading-duration ease-in-out infinite;
   }
   //spinner
   i{
