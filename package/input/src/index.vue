@@ -1,6 +1,7 @@
 <template>
   <div class="omi-input">
     <input
+      ref="input"
       class="omi-input__inner"
       :type="type"
       v-on="listeners"
@@ -25,6 +26,9 @@ export default {
     };
   },
   methods: {
+    focus() {
+      this.$refs.input.focus();
+    },
     onInput(e) {
       if (this.isComposing) return;
       this.$emit('input', e.target.value);

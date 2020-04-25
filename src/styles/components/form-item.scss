@@ -1,43 +1,50 @@
-.omi-form-item{
+.omi-form-item {
   position: relative;
   overflow: hidden;
   background-color: $theme-background-color;
-  .omi-form-item__title{
+
+  .omi-form-item__title {
     flex: none;
     width: $form-item-title-width;
     box-sizing: border-box;
   }
-  .omi-cell{
+
+  .omi-cell {
     // padding-bottom: $padding-md;
-    @include line(bottom, 0, $padding-md, 0);
+    @include line(bottom, 0, border-bottom, $padding-md, 0);
   }
+
   &:last-child {
     .omi-cell::after {
       display: none;
     }
   }
 }
-.omi-form-item__message{
+
+.omi-form-item__message {
   width: 100%;
   bottom: 2px;
   left: $padding-md;
   text-align: left;
-  color:$color-red;
+  color: $color-red;
   // font-size: $font-size-sm;
 }
-.omi-form-title__required{
+
+.omi-form-title__required {
   position: relative;
   margin-left: $cell-horizontal-padding;
+
   &::before {
     content: "*";
     position: absolute;
     color: $color-red;
     left: -10px;
-    
+
   }
 }
-.omi-form-item__error{
-  .omi-input__inner{
+
+.omi-form-item__error {
+  .omi-input__inner {
     &::placeholder {
       color: $color-red;
     }

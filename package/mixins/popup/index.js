@@ -2,6 +2,7 @@ import portal from '../portal';
 import overLayMixin from './overlay';
 import { on, off, removeElement } from '../../../src/utils/dom';
 
+let overlay = null;
 const baseZindex = 1000;
 const popProps = {
   popClose: {
@@ -29,6 +30,7 @@ export default function () {
     data() {
       return {
         onBindPopState: false,
+        hasRendered: false,
       };
     },
     watch: {
@@ -42,19 +44,24 @@ export default function () {
     },
     methods: {
       open() {
-        if (this.overlay) return;
-        this.renderOverLay();
+        if (!overlay) {
+          this.renderOverLay();
+        }
         this.portalTo();
         if (!this.onBindPopState && this.popClose) {
           on(window, 'popstate', this.bindPopState);
           this.onBindPopState = true;
         }
+        this.hasRendered = true;
       },
       close() {
-        if (!this.overlay) return;
-        this.$emit('input', false);
-        this.destroyOverlay();
+        if (!this.hasRendered) return;
+        if (overlay) {
+          this.destroyOverlay(overlay, () => { overlay = null; });
+        }
         this.unbindPopState();
+        this.hasRendered = false;
+        this.$emit('input', false);
       },
       unLoadImmediately(target) {
         target.$destroy();
@@ -63,12 +70,12 @@ export default function () {
       },
       renderOverLay() {
         if (this.$isServer) return;
-        const { overlay } = this;
+        // const { overlay } = this;
         if (!overlay) {
-          this.overlay = this.mountOverlay();
+          overlay = this.mountOverlay();
           seed += 1;
         }
-        this.overlay.show = true;
+        overlay.show = true;
       },
       portalTo() {
         if (this.$isServer) return;
@@ -79,7 +86,8 @@ export default function () {
       bindPopState() {
         if (!this.onBindPopState) return;
         this.unLoadImmediately(this);
-        this.unLoadImmediately(this.overlay);
+        this.unLoadImmediately(overlay);
+        overlay = null;
         this.unbindPopState();
       },
 

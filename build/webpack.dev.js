@@ -30,7 +30,8 @@ module.exports = merge(webpackBase, {
   },
   resolve: {
     alias: {
-      'omi-ui': resolve(__dirname, '../src')
+      // 'omi-ui': resolve(__dirname, '../src'),
+      vue: 'vue/dist/vue.js',
     },
   },
   plugins: [

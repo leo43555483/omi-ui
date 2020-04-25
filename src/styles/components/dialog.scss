@@ -1,0 +1,55 @@
+.omi-dialog__wrapper {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.omi-dialog {
+  position: fixed;
+  width: $dialog-width;
+  background-color: $dialog-background;
+  text-align: center;
+  backface-visibility: hidden;
+  border-radius: $dialog-border-radius;
+  overflow: hidden;
+}
+
+.omi-dialog__header {
+  padding: $dialog-title-padding;
+  font-weight: $dialog-title-font-weight;
+}
+.omi-dialog__body{
+  padding-top: $dialog-content-padding-bottom;
+  padding-bottom: $dialog-content-padding-bottom;
+  .omi-input{
+    padding: $dialog-input-padding;
+    border: 1px solid $theme-border-color;
+    border-radius: $dialog-input-border-radius;
+  }
+  .omi-form:not(:first-child){
+    margin-top: $dialog-form-margin-top;
+  }
+}
+.omi-dialog__body--content {
+  line-height: $dialog-content-line-height;
+  white-space: pre-wrap;
+  text-align: center;
+  word-wrap: break-word;
+  overflow-y: auto;
+  font-size: $dialog-content-font-size;
+}
+
+.omi-dialog__footer {
+  display: flex;
+
+  .omi-btn {
+    flex: 1;
+    border: 0;
+  }
+}

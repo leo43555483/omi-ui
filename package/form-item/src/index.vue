@@ -6,7 +6,9 @@
       </template>
       <template slot="title">
         <slot name="label">
-          <label v-if="label" :for="labelFor">{{label}}<span v-if="colon">:</span>
+          <label v-if="label" :for="labelFor">
+            {{label}}
+            <span v-if="colon">:</span>
           </label>
         </slot>
       </template>
@@ -20,15 +22,11 @@
         <slot name="icon-right"></slot>
       </template>
       <template v-if="name" slot="description">
-          <transition name="fade-in-bottom">
-            <div
-              v-if="validateMessage"
-              class="omi-form-item__message"
-            >{{validateMessage}}</div>
-          </transition>
+        <transition name="fade-in-bottom">
+          <div v-if="validateMessage" class="omi-form-item__message">{{validateMessage}}</div>
+        </transition>
       </template>
     </omi-cell>
-
   </div>
 </template>
 
@@ -93,7 +91,7 @@ export default {
     },
   },
   methods: {
-    validate(trigger, callback = () => {}) {
+    validate(trigger, callback = () => { }) {
       const rules = this.getRulesByTrigger(trigger);
       if (rules.length === 0) {
         return Promise.resolve().then(() => callback());
@@ -152,8 +150,8 @@ export default {
     filedValue() {
       const { name } = this;
       if (!name || !this.omiForm) return '';
-      const { model } = this.omiForm;
-      return getValueByName(model, name);
+      const { models } = this.omiForm;
+      return getValueByName(models, name);
     },
     isRequired() {
       return this.rules.some((rule) => rule.required);
@@ -179,5 +177,4 @@ export default {
 </script>
 
 <style>
-
 </style>

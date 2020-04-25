@@ -20,11 +20,12 @@
     </div>
     <!-- <div class="demo-item">
       <omi-button @click="onCloseAll">closeAll</omi-button>
-    </div> -->
+    </div>-->
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'DemoToast',
   methods: {
@@ -46,16 +47,15 @@ export default {
     onClick(type) {
       this.toast = this.$toast[type]({
         content: 'toast',
-        onClose() {
+        onClose: () => {
           console.log(`close ${type}`);
         },
-        onOpen() {
+        onOpen: () => {
           console.log(`open ${type}`);
         },
       });
     },
     onCancel() {
-      // if (this.toast) this.toast.close();
       this.$toast.close();
     },
   },

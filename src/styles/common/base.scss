@@ -1,21 +1,32 @@
 //icons
-.omi-icon__wrapper{
+.omi-icon__wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 //border-bottom
 .omi-border__bottom {
-  @include line(bottom, 0, -50%, -50%);
+  @include line(bottom, 0, border-bottom, 0, 0);
 }
-.omi-border__top{
-  @include line(top, 0, -50%, -50%);
+
+.omi-border__top {
+  @include line(top, 0, border-bottom, 0, 0);
 }
-.omi-no-scroll{
+
+.omi-border__right {
+  @include hline(right, 0, border-right);
+}
+
+.omi-border__left {
+  @include hline(left, 0, border-left);
+}
+
+.omi-no-scroll {
   overflow-y: hidden;
 }
 
-.omi-save-area-inset-bottom{
+.omi-save-area-inset-bottom {
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
 }

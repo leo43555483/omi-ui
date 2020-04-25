@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueToast from './toast';
 import toastType from './toast-type';
-import { isObject, isString, isFunction } from '../../../src/utils/shared';
+import { isObject, isString } from '../../../src/utils/shared';
 import { removeElement } from '../../../src/utils/dom';
 
 const isServer = () => Vue.prototype.$isServer;
@@ -12,52 +12,34 @@ const DEFAULT_OPTION = {
   durations: 2000,
   clickClose: false,
   noScroll: true,
-  onClose: null,
-  onOpen: null,
+  onClose: () => {},
+  onOpen: () => {},
 };
 let stack = [];
 let customOptions = { ...DEFAULT_OPTION };
 let typeOtionCache = {};
 let isSingle = true;
 let zIndex = 0;
-function getOption(opt, type) {
+function getOption(opt) {
   if (isObject(opt)) return opt;
   if (isString(opt)) return { content: opt };
-  throw new Error(`[omi ui]: Expect valid arguments in Toast.${type}`);
+  return { contente: '' };
 }
+
+function on(instance, event, cb) {
+  instance.$on(event, cb);
+}
+
 function getInstance() {
   const instance = stack[stack.length - 1];
   if (instance && isSingle) return instance;
   const el = document.createElement('div');
   const toast = new (Vue.extend(VueToast))({ el });
-  toast.$on('input', (show) => { toast.value = show; });
+  on(toast, 'input', (show) => { toast.value = show; });
   document.body.appendChild(toast.$el);
   stack.push(toast);
   zIndex += 1;
   return toast;
-}
-function onClose(toast, option) {
-  return () => {
-    clearTimeout(toast.timer);
-    if (isFunction(option.onClose)) {
-      option.onClose(toast);
-    }
-    if (!isSingle && !isServer()) {
-      stack = stack.filter((item) => item !== toast);
-      toast.$destroy();
-      removeElement(toast.$el);
-    }
-  };
-}
-function onOpen(toast, option) {
-  return () => {
-    if (isFunction(option.onOpen)) {
-      option.onOpen(toast);
-    }
-  };
-}
-function on(instance, event, cb) {
-  instance.$on(event, cb);
 }
 function Toast(opt) {
   if (isServer()) return {};
@@ -70,8 +52,15 @@ function Toast(opt) {
   };
   Object.assign(toast, option);
   toast.close = () => { toast.value = false; };
-  on(toast, 'close', onClose(toast, option));
-  on(toast, 'open', onOpen(toast, option));
+  toast.onClose = () => {
+    clearTimeout(toast.timer);
+    option.onClose(toast);
+    if (!isSingle && !isServer()) {
+      stack = stack.filter((item) => item !== toast);
+      toast.$destroy();
+      removeElement(toast.$el);
+    }
+  };
   toast.value = true;
   toast.setZindex(zIndex);
   if (toast.timer) clearTimeout(toast.timer);

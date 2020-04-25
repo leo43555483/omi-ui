@@ -79,13 +79,12 @@ export default {
         document.body.classList.remove('omi-no-scroll');
       }
     },
-    destroyOverlay() {
-      const { overlay } = this;
+    destroyOverlay(overlay, cb) {
       if (overlay && overlay.$el) {
-        this.overlay.show = false;
+        overlay.show = false;
         this.$nextTick(() => {
           this.unLoadImmediately(overlay);
-          this.overlay = null;
+          cb();
         });
       }
       this.unlockScroll();

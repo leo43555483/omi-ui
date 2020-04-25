@@ -1,4 +1,4 @@
-import { oneOf } from '../../../src/utils/shared';
+import { oneOf, isFunction } from '../../../src/utils/shared';
 import toastType from './toast-type';
 
 const TOAS_ZINDEX_BASE = 2000;
@@ -95,10 +95,10 @@ const Toast = () => ({
       return null;
     },
     onAfterEnter() {
-      this.$emit('open');
+      if (isFunction(this.onOpen)) this.onOpen();
     },
     onAfterLeave() {
-      this.$emit('close');
+      this.onClose();
     },
     onClick() {
       if (this.clickClose) this.$emit('input', false);

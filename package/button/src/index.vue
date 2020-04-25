@@ -1,11 +1,12 @@
 <template>
-  <button class="omi-btn"
+  <button
+    class="omi-btn"
     :disabled="disabled"
     :type="nativeType"
     :class="buttonClass"
     v-on="$listeners"
   >
-    <omi-loading v-show="loading" size="20" class="omi-btn__loading"/>
+    <omi-loading v-show="loading" size="20" class="omi-btn__loading" />
     <span class="omi-btn__text" v-if="showLoadingText">{{loadingText}}</span>
     <span class="omi-btn__text" v-else>
       <slot>{{text}}</slot>
@@ -16,7 +17,7 @@
 <script>
 import { oneOf, createClassMap } from '../../../src/utils/shared';
 
-const BUTTON_SIZE = ['normal', 'small', 'mini'];
+const BUTTON_SIZE = ['large', 'normal', 'small', 'mini'];
 const BUTTON_TYPE = ['default', 'primary', 'danger', 'info', 'warning', 'success'];
 const BUTTON_NATIVE_TYPE = ['submit', 'button', 'reset'];
 const BUTTON_SHAPE = ['square', 'round'];
@@ -60,10 +61,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    square: {
-      type: Boolean,
-      default: true,
-    },
     disabled: {
       type: Boolean,
       default: false,
@@ -104,5 +101,4 @@ export default {
 </script>
 
 <style>
-
 </style>

@@ -48,7 +48,7 @@ export default {
       type: String,
       default: '',
     },
-    model: {
+    models: {
       type: Object,
     },
     autocomplete: {
@@ -124,5 +124,4 @@ export default {
 </script>
 
 <style>
-
 </style>

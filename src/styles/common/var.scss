@@ -31,7 +31,7 @@ $padding-xs: 10px !default;
 $nav-bar-line-height: 34px !default;
 $nav-bar-left-basis: 20% !default;
 $nav-bar-middle-basis: 60% !default;
-$nav-bar-right-basis:$nav-bar-left-basis !default; 
+$nav-bar-right-basis:$nav-bar-left-basis !default;
 
 //form-item
 $form-item-title-width: 80px !default;
@@ -120,7 +120,7 @@ $collapse-content-font-size: $font-size-base !default;
 $collapse-item-disable-color:$color-disable !default;
 
 //overlay
-$overlay-background: rgba(0,0,0, .5) !default;
+$overlay-background: rgba(0, 0, 0, .5) !default;
 
 //action-sheet
 $action-sheet-max-height: 50% !default;
@@ -141,3 +141,16 @@ $aciont-sheet-close-color: $color-grey2 !default;
 $aciont-sheet-close-background: $color-grey1 !default;
 $aciont-sheet-close-size: $font-size-lg !default;
 $aciont-sheet-close-weight: 600 !default;
+
+//dialog
+$dialog-background: $color-white !default;
+$dialog-border-radius: 10px !default;
+$dialog-width: 260px !default;
+$dialog-title-padding: $padding-sm*2 $padding-sm 0 $padding-sm !default;
+$dialog-title-font-weight: 600 !default;
+$dialog-content-line-height: 22px !default;
+$dialog-content-font-size: $font-size-base !default;
+$dialog-content-padding-bottom: $padding-sm !default;
+$dialog-form-margin-top: 10px !default;
+$dialog-input-border-radius: 2px !default;
+$dialog-input-padding: 4px !default;

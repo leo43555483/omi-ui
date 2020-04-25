@@ -67,3 +67,7 @@ export function throttle(fn, delay = 16) {
     }
   };
 }
+
+export function isPromise(fn) {
+  return fn instanceof Promise;
+}

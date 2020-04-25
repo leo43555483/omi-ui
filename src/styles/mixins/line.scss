@@ -1,13 +1,31 @@
-@mixin line($position, $position-value, $left, $right) {
+@mixin line($position, $position-value, $border, $left, $right) {
   position: relative;
-  &::after{
+
+  &::after {
     content: "";
     position: absolute;
     #{$position}: $position-value;
     left: $left;
     right: $right;
     box-sizing: border-box;
-    border-bottom: 1px solid $theme-border-color;
+    #{$border}: 1px solid $theme-border-color;
     transform: scaleY(.5);
+    @content;
+  }
+}
+
+@mixin hline($position, $position-value, $border) {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    #{$position}: $position-value;
+    box-sizing: border-box;
+    #{$border}: 1px solid $theme-border-color;
+    transform: scaleX(.5);
+    @content;
   }
 }

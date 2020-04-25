@@ -1,6 +1,6 @@
 <template>
   <div class="form">
-    <omi-form ref="form" :model="result" @validate="onValidate">
+    <omi-form ref="form" :models="result" @validate="onValidate">
       <omi-form-item
         name="data"
         label="文本1"
@@ -30,7 +30,7 @@
         >校验</omi-button>
       </omi-form-item>
     </omi-form>
-    <omi-form ref="form1" :model="result" @validate="onValidate">
+    <omi-form ref="form1" :models="result" @validate="onValidate">
       <omi-form-item
         name="data2"
         label="文本1"
@@ -61,7 +61,7 @@
         >提交</omi-button>
       </omi-form-item>
     </omi-form>
-     <omi-form ref="form2" :model="result" @validate="onValidate">
+     <omi-form ref="form2" :models="result" @validate="onValidate">
       <omi-form-item
         name="data2"
         label="文本1"
@@ -92,7 +92,7 @@
         >提交</omi-button>
       </omi-form-item>
     </omi-form>
-     <omi-form ref="form3" :model="result" @validate="onValidate">
+     <omi-form ref="form3" :models="result" @validate="onValidate">
       <omi-form-item
         name="data5"
         label="文本1"
