@@ -41,6 +41,7 @@ const getOption = (title, content) => {
 const creator = createInstance({
   VueComponent: VueDialog,
   defaultOption: DEFAULT_OPTION,
+  banMultiple: true,
 });
 const Dialog = creator((getInstance, customOptions, typeOtionCache) => (opt) => {
   if (isServer()) return {};

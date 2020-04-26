@@ -1,5 +1,7 @@
 import { oneOf, isFunction } from '../../../src/utils/shared';
 import toastType from './toast-type';
+import Icon from '../../icon';
+import Loading from '../../loading';
 
 const TOAS_ZINDEX_BASE = 2000;
 const Toast = () => ({
@@ -70,14 +72,14 @@ const Toast = () => ({
       const { type, icon } = this;
       if (type === 'loading') {
         return (
-          <OmiLoading size={24} spinner />
+          <Loading size={24} spinner />
         );
       }
-      if (icon) return <OmiIcon type={icon}/>;
+      if (icon) return <Icon type={icon}/>;
       let iconType = null;
       if (type === 'error') iconType = 'close';
       if (type === 'success') iconType = 'right';
-      if (iconType) return <OmiIcon type={iconType}/>;
+      if (iconType) return <Icon type={iconType}/>;
       return null;
     },
     getText() {

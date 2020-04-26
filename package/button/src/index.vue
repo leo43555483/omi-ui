@@ -6,7 +6,7 @@
     :class="buttonClass"
     v-on="$listeners"
   >
-    <omi-loading v-show="loading" size="20" class="omi-btn__loading" />
+    <loading v-show="loading" size="20" class="omi-btn__loading" />
     <span class="omi-btn__text" v-if="showLoadingText">{{loadingText}}</span>
     <span class="omi-btn__text" v-else>
       <slot>{{text}}</slot>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import Loading from '../../loading';
 import { oneOf, createClassMap } from '../../../src/utils/shared';
 
 const BUTTON_SIZE = ['large', 'normal', 'small', 'mini'];
@@ -70,6 +71,7 @@ export default {
       default: false,
     },
   },
+  components: { Loading },
   computed: {
     showLoadingText() {
       return this.loading && this.loadingText;

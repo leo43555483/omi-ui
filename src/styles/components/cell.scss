@@ -19,7 +19,6 @@
 
 .omi-cell__content {
   word-wrap: break-word;
-  text-align: right;
 }
 
 .omi-cell__clickable {
@@ -36,8 +35,6 @@
 .omi-cell__content--body {
   display: flex;
   align-items: center;
-
-  // color: $cell-content-color;
   // justify-content: center;
   .omi-input {
     flex: 1;

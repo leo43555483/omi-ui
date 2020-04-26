@@ -46,7 +46,7 @@ export default {
     },
     onClick(type) {
       this.toast = this.$toast[type]({
-        content: 'toast',
+        // content: 'toast',
         onClose: () => {
           console.log(`close ${type}`);
         },
@@ -66,8 +66,8 @@ export default {
     //   clickClose: true,
     // });
     this.$toast.setOptions('loading', {
-      durations: 1000,
-      clickClose: true,
+      durations: 500,
+      clickClose: false,
     });
   },
 };

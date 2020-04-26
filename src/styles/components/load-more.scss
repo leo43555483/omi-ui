@@ -1,0 +1,10 @@
+.omi-list__footer--status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  font-size: $load-more-text-font-size;
+  .omi-list__load--text {
+    color: $load-more-text-color;
+  }
+}

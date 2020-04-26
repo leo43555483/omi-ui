@@ -30,13 +30,15 @@
     </div>
     <div class="omi-cell__right--icon" v-if="renderSlot('right-icon') || rightArrow">
       <slot name="right-icon">
-        <omi-icon type="enter"></omi-icon>
+        <icon type="enter"></icon>
       </slot>
     </div>
   </div>
 </template>
 
 <script>
+import Icon from '../../icon';
+
 export default {
   name: 'OmiCell',
   inheritAttrs: true,
@@ -90,6 +92,7 @@ export default {
       default: null,
     },
   },
+  components: { Icon },
   methods: {
     renderSlot(name) {
       return this.$slots[name];

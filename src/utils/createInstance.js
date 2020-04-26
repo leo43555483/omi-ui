@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import { isObject, isString } from './shared';
+import { removeElement } from './dom';
 
+const isServer = () => Vue.prototype.$isServer;
 function createInstance({
   VueComponent,
   defaultOption,
@@ -12,7 +14,7 @@ function createInstance({
     throw new Error('[omi ui]: expected VueComponent in createInstance');
   }
   const DEFAULT_OPTION = { ...defaultOption };
-  const stack = [];
+  let stack = [];
   let customOptions = { ...DEFAULT_OPTION };
   let typeOtionCache = {};
   let isSingle = true;
@@ -43,6 +45,13 @@ function createInstance({
   return function (constructor) {
     const factory = constructor(getInstance, customOptions, typeOtionCache, zIndex);
 
+    factory.removeInstance = (instance) => {
+      if (!isSingle && !isServer()) {
+        stack = stack.filter((item) => item !== instance);
+        instance.$destroy();
+        removeElement(instance.$el);
+      }
+    };
     factory.setOptions = (type, opt) => {
       if (isObject(type)) {
         customOptions = { ...customOptions, ...type };

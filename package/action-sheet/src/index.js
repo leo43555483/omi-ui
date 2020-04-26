@@ -1,6 +1,8 @@
 
 import popMixin from '../../mixins/popup';
 import { isFunction } from '../../../src/utils/shared';
+import Loading from '../../loading';
+import Icon from '../../icon';
 
 const ActionSheet = () => ({
   name: 'OmiActionSheet',
@@ -76,7 +78,7 @@ const ActionSheet = () => ({
       if (!this.loading) return null;
       return (
         <div class="omi-action-sheet__loading omi-icon__wrapper">
-          <omi-loading spinner={this.spinner}/>
+          <Loading spinner={this.spinner}/>
         </div>
       );
     },
@@ -140,7 +142,7 @@ const ActionSheet = () => ({
       if (!this.closeIcon) return null;
       return (
         <div class="omi-action-sheet__close omi-icon__wrapper" onClick={this.close}>
-          <omi-icon type="close"></omi-icon>
+          <Icon type="close"></Icon>
         </div>
       );
     },

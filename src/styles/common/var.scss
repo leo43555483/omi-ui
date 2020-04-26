@@ -4,6 +4,7 @@ $color-grey1: #ddd !default;
 //font color
 $color-grey2: #757575 !default;
 $color-grey3: #969799 !default;
+$color-grey4: #c5c7ce !default;
 $color-yellow: #fd9d0f !default;
 $color-black: #333 !default;
 $color-blue1: #2d8cf0 !default;
@@ -79,7 +80,7 @@ $button-mini-padding: $button-small-padding - 4 !default;
 //loading
 $circular-default-size: 22px !default;
 $circular-stroke-width: 3px !default;
-$loading-default-color: #c5c7ce !default;
+$loading-default-color: $color-grey4 !default;
 $loading-duration: 1s !default;
 
 //checkbox
@@ -154,3 +155,10 @@ $dialog-content-padding-bottom: $padding-sm !default;
 $dialog-form-margin-top: 10px !default;
 $dialog-input-border-radius: 2px !default;
 $dialog-input-padding: 4px !default;
+
+//load-more
+$load-more-wrapper-vertical-padding:10px !default;
+$load-more-icon-size:10px !default;
+$load-more-text-font-size: $font-size-base !default;
+$load-more-text-color: $color-grey4 !default;
+

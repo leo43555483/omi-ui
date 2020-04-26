@@ -5,7 +5,7 @@
     :class="wrapperClasses"
     tabindex="0"
   >
-    <omi-cell
+    <cell
       :clickable="!disable"
       rightArrow titleClass="omi-collapse-item__title"
       @click="onClick"
@@ -13,7 +13,7 @@
       <slot name="title">
         <span slot="title">{{title}}</span>
       </slot>
-    </omi-cell>
+    </cell>
     <transition
       name="collapse"
       @beforeEnter="onBeforeEnter"
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import Cell from '../../cell';
+
 import { throttle } from '../../../src/utils/shared';
 import { doubleAnimation } from '../../../src/utils/polyfill';
 
@@ -62,6 +64,7 @@ export default {
       required: true,
     },
   },
+  components: { Cell },
   methods: {
     fold(el) {
       el.style.height = '0';

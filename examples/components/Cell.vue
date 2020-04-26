@@ -22,8 +22,8 @@
     <omi-cell title="title2"  title-width="90">
       <omi-input slot="content" placeholder="请输入文字"/>
     </omi-cell>
-    <omi-cell title-width="90" @click="onClick" clickable rightArrow>
-      <span slot="content">页面跳转</span>
+    <omi-cell @click="onClick" clickable rightArrow>
+      <span slot="title">页面跳转</span>
     </omi-cell>
     </omi-cell-group>
   </div>

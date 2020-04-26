@@ -12,6 +12,7 @@ import Toast from '../components/Toast.vue';
 import Collapse from '../components/Collapse.vue';
 import ActionSheet from '../components/ActionSheet.vue';
 import Dialog from '../components/Dialog.vue';
+import LoadMore from '../components/LoadMore.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -84,6 +85,11 @@ const routers = {
       name: 'dialog',
       path: '/dialog',
       component: () => createView('Dialog')(Dialog),
+    },
+    {
+      name: 'loadMore',
+      path: '/loadMore',
+      component: () => createView('LoadMore')(LoadMore),
     },
   ],
 };

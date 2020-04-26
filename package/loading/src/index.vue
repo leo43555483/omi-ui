@@ -10,7 +10,7 @@
         <i v-for="item in 12" :key="item"></i>
       </template>
     </div>
-    <div v-show="loadingText" class="omi-loading__text" :style="customColor">{{loadingText}}</div>
+    <div v-if="loadingText" class="omi-loading__text" :style="customColor">{{loadingText}}</div>
   </div>
 </template>
 <script>

@@ -17,6 +17,7 @@ import Collapse from '../package/collapse';
 import CollapseItem from '../package/collapse-item';
 import ActionSheet from '../package/action-sheet';
 import Dialog from '../package/dialog';
+import LoadMore from '../package/load-more';
 
 const components = {
   Form,
@@ -34,10 +35,10 @@ const components = {
   Circle,
   Switch,
   Collapse,
-  Toast,
   CollapseItem,
   ActionSheet,
   Dialog: Dialog.Component,
+  LoadMore,
 };
 
 const install = function (Vue) {

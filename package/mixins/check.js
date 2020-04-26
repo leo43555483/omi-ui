@@ -1,4 +1,5 @@
 import { getSizeString } from '../../src/utils/shared';
+import Icon from '../icon';
 
 export default function createMixin({
   type, classPrefix, checkParent, unbindParent,
@@ -65,7 +66,7 @@ export default function createMixin({
       getCheckIcon() {
         const defaultIcon = (
           <div class={this.innerClasses} style={this.innerStyles}>
-            {<omi-icon type="right" />}
+            {<Icon type="right" />}
           </div>
         );
         return this.getSlots('icon') || defaultIcon;

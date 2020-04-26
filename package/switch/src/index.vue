@@ -8,12 +8,14 @@
     :style="wrapperStyles"
   >
     <div class="omi-switch__node" :style="switchStyle">
-      <omi-loading :size="loadingSize" v-show="loading"></omi-loading>
+      <loading :size="loadingSize" v-show="loading"></loading>
     </div>
   </div>
 </template>
 
 <script>
+import Loading from '../../loading';
+
 const LOADING_SIZE = 12;
 export default {
   name: 'OmiSwitch',
@@ -43,6 +45,7 @@ export default {
       default: false,
     },
   },
+  components: { Loading },
   methods: {
     onClick() {
       const { disable, value } = this;
