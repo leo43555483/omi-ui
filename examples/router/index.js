@@ -13,6 +13,7 @@ import Collapse from '../components/Collapse.vue';
 import ActionSheet from '../components/ActionSheet.vue';
 import Dialog from '../components/Dialog.vue';
 import LoadMore from '../components/LoadMore.vue';
+import PullRefresh from '../components/PullRefresh.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -90,6 +91,11 @@ const routers = {
       name: 'loadMore',
       path: '/loadMore',
       component: () => createView('LoadMore')(LoadMore),
+    },
+    {
+      name: 'pullrefresh',
+      path: '/pullrefresh',
+      component: () => createView('PullRefresh')(PullRefresh),
     },
   ],
 };

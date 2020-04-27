@@ -1,5 +1,5 @@
 <template>
-  <div class="omi-load-more" v-infinite-scroll:[immediate]="onScroll">
+  <div class="omi-load-more" v-scroll:[immediate]="onScroll">
     <div class="omi-list">
       <slot/>
     </div>
@@ -19,7 +19,7 @@
 
 <script>
 import Loading from '../../loading';
-import InfiniteScroll from '../../../src/directives/scroll';
+import scroll from '../../../src/directives/scroll';
 import { getBoundingClientRect } from '../../../src/utils/dom';
 
 const DEFAULT_OFFSET = 10;
@@ -58,7 +58,7 @@ export default {
   },
   components: { Loading },
   directives: {
-    InfiniteScroll,
+    scroll,
   },
   methods: {
     onScroll(e, scroller) {

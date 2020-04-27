@@ -1,0 +1,69 @@
+<template>
+  <div class="demo-pull-refresh">
+    <omi-pull-refresh v-model="refreshing" @refresh="onFresh" successText="刷新成功">
+      <omi-load-more
+        loading-text="加载中。。。"
+        finished-text="这是底线~~"
+        immediate
+        :loading="loading"
+        :finished="finished"
+        @load="onLoad">
+        <omi-cell-group>
+          <omi-cell v-for="item in list" :key="item">
+            <div class="demo-list__item" slot="content">{{item}}</div>
+          </omi-cell>
+        </omi-cell-group>
+      </omi-load-more>
+    </omi-pull-refresh>
+  </div>
+</template>
+
+<script>
+const generateData = (j) => {
+  const data = [];
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < 20; i++) {
+    data.push(`item${j + i}`);
+  }
+  return data;
+};
+export default {
+  name: 'DemoPullRefresh',
+  data() {
+    return {
+      refreshing: false,
+      list: [],
+      loading: false,
+      finished: false,
+    };
+  },
+  methods: {
+    onFresh() {
+      setTimeout(() => {
+        this.refreshing = false;
+      }, 1000);
+    },
+    onLoad() {
+      this.loading = true;
+      setTimeout(() => {
+        const { list } = this;
+        const { length } = list;
+        this.list = list.concat(generateData(length - 1));
+        this.loading = false;
+        if (length >= 40) {
+          this.finished = true;
+        }
+      }, 1000);
+    },
+  },
+};
+</script>
+
+<style lang="scss">
+.demo-pull-refresh{
+  .demo-list__item{
+    flex: 1;
+    text-align: center;
+  }
+}
+</style>

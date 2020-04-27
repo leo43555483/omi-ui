@@ -32,7 +32,7 @@ function bindScroll(el, binding) {
 }
 
 export default {
-  name: 'InfiniteScroll',
+  name: 'scroll',
   inserted: bindScroll,
   update: bindScroll,
   unbind,

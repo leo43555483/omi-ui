@@ -1,0 +1,17 @@
+.omi-pull-refresh{
+  position: relative;
+  overflow: hidden;
+  .omi-pull-refresh__tip{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .omi-pull-refresh__header{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
+  }
+}
