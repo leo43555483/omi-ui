@@ -48,9 +48,6 @@ export default {
       }, 1000);
     },
   },
-  mounted() {
-    // this.list = generateData();
-  },
 };
 </script>
 

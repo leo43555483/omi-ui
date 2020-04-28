@@ -51,6 +51,9 @@ export default {
     },
   },
   computed: {
+    isReset() {
+      return this.status === STATUS_RESET;
+    },
     isPulling() {
       return this.status === STATUS_PULLING;
     },

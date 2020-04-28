@@ -55,3 +55,11 @@
     }
   }
 }
+
+.omi-loading__lazy {
+  .omi-loading__spinner{
+    .omi-loading__item--lazy {
+      opacity: 0;
+    }
+  }
+}

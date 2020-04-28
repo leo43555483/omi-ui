@@ -2,11 +2,11 @@ export function removeElement(ele) {
   if (!ele) return;
   ele.remove();
 }
-export function on(target, event, handler) {
-  target.addEventListener(event, handler);
+export function on(target, event, handler, opt = null) {
+  target.addEventListener(event, handler, opt);
 }
-export function off(target, event, handler) {
-  target.removeEventListener(event, handler);
+export function off(target, event, handler, opt) {
+  target.removeEventListener(event, handler, opt);
 }
 
 export function preventDefault(e) {

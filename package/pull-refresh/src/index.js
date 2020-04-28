@@ -1,15 +1,26 @@
+import Loading from '../../loading';
+import Pulling from './pulling';
 import touchMixin from '../../mixins/touch';
 import {
-  on, off, getScroller, getScrollTop, preventDefault,
+  on,
+  off,
+  getScroller,
+  getScrollTop,
+  preventDefault,
 } from '../../../src/utils/dom';
-import statusMixin, {
-  STATUS_RESET, STATUS_PULLING, STATUS_REFRESHING, STATUS_LOSING, STATUS_OVER_THRESHOLD,
+import statusMixin,
+{
+  STATUS_RESET,
+  STATUS_PULLING,
+  STATUS_REFRESHING,
+  STATUS_LOSING,
+  STATUS_OVER_THRESHOLD,
 } from './state';
 
 const { round } = Math;
 
-const DEFAULT_THRESHOLD = 80;
-const DEFAULT_DURATION = 350;
+const DEFAULT_HEADER_HEIGHT = 84;
+const DEFAULT_DURATION = 400;
 
 const PullFresh = () => ({
   name: 'OmiPullRefresh',
@@ -27,6 +38,17 @@ const PullFresh = () => ({
     prop: 'refreshing',
   },
   props: {
+    headerPosition: {
+      type: String,
+      default: '',
+      validator(cls) {
+        return cls === 'top' || cls === '';
+      },
+    },
+    headerHeight: {
+      type: Number,
+      default: DEFAULT_HEADER_HEIGHT,
+    },
     disable: {
       type: Boolean,
       default: false,
@@ -37,13 +59,13 @@ const PullFresh = () => ({
     },
     threshold: {
       type: Number,
-      default: DEFAULT_THRESHOLD,
+      default: DEFAULT_HEADER_HEIGHT,
     },
     duration: {
       type: Number,
       default: DEFAULT_DURATION,
     },
-    overTresholdText: {
+    overThresholdText: {
       type: String,
       default: '',
     },
@@ -80,29 +102,43 @@ const PullFresh = () => ({
   },
   methods: {
     getDefaultTip(text) {
-      return text;
+      return (
+        <div class="omi-pull-refresh__loading">
+          <Loading spinner/>{text}
+        </div>
+      );
     },
     showSuccess() {
       let resolve;
       const promise = new Promise((r) => { resolve = r; });
-      const { successText, successDuration } = this;
-      if (successText || this.$slots.success) {
-        console.log('success');
-        this.showSuccessTip = true;
-        setTimeout(() => {
+      this.$nextTick(() => {
+        const { successText, successDuration } = this;
+        if (successText || this.$slots.success) {
+          this.showSuccessTip = true;
+          setTimeout(() => {
+            resolve();
+          }, successDuration);
+        } else {
           resolve();
-        }, successDuration);
-      } else {
-        resolve();
-      }
+        }
+      });
       return promise;
     },
     getPullingTip() {
       const { isPulling } = this;
+      const pullingSlot = this.$scopedSlots.pulling;
       if (isPulling) {
-        return (this.$slots.pulling || (
-          <div class="omi-pull-refresh__pulling">请下拉</div>
-        ));
+        return (
+          <div class="omi-pull-refresh__pulling">
+            {
+             (pullingSlot && pullingSlot({
+               distance: this.distance,
+             }))
+              || <Pulling distance={this.distance} threshold={this.threshold} />
+            }
+            {this.pullingText}
+          </div>
+        );
       }
       return null;
     },
@@ -110,12 +146,13 @@ const PullFresh = () => ({
       if (!this.isOverThreshold) return null;
       return (
         <div class="omi-pull-refresh__over-threshold">
-          {this.$slots['over-threshold'] || this.getDefaultTip(this.overTresholdText)}
+          {this.$slots['over-threshold'] || this.getDefaultTip(this.overThresholdText)}
         </div>
       );
     },
     getRefreshTip() {
-      if (this.refreshing || this.isLosing) {
+      const { refreshing, isLosing } = this;
+      if (refreshing || isLosing) {
         return (
           <div class="refresh__refreshing">
             {this.$slots.refreshing || this.getDefaultTip(this.refreshingText)}
@@ -191,8 +228,23 @@ const PullFresh = () => ({
       this.animateDuration = this.duration;
       this.distance = position;
     },
+    getHeader() {
+      return (
+        <div class={this.headerClasses} style={this.headerStyle}>
+          {this.getTips()}
+        </div>
+      );
+    },
   },
   computed: {
+    headerClasses() {
+      const { headerPosition } = this;
+      const cls = ['omi-pull-refresh__header'];
+      if (headerPosition === 'top') {
+        cls.push('omi-pull-refresh__header--top');
+      }
+      return cls;
+    },
     bodyStyles() {
       const { distance, animateDuration } = this;
       const transform = distance ? `translate3d(0, ${distance}px, 0)` : null;
@@ -202,8 +254,8 @@ const PullFresh = () => ({
       };
     },
     headerStyle() {
-      const { threshold } = this;
-      return `height: ${threshold}px`;
+      const { headerHeight } = this;
+      return `height: ${headerHeight}px`;
     },
     unClickable() {
       const { status } = this;
@@ -217,6 +269,7 @@ const PullFresh = () => ({
     on(this.$el, 'touchmove', this.onTouchMove);
     on(this.$el, 'touchend', this.onTouchEnd);
     on(pullBody, 'transitionend', this.onTransitionEnd);
+    if (this.refreshing) this.invokeStatus(true);
   },
   beforeDestroy() {
     const pullBody = this.$refs.body;
@@ -226,12 +279,12 @@ const PullFresh = () => ({
     off(pullBody, 'transitionend', this.onTransitionEnd);
   },
   render() {
+    const headerOnTop = this.headerPosition === 'top';
     return (
       <div class="omi-pull-refresh">
+        {!headerOnTop && this.getHeader()}
         <div ref="body" class="omi-pull-refresh__body" style={this.bodyStyles}>
-          <div class="omi-pull-refresh__header" style={this.headerStyle}>
-            {this.getTips()}
-          </div>
+          {headerOnTop && this.getHeader()}
           {this.$slots.default}
         </div>
       </div>

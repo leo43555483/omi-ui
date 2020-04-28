@@ -1,6 +1,11 @@
 <template>
   <div class="demo-pull-refresh">
-    <omi-pull-refresh v-model="refreshing" @refresh="onFresh" successText="刷新成功">
+    <omi-pull-refresh v-model="refreshing" @refresh="onFresh" :headerHeight="40">
+      <template #success>
+        <div >
+          共刷新{{list.length}}条数据
+        </div>
+      </template>
       <omi-load-more
         loading-text="加载中。。。"
         finished-text="这是底线~~"
@@ -41,6 +46,8 @@ export default {
     onFresh() {
       setTimeout(() => {
         this.refreshing = false;
+        this.finished = false;
+        this.list = generateData(100);
       }, 1000);
     },
     onLoad() {
@@ -48,11 +55,12 @@ export default {
       setTimeout(() => {
         const { list } = this;
         const { length } = list;
-        this.list = list.concat(generateData(length - 1));
-        this.loading = false;
         if (length >= 40) {
           this.finished = true;
+        } else {
+          this.list = list.concat(generateData(length - 1));
         }
+        this.loading = false;
       }, 1000);
     },
   },

@@ -12,6 +12,13 @@
     width: 100%;
     left: 0;
     top: 0;
+  }
+  .omi-pull-refresh__header--top {
     transform: translateY(-100%);
   }
+}
+.omi-pull-refresh__loading,
+.omi-pull-refresh__spinner {
+  display: flex;
+  align-items: center;
 }
