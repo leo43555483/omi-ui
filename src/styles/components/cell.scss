@@ -1,16 +1,33 @@
-.omi-cell {
+.omi-cell__inner {
   display: flex;
   padding: $cell-vertical-padding $cell-horizontal-padding;
   line-height: $cell-line-height;
   font-size: $font-size-base;
-
+}
+a.omi-cell__inner{
+  text-decoration: none;
+  color: $theme-color;
+  &:link {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  &:active {
+    text-decoration: none;
+  }
+}
+.omi-cell{
   &:not(:last-child) {
     @include line(bottom, 0, border-bottom, $padding-md, 0);
   }
-
+    
   background-color: $theme-background-color;
-}
 
+}
 .omi-cell__title,
 .omi-cell__content {
   flex: 1;

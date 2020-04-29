@@ -6,6 +6,7 @@ body{
   font-family: PingFang SC, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: auto;
+  color: $theme-color;
 }
 a:focus, input:focus, button:focus, textarea:focus, [class*='omi-']:focus{
   outline: none;

@@ -3,10 +3,13 @@
     <omi-load-more
       loading-text="加载中。。。"
       finished-text="这是底线~~"
+      error-text="点击重新加载"
       immediate
       :loading="loading"
       :finished="finished"
-      @load="onLoad">
+      @load="onLoad"
+      :error.sync="error"
+    >
       <omi-cell-group title="loadMore">
         <omi-cell v-for="item in list" :key="item">
           <div class="demo-list__item" slot="content">{{item}}</div>
@@ -32,14 +35,21 @@ export default {
       list: [],
       loading: false,
       finished: false,
+      error: false,
+      loadingCount: 0,
     };
   },
   methods: {
     onLoad() {
       this.loading = true;
       setTimeout(() => {
-        const { list } = this;
+        const { list, loadingCount } = this;
         const { length } = list;
+        this.loadingCount += 1;
+        if (loadingCount === 1) {
+          this.error = true;
+          return;
+        }
         this.list = list.concat(generateData(length - 1));
         this.loading = false;
         if (length >= 40) {

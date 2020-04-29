@@ -22,7 +22,7 @@
     <omi-cell title="title2"  title-width="90">
       <omi-input slot="content" placeholder="请输入文字"/>
     </omi-cell>
-    <omi-cell @click="onClick" clickable rightArrow>
+    <omi-cell to="/" clickable rightArrow @click="onClick">
       <span slot="title">页面跳转</span>
     </omi-cell>
     </omi-cell-group>
@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     onClick() {
-      this.$router.replace('/');
     },
   },
 };
