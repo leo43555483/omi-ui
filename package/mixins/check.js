@@ -142,7 +142,7 @@ export default function createMixin({
         },
       },
     },
-    created() {
+    mounted() {
       if (this.indeterminate) return;
       if (this.parent && this.parent.children) this.parent.children.push(this);
     },

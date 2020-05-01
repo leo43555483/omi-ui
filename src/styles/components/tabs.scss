@@ -1,0 +1,50 @@
+.omi-tabs__bar{
+  height: $tab-bar-height;
+  overflow: hidden;
+  .omi-border__bottom {
+    &::after{
+      bottom:$tab-bar-list-padding-botton;
+    }
+  }
+}
+
+.omi-tabs__bar--list {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding-bottom: $tab-bar-list-padding-botton;
+  align-content: center;
+  background-color:$tab-bar-background;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  user-select: none;
+}
+.omi-tabs__bar--item{
+  height: $tab-bar-height;
+  flex: 1;
+  flex-shrink: 0;
+  text-align: center;
+  line-height: $tab-bar-height;
+}
+.omi-tabs__bar--line {
+  position: absolute;
+  height: $tab-bar-line-height;
+  left: 0;
+  bottom: $tab-bar-list-padding-botton;
+  background-color: $tab-bar-line-background;
+  border-radius: $tab-bar-line-radius;
+  z-index: 1;
+}
+.omi-tabs_bar--animated {
+  transition: transform .25s;
+}
+.omi-tabs__list--inner{
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.omi-tabs__animated{
+  transition: transform $tab-list-transition-duration $tab-list-transition-timing-function;
+  will-change: transform;
+}

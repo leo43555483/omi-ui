@@ -71,3 +71,7 @@ export function throttle(fn, delay = 16) {
 export function isPromise(fn) {
   return fn instanceof Promise;
 }
+
+export function unDef(value) {
+  return value === null || value === undefined || value === '';
+}

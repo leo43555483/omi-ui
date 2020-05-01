@@ -163,3 +163,12 @@ $load-more-icon-size:10px !default;
 $load-more-text-font-size: $font-size-base !default;
 $load-more-text-color: $color-grey4 !default;
 
+//tab
+$tab-bar-height: 40px !default;
+$tab-bar-list-padding-botton: 18px !default;
+$tab-bar-line-height: 3px !default;
+$tab-bar-line-radius: 2px !default;
+$tab-bar-line-background: $color-blue1 !default;
+$tab-bar-background: $color-white !default;
+$tab-list-transition-duration: .35s !default;
+$tab-list-transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96) !default;

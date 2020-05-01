@@ -19,6 +19,8 @@ import ActionSheet from '../package/action-sheet';
 import Dialog from '../package/dialog';
 import LoadMore from '../package/load-more';
 import PullRefresh from '../package/pull-refresh';
+import Tabs from '../package/tabs';
+import TabsPane from '../package/tabs-pane';
 
 const components = {
   Form,
@@ -41,6 +43,8 @@ const components = {
   Dialog: Dialog.Component,
   LoadMore,
   PullRefresh,
+  Tabs,
+  TabsPane,
 };
 
 const install = function (Vue) {
@@ -59,4 +63,5 @@ export default {
   version: '',
   install,
   ...components,
+  Toast,
 };

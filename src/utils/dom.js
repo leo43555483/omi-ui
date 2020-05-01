@@ -1,3 +1,19 @@
+import { requestAnimation, cancelAnimation } from './polyfill';
+
+let animateId;
+export function scrollLeft(el, distance, duration) {
+  cancelAnimation(animateId);
+  const frames = duration ? Math.round(((duration / 1000) * 1000) / 16) : 1;
+  let n = 0;
+  const run = () => {
+    el.scrollLeft += distance / frames;
+    if (n < frames) {
+      n += 1;
+      animateId = requestAnimation(run);
+    }
+  };
+  run();
+}
 export function removeElement(ele) {
   if (!ele) return;
   ele.remove();

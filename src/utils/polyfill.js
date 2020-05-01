@@ -13,10 +13,10 @@ const root = window;
 const raf = root.requestAnimationFrame || fallback;
 const cancel = root.cancelAnimationFrame || root.clearTimeout;
 export function requestAnimation(fn) {
-  raf.call(root, fn);
+  return raf.call(root, fn);
 }
 export function cancelAnimation(id) {
-  cancel.call(root, id);
+  return cancel.call(root, id);
 }
 export function doubleAnimation(fn) {
   requestAnimation(() => {

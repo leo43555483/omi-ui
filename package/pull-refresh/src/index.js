@@ -111,6 +111,7 @@ const PullFresh = () => ({
     showSuccess() {
       let resolve;
       const promise = new Promise((r) => { resolve = r; });
+      // Use nexttick otherwise can't get slot in #slot usage？
       this.$nextTick(() => {
         const { successText, successDuration } = this;
         if (successText || this.$slots.success) {

@@ -14,6 +14,7 @@ import ActionSheet from '../components/ActionSheet.vue';
 import Dialog from '../components/Dialog.vue';
 import LoadMore from '../components/LoadMore.vue';
 import PullRefresh from '../components/PullRefresh.vue';
+import Tabs from '../components/Tabs.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -96,6 +97,11 @@ const routers = {
       name: 'pullrefresh',
       path: '/pullrefresh',
       component: () => createView('PullRefresh')(PullRefresh),
+    },
+    {
+      name: 'tabs',
+      path: '/tabs',
+      component: () => createView('Tabs')(Tabs),
     },
   ],
 };

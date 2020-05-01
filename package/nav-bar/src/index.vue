@@ -7,7 +7,7 @@
       <span class="omi-nav-bar__left--text">{{left}}</span>
     </div>
     <div class="omi-nav-bar__middle">{{title}}</div>
-    <div class="omi-nav-bar__right" @click="(e) => onClick(e, 'clickLeft')">
+    <div class="omi-nav-bar__right" @click="(e) => onClick(e, 'clickRight')">
       <slot name="right">{{right}}</slot>
     </div>
   </div>
