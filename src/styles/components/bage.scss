@@ -1,0 +1,30 @@
+.omi-bage{
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+.omi-bage__dot{
+  position: absolute;
+  right: $bage-dot-right;
+  height: $bage-dot-size;
+  width: $bage-dot-size;
+  top: $bage-dot-top;
+  background-color: $bage-dot-background;
+  border-radius: 100%;
+}
+.omi-bage__text{
+  position: absolute;
+  top: $bage-text-top;
+  left: 100%;
+  height: $bage-text-height;
+  padding: 0 $bage-text-horiztioanl-padding;
+  text-align: center;
+  border-radius: $bage-text-border-radius;
+  white-space: nowrap;
+  line-height: $bage-text-height;
+  z-index: 4;
+  font-size: $bage-text-font-size;
+  color: $bage-text-color;
+  background-color: $bage-text-background;
+}

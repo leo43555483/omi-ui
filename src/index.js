@@ -21,6 +21,8 @@ import LoadMore from '../package/load-more';
 import PullRefresh from '../package/pull-refresh';
 import Tabs from '../package/tabs';
 import TabsPane from '../package/tabs-pane';
+import Bage from '../package/bage';
+import Picker from '../package/picker';
 
 const components = {
   Form,
@@ -45,6 +47,8 @@ const components = {
   PullRefresh,
   Tabs,
   TabsPane,
+  Bage,
+  Picker,
 };
 
 const install = function (Vue) {

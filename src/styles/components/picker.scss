@@ -1,0 +1,42 @@
+.omi-picker-colums__wrapper{
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  background-color: $picker-colum-background;
+  .omi-picker-colum{
+    flex: 1;
+  }
+}
+.omi-picker-colum__list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition-timing-function: $picker-colum-timing-function;
+  backface-visibility: hidden;
+}
+.omi-picker-colum__list--item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+}
+.omi-picker-colums__mask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  @include picker-mask();
+  backface-visibility: hidden;
+  pointer-events: none;
+}
+.omi-picker-colums__cursor{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+}

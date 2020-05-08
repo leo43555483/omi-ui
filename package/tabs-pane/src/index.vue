@@ -13,6 +13,18 @@ export default {
     },
   },
   props: {
+    dot: {
+      type: Boolean,
+      default: false,
+    },
+    bageText: {
+      type: [String, Number],
+      default: '',
+    },
+    bageMaxNumber: {
+      type: Number,
+      default: null,
+    },
     label: {
       type: String,
       default: '',
@@ -52,9 +64,14 @@ export default {
   },
   mounted() {
     if (!this.parent) {
-      throw new Error('tabs panel must be wrapped by tabs');
+      throw new Error('tabs-pane must be wrapped by tabs');
     }
     this.parent.add(this);
+  },
+  beforeDestroy() {
+    if (this.parent) {
+      this.parent.remove(this);
+    }
   },
 };
 </script>

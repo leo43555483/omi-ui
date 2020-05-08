@@ -144,7 +144,9 @@ export default function createMixin({
     },
     mounted() {
       if (this.indeterminate) return;
-      if (this.parent && this.parent.children) this.parent.children.push(this);
+      const { parent } = this;
+      const has = parent.children.indexOf(this) >= 0;
+      if (parent && parent.children && !has) parent.children.push(this);
     },
     beforeDestroy() {
       if (this.timer) clearTimeout(this.timer);

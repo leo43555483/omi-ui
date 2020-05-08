@@ -62,8 +62,8 @@ export default {
         }
       });
       if (this.lockScroll) {
-        on(document, 'touchstart', this.touchStart, { passive: false });
-        on(document, 'touchmove', this.ontouchMove, { passive: false });
+        on(document, 'touchstart', this.touchStart, false);
+        on(document, 'touchmove', this.ontouchMove, false);
         if (!lockCount) {
           document.body.classList.add('omi-no-scroll');
         }
@@ -73,8 +73,8 @@ export default {
     },
     unlockScroll() {
       if (this.lockScroll) {
-        off(document, 'touchstart', this.onTouchstart, { passive: false });
-        off(document, 'touchmove', this.ontouchMove, { passive: false });
+        off(document, 'touchstart', this.onTouchstart);
+        off(document, 'touchmove', this.ontouchMove);
         if (lockCount > 0) lockCount -= 1;
         document.body.classList.remove('omi-no-scroll');
       }

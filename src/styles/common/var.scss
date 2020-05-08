@@ -172,3 +172,21 @@ $tab-bar-line-background: $color-blue1 !default;
 $tab-bar-background: $color-white !default;
 $tab-list-transition-duration: .35s !default;
 $tab-list-transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96) !default;
+
+// bage
+$bage-dot-right: -8px !default;
+
+$bage-dot-size: 6px !default;
+$bage-dot-top: -6px !default;
+$bage-dot-background: $color-red !default;
+$bage-text-background: $color-red !default;
+$bage-text-height: 16px !default;
+$bage-text-top: -10px!default; 
+$bage-text-color: $color-white !default;
+$bage-text-font-size: $font-size-sm !default;
+$bage-text-border-radius: 10px !default;
+$bage-text-horiztioanl-padding: 4px !default;
+
+//picker
+$picker-colum-background: $color-white !default;
+$picker-colum-timing-function: cubic-bezier(0.22, 0.93, 0.36, 1.01) !default;

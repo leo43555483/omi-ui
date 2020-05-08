@@ -183,8 +183,12 @@ const PullFresh = () => ({
     },
     getDistance(moveY) {
       const { threshold } = this;
-      if (moveY <= threshold) return round(moveY);
-      const distance = threshold + (moveY - threshold) / (moveY / threshold);
+      if (moveY < threshold) return round(moveY);
+      const isOverDistance = (moveY / threshold) >= 2;
+      const resistance = isOverDistance ? 0.25 : 0.4;
+      const r = isOverDistance ? 1.4 : 1;
+      const s = isOverDistance ? 2 : 1;
+      const distance = threshold * r + (moveY - threshold * s) * resistance;
       return round(distance);
     },
     getStatus(touchEnd) {
@@ -200,12 +204,13 @@ const PullFresh = () => ({
       if (status) this[status](touchEnd);
     },
     onTouchMove(e) {
+      console.log('this.unClickable', this.unClickable, this.status);
       if (!this.reachTop || this.unClickable) return;
       this.touchMove(e);
       const { direction, moveY } = this;
-      if (direction !== 'vertical' || moveY < 0) return;
+      if (direction !== 'vertical' || (moveY < 0 && this.distance <= 0)) return;
       preventDefault(e);
-      this.distance = this.getDistance(moveY);
+      this.distance = Math.max(this.getDistance(moveY), 0);
       this.invokeStatus(false);
     },
     onTouchStart(e) {
@@ -214,9 +219,11 @@ const PullFresh = () => ({
       if (!this.reachTop) return;
       this.touchStart(e);
       this.animateDuration = 0;
+      this.isHolding = true;
     },
     onTouchEnd() {
       if (this.unClickable) return;
+      this.isHolding = false;
       if (this.reachTop) this.invokeStatus(true);
     },
     onTransitionEnd() {
@@ -252,6 +259,7 @@ const PullFresh = () => ({
       return {
         'transition-duration': `${animateDuration}ms`,
         transform,
+        'will-change': transform ? 'transform' : null,
       };
     },
     headerStyle() {
@@ -259,18 +267,25 @@ const PullFresh = () => ({
       return `height: ${headerHeight}px`;
     },
     unClickable() {
-      const { status } = this;
-      return status === STATUS_REFRESHING || this.showSuccessTip || this.disable;
+      const {
+        isRefreshing,
+        showSuccessTip,
+        disable,
+        isDone,
+      } = this;
+      return isRefreshing || showSuccessTip || disable || isDone;
     },
   },
   mounted() {
-    this.scroller = getScroller(this.$el);
-    const pullBody = this.$refs.body;
-    on(this.$el, 'touchstart', this.onTouchStart);
-    on(this.$el, 'touchmove', this.onTouchMove);
-    on(this.$el, 'touchend', this.onTouchEnd);
-    on(pullBody, 'transitionend', this.onTransitionEnd);
-    if (this.refreshing) this.invokeStatus(true);
+    if (!this.scroller) {
+      this.scroller = getScroller(this.$el);
+      const pullBody = this.$refs.body;
+      on(this.$el, 'touchstart', this.onTouchStart, false);
+      on(this.$el, 'touchmove', this.onTouchMove, false);
+      on(this.$el, 'touchend', this.onTouchEnd);
+      on(pullBody, 'transitionend', this.onTransitionEnd);
+      if (this.refreshing) this.invokeStatus(true);
+    }
   },
   beforeDestroy() {
     const pullBody = this.$refs.body;

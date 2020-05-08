@@ -13,9 +13,9 @@ export default {
   },
   methods: {
     [STATUS_RESET]() {
-      const { status } = this;
+      const { status, isHolding, distance } = this;
       if (STATUS_RESET !== status) this.status = STATUS_RESET;
-      this.restPostion(0);
+      if (!isHolding && distance > 0) this.restPostion(0);
     },
     [STATUS_PULLING](touchEnd) {
       const { status } = this;

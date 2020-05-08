@@ -1,5 +1,24 @@
 import { requestAnimation, cancelAnimation } from './polyfill';
 
+const isServer = typeof window === 'undefined';
+let supportsPassive = false;
+
+if (!isServer) {
+  try {
+    const opts = {};
+    Object.defineProperty(opts, 'passive', {
+      // eslint-disable-next-line getter-return
+      get() {
+        /* istanbul ignore next */
+        supportsPassive = true;
+      },
+    });
+    window.addEventListener('test-passive', null, opts);
+    // eslint-disable-next-line no-empty
+  } catch (e) {}
+}
+
+
 let animateId;
 export function scrollLeft(el, distance, duration) {
   cancelAnimation(animateId);
@@ -18,11 +37,16 @@ export function removeElement(ele) {
   if (!ele) return;
   ele.remove();
 }
-export function on(target, event, handler, opt = null) {
-  target.addEventListener(event, handler, opt);
+export function on(target, event, handler, passive = true) {
+  let option = false;
+  if (supportsPassive) {
+    option = { capture: false, passive };
+  }
+  target.addEventListener(event, handler, option);
 }
-export function off(target, event, handler, opt) {
-  target.removeEventListener(event, handler, opt);
+export function off(target, event, handler) {
+  if (isServer) return;
+  target.removeEventListener(event, handler);
 }
 
 export function preventDefault(e) {

@@ -8,10 +8,17 @@
           :key="item.name"
           role="tab"
           class="omi-tabs__bar--item"
+          :class="isActive(item)"
           :style="labelStyle"
           @click="() => onClick(item)"
         >
-          <span>{{item.label}}</span>
+          <bage
+            :dot="item.dot"
+            :text="item.bageText"
+            :maxNumber="item.bageMaxNumber"
+          >
+            <span>{{item.label}}</span>
+          </bage>
         </div>
         <div class="omi-tabs__bar--line" :class="lineClass" :style="lineStyle"></div>
       </div>
@@ -25,6 +32,7 @@
 </template>
 
 <script>
+import Bage from '../../bage';
 import touchMixin from '../../mixins/touch';
 import panelMixin from './mixins/panel';
 import barMixin from './mixins/bar';
@@ -48,6 +56,7 @@ export default {
       inited: false,
     };
   },
+  components: { Bage },
   props: {
     titleScrollDuration: {
       type: Number,
@@ -77,17 +86,31 @@ export default {
     value(value) {
       if (!unDef(value)) {
         if (!this.inited) this.inited = true;
-        this.show(this.animated);
-        const { activeKey, activeIndex, labels } = this;
-        this.$emit('change', activeKey, labels[activeIndex].label);
+        this.show(this.animated, () => {
+          const { activeKey, activeIndex, labels } = this;
+          this.$emit('change', activeKey, labels[activeIndex].label);
+        });
       }
     },
   },
   methods: {
+    isActive({ tabName }) {
+      const { activeKey } = this;
+      return {
+        'omi-tabs__bar--active': tabName === activeKey,
+      };
+    },
     onClick({ tabName, disalbed, label }) {
       if (disalbed) return;
       this.$emit('input', tabName);
       this.$emit('clickTab', tabName, label);
+    },
+    remove(child) {
+      const { children } = this;
+      const index = children.indexOf(child);
+      if (index > -1) {
+        this.children.splice(index, 1);
+      }
     },
     add(child) {
       const { children } = this;
@@ -112,12 +135,13 @@ export default {
       const [child] = this.children.filter((item) => item.tabName === this.value);
       return this.getActiveChildInfo(child);
     },
-    show(animated) {
+    show(animated, cb = () => {}) {
       this.$nextTick(() => {
         this.setActive(this.getActive());
         this.scrollBarToView(animated);
         this.scrollPane();
         this.scrollLine();
+        cb();
       });
     },
   },

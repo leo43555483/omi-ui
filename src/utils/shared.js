@@ -1,5 +1,9 @@
+export function isArray(value) {
+  return Array.isArray(value);
+}
+
 export function oneOf(val, expection) {
-  if (!Array.isArray(expection)) {
+  if (!isArray(expection)) {
     return val === expection;
   }
   return expection.some((item) => val === item);
@@ -28,7 +32,7 @@ export function getValueByName(model, name) {
 }
 export function createClassMap(prefix, classNames) {
   if (typeof classNames === 'string') return { [classNames]: `${prefix}${classNames}` };
-  if (Array.isArray(classNames)) {
+  if (isArray(classNames)) {
     return classNames.reduce((map, className) => {
       // eslint-disable-next-line no-param-reassign
       map[className] = `${prefix}${className}`;
@@ -71,7 +75,24 @@ export function throttle(fn, delay = 16) {
 export function isPromise(fn) {
   return fn instanceof Promise;
 }
+export function isNumber(value) {
+  return typeof value === 'number';
+}
 
 export function unDef(value) {
   return value === null || value === undefined || value === '';
+}
+
+export function getRange(value, max, min) {
+  const floor = Math.max(min, value);
+  return Math.min(floor, max);
+}
+
+export function getUid() {
+  let uid = 0;
+  return function (prex, reset) {
+    if (reset) uid = 0;
+    uid += 1;
+    return `${prex}-${uid}`;
+  };
 }

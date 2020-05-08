@@ -1,19 +1,19 @@
 <template>
   <div class="demo-tabs" >
     <omi-tabs v-model="tab" animated swipleable @change="onChange">
-      <omi-tabs-pane label="tab1">
+      <omi-tabs-pane name="content1" label="tab1" dot>
         <div class="demo-tab-item">内容1</div>
       </omi-tabs-pane>
-      <omi-tabs-pane label="tab2">
+      <omi-tabs-pane name="content2" label="tab2" bageText="16">
          <div class="demo-tab-item">内容2</div>
       </omi-tabs-pane>
-      <omi-tabs-pane label="tab3">
+      <omi-tabs-pane name="content3" label="tab3" :bageText="100">
          <div class="demo-tab-item">内容3</div>
       </omi-tabs-pane>
-      <omi-tabs-pane label="tab4">
+      <omi-tabs-pane name="content4" label="tab4">
          <div class="demo-tab-item">内容4</div>
       </omi-tabs-pane>
-      <omi-tabs-pane label="tab5">
+      <omi-tabs-pane name="content5" label="tab5">
         <div class="demo-tab-item">内容5</div>
       </omi-tabs-pane>
     </omi-tabs>
@@ -25,7 +25,7 @@ export default {
   name: 'DemoTabs',
   data() {
     return {
-      tab: 2,
+      tab: 'content2',
     };
   },
   methods: {

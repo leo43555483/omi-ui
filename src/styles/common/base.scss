@@ -4,8 +4,10 @@
   justify-content: center;
   align-items: center;
 }
+.omi-picker-border__top-bottom{
+  @include double-line(1px, 0);
+}
 
-//border-bottom
 .omi-border__bottom {
   @include line(bottom, 0, border-bottom, 0, 0);
 }

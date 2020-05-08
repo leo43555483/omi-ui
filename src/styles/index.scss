@@ -3,6 +3,7 @@
 // mixin
 @import './mixins/line.scss';
 @import './mixins/button.scss';
+@import './mixins/picker.scss';
 //base
 @import './common/base.scss';
 //transition
@@ -34,3 +35,5 @@
 @import './components/pull-refresh.scss';
 @import './components/tabs.scss';
 @import './components/tabs-panel.scss';
+@import './components/bage.scss';
+@import './components/picker.scss';

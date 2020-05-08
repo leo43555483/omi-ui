@@ -21,12 +21,14 @@
   user-select: none;
 }
 .omi-tabs__bar--item{
+  position: relative;
   height: $tab-bar-height;
   flex: 1;
   flex-shrink: 0;
   text-align: center;
   line-height: $tab-bar-height;
 }
+
 .omi-tabs__bar--line {
   position: absolute;
   height: $tab-bar-line-height;
