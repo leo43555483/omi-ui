@@ -11,11 +11,10 @@ const TRIGGER_MINI_TIME = 300;
 const ROTATEX = 25;
 export const MAX_VISIBLE_ITEM = 5;
 export const DEFAULT_ITEM_HEIGHT = 42;
-export const DEFAULT_DURATION = 1000;
+export const DEFAULT_DURATION = 800;
 
 const getTransformFromDom = (el) => {
   let matrix = window.getComputedStyle(el, null).getPropertyValue('transform');
-  console.log('matrix', matrix);
   matrix = /[\S\s]*\((.+?)\)/.exec(matrix)[1].split(',');
   const transformY = matrix[matrix.length - 1];
   return transformY * 1;
@@ -61,10 +60,8 @@ const PickerColums = () => ({
   },
   watch: {
     data() {
-      const { defaultIndex, isMoving, currentIndex } = this;
-      if (isMoving) return;
-      if (defaultIndex !== currentIndex) this.scrollTo(null, defaultIndex);
-      else this.$emit('change');
+      const { defaultIndex } = this;
+      this.scrollTo(null, defaultIndex);
     },
     defaultIndex(index) {
       if (this.isMoving) return;
@@ -80,15 +77,17 @@ const PickerColums = () => ({
     },
     // @exposed-api
     setActiveValue(value) {
-      let activeIndex = -1;
-      // eslint-disable-next-line no-plusplus
-      for (let i = 0; i < this.dataLength; i++) {
-        if (this.data[i].value === value) {
-          activeIndex = i;
-          break;
+      this.$nextTick(() => {
+        let activeIndex = -1;
+        // eslint-disable-next-line no-plusplus
+        for (let i = 0; i < this.dataLength; i++) {
+          if (this.data[i].value === value) {
+            activeIndex = i;
+            break;
+          }
         }
-      }
-      if (activeIndex !== -1) this.scrollTo(null, activeIndex);
+        if (activeIndex !== -1) this.scrollTo(null, activeIndex);
+      });
     },
     setActiveIndex(index) {
       this.currentIndex = index;
@@ -142,9 +141,10 @@ const PickerColums = () => ({
     onTouchMove(e) {
       this.touchMove(e);
       const { direction, moveY } = this;
-      if (direction !== 'vertical') return;
-      preventDefault(e);
-      this.isMoving = true;
+      if (direction === 'vertical') {
+        preventDefault(e);
+        this.isMoving = true;
+      }
       this.setTransform(moveY);
       const cur = Date.now();
       if (cur - this.startDate > TRIGGER_MINI_TIME) {

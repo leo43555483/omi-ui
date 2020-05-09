@@ -1,10 +1,18 @@
 <template>
   <div class="omi-picker-demo">
     <div class="demo-item">
-      <omi-picker cascade :data="colums"></omi-picker>
+      <omi-picker ref="picker1" cascade :data="colums"></omi-picker>
     </div>
-    <div class="demo-item">
-      <omi-picker :data="colums2"></omi-picker>
+    <div class="demo-item" >
+      <omi-picker
+        ref="picker"
+        :data="colums2"
+        confirmText="确认"
+        cancelText="取消"
+        :onConfirm="onConfirm"
+        :onCancel="onCancel"
+        @change="onChange"
+      ></omi-picker>
     </div>
   </div>
 </template>
@@ -46,8 +54,8 @@ export default {
           { label: '肇庆', value: 'zhaoqing' },
         ],
         [
-          { label: '东莞', value: 'dongguan' },
-          { label: '汕尾', value: 'shanwei' },
+          { label: '东莞', value: 'dongguan', children: [] },
+          { label: '汕尾', value: 'shanwei', children: [] },
         ],
         [
           { label: '揭阳', value: 'jieyang' },
@@ -55,6 +63,27 @@ export default {
         ],
       ],
     };
+  },
+  methods: {
+    onChange(values, columIndex) {
+      const [city] = values;
+      if (city === 'dongguan' && columIndex === 0) {
+        const fresh = [].concat(this.colums2[0]);
+        console.log('picker changed----------->', fresh);
+        this.$refs.picker.updateColum(fresh, 1);
+        this.$refs.picker.setValues('shantou', 1);
+      } else if (columIndex === 0) {
+        const fresh = [].concat(this.colums2[1]);
+        this.$refs.picker.updateColum(fresh, 1);
+      }
+    },
+    onConfirm() {
+      const result = this.$refs.picker.getValues();
+      console.log('result', result);
+    },
+    onCancel() {
+      console.log('cancel');
+    },
   },
 };
 </script>

@@ -40,3 +40,14 @@
   z-index: 1;
   pointer-events: none;
 }
+.omi-picker__header{
+  display: flex;
+  justify-content: space-between;
+  padding: $picker-header-padding-vertical $picker-header-padding-horiztional;
+}
+.omi-picker__cancel{
+  color: $picker-header-cancel-color;
+}
+.omi-picker__confirm{
+  color: $picker-header-confirm-color;
+}

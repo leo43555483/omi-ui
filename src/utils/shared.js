@@ -96,3 +96,38 @@ export function getUid() {
     return `${prex}-${uid}`;
   };
 }
+
+export function clone(object) {
+  const parents = [];
+  const children = [];
+  const { hasOwnProperty } = Object.prototype;
+  const cloneObject = (parent) => {
+    if (parent === null) return null;
+    if (typeof parent !== 'object') return parent;
+
+    let child; let proto;
+
+    if (isArray(parent)) {
+      child = [];
+    } else {
+      proto = Object.getPrototypeOf(parent);
+      child = Object.create(proto);
+    }
+    const index = parents.indexOf(parent);
+
+    if (index !== -1) {
+      return children[index];
+    }
+    parents.push(parent);
+    children.push(child);
+
+    for (const key in parent) {
+      if (hasOwnProperty.call(parent, key)) {
+        child[key] = cloneObject(parent[key]);
+      }
+    }
+
+    return child;
+  };
+  return cloneObject(object);
+}

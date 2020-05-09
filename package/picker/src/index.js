@@ -1,5 +1,7 @@
 import Colums, { DEFAULT_ITEM_HEIGHT, DEFAULT_DURATION, MAX_VISIBLE_ITEM } from './Colums';
-import { isNumber, isArray, getUid } from '../../../src/utils/shared';
+import {
+  isNumber, isArray, getUid, unDef,
+} from '../../../src/utils/shared';
 import provideMixin from '../../mixins/provider';
 
 const uid = getUid();
@@ -14,6 +16,14 @@ const Picker = () => ({
     };
   },
   props: {
+    confirmText: {
+      type: String,
+      default: '',
+    },
+    cancelText: {
+      type: String,
+      default: '',
+    },
     itemHeight: {
       type: Number,
       default: DEFAULT_ITEM_HEIGHT,
@@ -44,6 +54,14 @@ const Picker = () => ({
       validator(values) {
         return values.every((value) => isNumber(value * 1));
       },
+    },
+    onConfirm: {
+      type: Function,
+      default: () => { },
+    },
+    onCancel: {
+      type: Function,
+      default: () => { },
     },
   },
   watch: {
@@ -122,7 +140,6 @@ const Picker = () => ({
       if (this.cascade) this.updateCascade(columIndex);
       this.$nextTick(() => {
         const values = this.getValues();
-        console.log('onchange>>>>>>', values, columIndex);
         this.$emit('change', values, columIndex);
       });
     },
@@ -143,16 +160,20 @@ const Picker = () => ({
     updateData(colum, columIndex) {
       this.$nextTick(() => {
         const columNode = this.formateColumPayload(colum, columIndex);
+        // console.log('columNode', columNode);
         this.colums.splice(columIndex, 1, columNode);
       });
     },
     // @exposed-api
-    updateColum(colum, columIndex) {
+    updateColum(colum, columIndex = 0) {
       if (!isArray(colum)) {
         throw new Error('[omi]:colum should be an array');
       }
       const node = { children: colum };
       this.updateData(node, columIndex);
+      this.$nextTick(() => {
+        if (this.cascade) this.updateCascade(columIndex);
+      });
     },
     // @exposed-api
     getValues() {
@@ -160,12 +181,38 @@ const Picker = () => ({
     },
     // @exposed-api
     setValues(values, columIndex) {
-      const { children } = this;
-      if (isArray(values)) {
-        values.forEach((value, index) => children[index].setActiveValue(value));
-      } else if (isNumber(columIndex)) {
-        children[columIndex].setActiveValue(values);
-      }
+      this.$nextTick(() => {
+        const { children } = this;
+        if (isArray(values)) {
+          values.forEach((value, index) => children[index].setActiveValue(value));
+        } else if (isNumber(columIndex)) {
+          children[columIndex].setActiveValue(values);
+        }
+      });
+    },
+    getHeader() {
+      const { confirmText, cancelText } = this;
+      if (unDef(confirmText) && unDef(cancelText)) return null;
+      return (
+        <div class="omi-picker__header">
+          {
+            cancelText && (<div class="omi-picker__cancel" onClick={this.handleCancel}>
+            {this.cancelText}
+            </div>)
+          }
+          {
+            confirmText && <div class="omi-picker__confirm" onClick={this.handleConfirm}>
+            {this.confirmText}
+            </div>
+          }
+        </div>
+      );
+    },
+    handleConfirm() {
+      this.onConfirm();
+    },
+    handleCancel() {
+      this.onCancel();
     },
   },
   computed: {
@@ -181,6 +228,7 @@ const Picker = () => ({
   render() {
     return (
       <div class="omi-picker">
+        {this.getHeader()}
         <div class="omi-picker-colums__wrapper">
           {this.getColums()}
           <div class="omi-picker-colums__mask" style={this.maskStyles}></div>
