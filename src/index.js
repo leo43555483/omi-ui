@@ -23,6 +23,7 @@ import Tabs from '../package/tabs';
 import TabsPane from '../package/tabs-pane';
 import Bage from '../package/bage';
 import Picker from '../package/picker';
+import AddressPicker from '../package/address-picker';
 
 const components = {
   Form,
@@ -49,6 +50,7 @@ const components = {
   TabsPane,
   Bage,
   Picker,
+  AddressPicker,
 };
 
 const install = function (Vue) {

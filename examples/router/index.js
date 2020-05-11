@@ -16,6 +16,7 @@ import LoadMore from '../components/LoadMore.vue';
 import PullRefresh from '../components/PullRefresh.vue';
 import Tabs from '../components/Tabs.vue';
 import Picker from '../components/Picker.vue';
+import AddressPicker from '../components/AddressPicker.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -108,6 +109,11 @@ const routers = {
       name: 'picker',
       path: '/picker',
       component: () => createView('Picker')(Picker),
+    },
+    {
+      name: 'addresspicker',
+      path: '/addresspicker',
+      component: () => createView('AddressPicker')(AddressPicker),
     },
   ],
 };

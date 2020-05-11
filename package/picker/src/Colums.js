@@ -9,9 +9,11 @@ const TRIGGER_MINI_DISTANCE = 15;
 // Minimum time difference to trigger scrolling
 const TRIGGER_MINI_TIME = 300;
 const ROTATEX = 25;
+const SPEED_COEFFICIENT = 0.3;
+
 export const MAX_VISIBLE_ITEM = 5;
 export const DEFAULT_ITEM_HEIGHT = 42;
-export const DEFAULT_DURATION = 800;
+export const DEFAULT_DURATION = 1000;
 
 const getTransformFromDom = (el) => {
   let matrix = window.getComputedStyle(el, null).getPropertyValue('transform');
@@ -62,6 +64,7 @@ const PickerColums = () => ({
     data() {
       const { defaultIndex } = this;
       this.scrollTo(null, defaultIndex);
+      this.$emit('change');
     },
     defaultIndex(index) {
       if (this.isMoving) return;
@@ -72,21 +75,26 @@ const PickerColums = () => ({
     // @exposed-api
     getActiveValue() {
       const { data, currentIndex } = this;
-      if (data[currentIndex]) return data[currentIndex].value;
+      if (data[currentIndex]) return data[currentIndex];
       return null;
     },
     // @exposed-api
     setActiveValue(value) {
-      this.$nextTick(() => {
-        let activeIndex = -1;
-        // eslint-disable-next-line no-plusplus
-        for (let i = 0; i < this.dataLength; i++) {
-          if (this.data[i].value === value) {
-            activeIndex = i;
-            break;
+      return new Promise((resolve) => {
+        this.$nextTick(() => {
+          let activeIndex = -1;
+          // eslint-disable-next-line no-plusplus
+          for (let i = 0; i < this.dataLength; i++) {
+            if (this.data[i].value === value) {
+              activeIndex = i;
+              break;
+            }
           }
-        }
-        if (activeIndex !== -1) this.scrollTo(null, activeIndex);
+          if (activeIndex !== -1) {
+            this.scrollTo(null, activeIndex);
+            this.afterTransition.push(resolve);
+          }
+        });
       });
     },
     setActiveIndex(index) {
@@ -103,10 +111,14 @@ const PickerColums = () => ({
       return cls;
     },
     getItemStyle(index) {
-      const { itemHeight, transformY } = this;
+      const { itemHeight, transformY, isMoving } = this;
       const { abs } = Math;
       const rotateX = ((abs(transformY) - index * itemHeight) / itemHeight) * ROTATEX;
-      return `height: ${itemHeight}px; transform: rotateX(${rotateX}deg)`;
+      return {
+        height: `${itemHeight}px`,
+        transform: `rotateX(${rotateX}deg)`,
+        'will-change': isMoving ? 'transform' : null,
+      };
     },
     getListItem() {
       const {
@@ -159,7 +171,7 @@ const PickerColums = () => ({
         && (Math.abs(distance) >= TRIGGER_MINI_DISTANCE);
       if (needScroll) {
         const { duration } = this;
-        const offset = ((distance / timeDiff) * 0.1) * duration;
+        const offset = ((distance / timeDiff) * SPEED_COEFFICIENT) * duration;
 
         const destination = this.transformY + offset;
         this.scrollTo(-destination);
@@ -220,9 +232,6 @@ const PickerColums = () => ({
     },
   },
   computed: {
-    median() {
-      return Math.ceil(MAX_VISIBLE_ITEM / 2);
-    },
     dataLength() {
       return this.data.length;
     },

@@ -16,6 +16,10 @@ const Picker = () => ({
     };
   },
   props: {
+    title: {
+      type: String,
+      default: '',
+    },
     confirmText: {
       type: String,
       default: '',
@@ -49,9 +53,10 @@ const Picker = () => ({
       default: '',
     },
     defaultIndex: {
-      type: Array,
+      type: [Array, Number],
       default: () => [DEFAULT_INDEX],
       validator(values) {
+        if (!isArray(values)) return true;
         return values.every((value) => isNumber(value * 1));
       },
     },
@@ -91,7 +96,9 @@ const Picker = () => ({
       return this.children.map((child) => child.currentIndex);
     },
     getDefaultIndex(parent, colum) {
-      return parent.defaultIndex || this.defaultIndex[colum] || DEFAULT_INDEX;
+      const { defaultIndex } = this;
+      const index = isArray(defaultIndex) ? defaultIndex[colum] : defaultIndex;
+      return parent.defaultIndex || index || DEFAULT_INDEX;
     },
     formatCascade() {
       const { formateColumPayload } = this;
@@ -160,7 +167,6 @@ const Picker = () => ({
     updateData(colum, columIndex) {
       this.$nextTick(() => {
         const columNode = this.formateColumPayload(colum, columIndex);
-        // console.log('columNode', columNode);
         this.colums.splice(columIndex, 1, columNode);
       });
     },
@@ -184,15 +190,18 @@ const Picker = () => ({
       this.$nextTick(() => {
         const { children } = this;
         if (isArray(values)) {
-          values.forEach((value, index) => children[index].setActiveValue(value));
+          values.reduce((pre, value, index) => pre.then(() => {
+            children[index].setActiveValue(value);
+          }),
+          Promise.resolve());
         } else if (isNumber(columIndex)) {
           children[columIndex].setActiveValue(values);
         }
       });
     },
     getHeader() {
-      const { confirmText, cancelText } = this;
-      if (unDef(confirmText) && unDef(cancelText)) return null;
+      const { confirmText, cancelText, title } = this;
+      if (unDef(confirmText) && unDef(cancelText) && unDef(title)) return null;
       return (
         <div class="omi-picker__header">
           {
@@ -200,6 +209,7 @@ const Picker = () => ({
             {this.cancelText}
             </div>)
           }
+          {title && (<div class="omi-picker__title">{title}</div>)}
           {
             confirmText && <div class="omi-picker__confirm" onClick={this.handleConfirm}>
             {this.confirmText}
