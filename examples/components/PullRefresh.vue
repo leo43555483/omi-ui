@@ -1,6 +1,7 @@
 <template>
   <div class="demo-pull-refresh">
-    <omi-pull-refresh v-model="refreshing" @refresh="onFresh" :headerHeight="40">
+    <omi-button block @click="onClick">刷新</omi-button>
+    <omi-pull-refresh v-model="refreshing" @refresh="onFresh" :headerHeight="40" :threshold="40">
       <template #success>
         <div >
           共刷新{{list.length}}条数据
@@ -43,6 +44,9 @@ export default {
     };
   },
   methods: {
+    onClick() {
+      this.refreshing = true;
+    },
     onFresh() {
       setTimeout(() => {
         this.refreshing = false;
@@ -63,6 +67,11 @@ export default {
         this.loading = false;
       }, 1000);
     },
+  },
+  mounted() {
+    setTimeout(() => {
+      this.refreshing = true;
+    }, 3000);
   },
 };
 </script>

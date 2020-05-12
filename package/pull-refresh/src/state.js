@@ -41,6 +41,9 @@ export default {
       }
     },
     [STATUS_REFRESHING]() {
+      if (this.isReset) {
+        this.restPostion(this.threshold);
+      }
       this.$emit('refresh');
       this.status = STATUS_DONE;
     },
@@ -67,7 +70,7 @@ export default {
       return this.status === STATUS_DONE;
     },
     isRefreshing() {
-      return this.status === STATUS_REFRESHING;
+      return this.refreshing;
     },
   },
 };

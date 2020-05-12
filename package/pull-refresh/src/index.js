@@ -204,7 +204,6 @@ const PullFresh = () => ({
       if (status) this[status](touchEnd);
     },
     onTouchMove(e) {
-      console.log('this.unClickable', this.unClickable, this.status);
       if (!this.reachTop || this.unClickable) return;
       this.touchMove(e);
       const { direction, moveY } = this;
