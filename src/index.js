@@ -24,6 +24,7 @@ import TabsPane from '../package/tabs-pane';
 import Bage from '../package/bage';
 import Picker from '../package/picker';
 import AddressPicker from '../package/address-picker';
+import DatePicker from '../package/date-picker';
 
 const components = {
   Form,
@@ -51,6 +52,7 @@ const components = {
   Bage,
   Picker,
   AddressPicker,
+  DatePicker,
 };
 
 const install = function (Vue) {

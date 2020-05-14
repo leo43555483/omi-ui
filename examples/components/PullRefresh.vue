@@ -68,11 +68,6 @@ export default {
       }, 1000);
     },
   },
-  mounted() {
-    setTimeout(() => {
-      this.refreshing = true;
-    }, 3000);
-  },
 };
 </script>
 

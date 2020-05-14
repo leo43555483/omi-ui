@@ -2,7 +2,7 @@
 import injectMixin from '../../mixins/inject';
 import touchMixin from '../../mixins/touch';
 import { on, off, preventDefault } from '../../../src/utils/dom';
-import { getRange } from '../../../src/utils/shared';
+import { getRange, unDef } from '../../../src/utils/shared';
 
 // Minimum distance to trigger scrolling
 const TRIGGER_MINI_DISTANCE = 15;
@@ -64,7 +64,6 @@ const PickerColums = () => ({
     data() {
       const { defaultIndex } = this;
       this.scrollTo(null, defaultIndex);
-      this.$emit('change');
     },
     defaultIndex(index) {
       if (this.isMoving) return;
@@ -76,7 +75,7 @@ const PickerColums = () => ({
     getActiveValue() {
       const { data, currentIndex } = this;
       if (data[currentIndex]) return data[currentIndex];
-      return null;
+      return {};
     },
     // @exposed-api
     setActiveValue(value) {
@@ -91,8 +90,10 @@ const PickerColums = () => ({
             }
           }
           if (activeIndex !== -1) {
-            this.scrollTo(null, activeIndex);
             this.afterTransition.push(resolve);
+            this.scrollTo(null, activeIndex);
+          } else {
+            resolve();
           }
         });
       });
@@ -131,7 +132,7 @@ const PickerColums = () => ({
           onClick={() => onClickItem(index)}
           style={getItemStyle(index)}
           role="button"
-          class={getItemClasses(item, index)}
+          class={getItemClasses(index)}
           key={item.uid}
           >
             {item.label}
@@ -186,6 +187,7 @@ const PickerColums = () => ({
     },
     resetStatus() {
       this.isMoving = false;
+      this.afterTransition = [];
       this.setTransition();
     },
     onTransitionEnd() {
@@ -210,13 +212,16 @@ const PickerColums = () => ({
         index = getValidIndex(offset / itemHeight);
       }
       const transformY = index * itemHeight;
-      if (this.currentIndex !== currentIndex) {
+      this.setTransition(this.duration, 'all');
+      this.transformY = -transformY;
+      if (this.currentIndex !== index || this.isMoving) {
+        if (this.isMoving) this.afterTransition.pop();
         this.afterTransition.push(() => {
           this.scrollCallBack(index);
         });
+      } else {
+        this.onTransitionEnd();
       }
-      this.setTransition(this.duration, 'all');
-      this.transformY = -transformY;
     },
     getValidIndex(index) {
       return getRange(Math.round(index), this.dataLength - 1, 0);

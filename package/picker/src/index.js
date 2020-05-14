@@ -4,7 +4,7 @@ import {
 } from '../../../src/utils/shared';
 import provideMixin from '../../mixins/provider';
 
-const uid = getUid();
+const genUid = getUid();
 
 const DEFAULT_INDEX = 0;
 const Picker = () => ({
@@ -81,9 +81,9 @@ const Picker = () => ({
     formateColumPayload(node, columIndex) {
       const { valueKey, labelKey } = this;
       const data = node.children.map((item) => ({
-        label: item[labelKey] || item.label,
-        value: item[valueKey] || item.value,
-        uid: uid(`colum-${columIndex}`),
+        label: item[labelKey] || item.label || null,
+        value: item[valueKey] || item.value || null,
+        uid: item.key || genUid(`colum-${columIndex}`),
       }));
       const defaultIndex = this.getDefaultIndex(node, columIndex);
       return {
@@ -146,8 +146,10 @@ const Picker = () => ({
     onChange(columIndex) {
       if (this.cascade) this.updateCascade(columIndex);
       this.$nextTick(() => {
-        const values = this.getValues();
-        this.$emit('change', values, columIndex);
+        this.$nextTick(() => {
+          const values = this.getValues().map((({ uid, ...rest }) => ({ ...rest })));
+          this.$emit('change', values, columIndex);
+        });
       });
     },
     getColums() {

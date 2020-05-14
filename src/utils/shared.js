@@ -72,6 +72,9 @@ export function throttle(fn, delay = 16) {
   };
 }
 
+export function isDate(value) {
+  return Object.prototype.toString.call(value) === '[object Date]';
+}
 export function isPromise(fn) {
   return fn instanceof Promise;
 }
@@ -84,6 +87,7 @@ export function unDef(value) {
 }
 
 export function getRange(value, max, min) {
+  if (unDef(max) || unDef(min)) return value;
   const floor = Math.max(min, value);
   return Math.min(floor, max);
 }

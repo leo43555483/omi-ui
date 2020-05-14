@@ -10,7 +10,6 @@
         confirmText="确认"
         cancelText="取消"
         :onConfirm="onConfirm"
-        @change="onChange"
       ></omi-picker>
     </div>
     <div class="demo-item">
@@ -30,12 +29,12 @@ export default {
           label: '广州',
           value: 'guangzhou',
           children: [
-            { label: '番禺', value: 'panyu', children: [{}] },
-            { label: '天河', value: 'tianhe', children: [{}] },
+            { label: '番禺', value: 'panyu', children: [{ label: '新安街道', value: 'xinan' }] },
+            { label: '天河', value: 'tianhe', children: [] },
           ],
         },
-        { label: '珠海', value: 'zhuhai', children: [{}] },
-        { label: '东莞', value: 'dongguan', children: [{}] },
+        { label: '珠海', value: 'zhuhai', children: [{ children: [{}] }] },
+        { label: '东莞', value: 'dongguan', children: [{ children: [{}] }] },
         {
           label: '揭阳',
           value: 'jieyang',
@@ -53,6 +52,7 @@ export default {
               value: 'baoan',
               children: [
                 { label: '西乡街道', value: 'xixiang' },
+                { label: '新安街道', value: 'xinan' },
               ],
             },
             { label: '南山', value: 'nanshan', children: [{}] },
@@ -95,7 +95,7 @@ export default {
     },
     onChange2(values, columIndex) {
       const [city] = values;
-      if (columIndex === 1 && city === 'jieyang') {
+      if (columIndex === 0 && city === 'jieyang') {
         this.$refs.picker2.setValues(['shenzhen', 'nanshan']);
       }
     },
