@@ -32,7 +32,7 @@ const DateTimePicker = () => ({
           month = value;
         }
         if (pickerType[index] === 'date') {
-          const max = year && month ? getMonthLastDate(year, month - 1) : value;
+          const max = year && month ? getMonthLastDate(year, month) : value;
           value = value > max ? max : value;
         }
 

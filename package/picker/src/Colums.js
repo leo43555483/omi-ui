@@ -2,7 +2,7 @@
 import injectMixin from '../../mixins/inject';
 import touchMixin from '../../mixins/touch';
 import { on, off, preventDefault } from '../../../src/utils/dom';
-import { getRange, unDef } from '../../../src/utils/shared';
+import { getRange } from '../../../src/utils/shared';
 
 // Minimum distance to trigger scrolling
 const TRIGGER_MINI_DISTANCE = 15;
@@ -13,7 +13,7 @@ const SPEED_COEFFICIENT = 0.3;
 
 export const MAX_VISIBLE_ITEM = 5;
 export const DEFAULT_ITEM_HEIGHT = 42;
-export const DEFAULT_DURATION = 1000;
+export const DEFAULT_DURATION = 800;
 
 const getTransformFromDom = (el) => {
   let matrix = window.getComputedStyle(el, null).getPropertyValue('transform');
@@ -39,6 +39,7 @@ const PickerColums = () => ({
         duration: 0,
         property: 'none',
       },
+      inited: false,
     };
   },
   props: {
@@ -90,8 +91,7 @@ const PickerColums = () => ({
             }
           }
           if (activeIndex !== -1) {
-            this.afterTransition.push(resolve);
-            this.scrollTo(null, activeIndex);
+            this.scrollTo(null, activeIndex, resolve);
           } else {
             resolve();
           }
@@ -187,13 +187,19 @@ const PickerColums = () => ({
     },
     resetStatus() {
       this.isMoving = false;
+      if (!this.inited) this.inited = true;
       this.afterTransition = [];
       this.setTransition();
     },
     onTransitionEnd() {
-      const afterTransition = this.afterTransition.pop();
-      if (afterTransition) afterTransition();
+      this.flushCallBack();
       this.resetStatus();
+    },
+    flushCallBack() {
+      while (this.afterTransition.length) {
+        const afterTransition = this.afterTransition.pop();
+        if (afterTransition) afterTransition();
+      }
     },
     setTransition(duration = 0, property = 'none') {
       this.transitionPayload = {
@@ -205,22 +211,41 @@ const PickerColums = () => ({
       this.setActiveIndex(index);
       this.$emit('change');
     },
-    scrollTo(offset, currentIndex = null) {
-      const { itemHeight, getValidIndex } = this;
+    scrollTo(offset, currentIndex = null, cb = null) {
+      const {
+        itemHeight,
+        getValidIndex,
+        isMoving,
+      } = this;
       let index = currentIndex;
       if (currentIndex === null) {
         index = getValidIndex(offset / itemHeight);
       }
+
       const transformY = index * itemHeight;
-      this.setTransition(this.duration, 'all');
+      if (this.inited) {
+        this.setTransition(this.duration, 'all');
+        if (!this.isMoving) this.isMoving = true;
+      }
       this.transformY = -transformY;
-      if (this.currentIndex !== index || this.isMoving) {
-        if (this.isMoving) this.afterTransition.pop();
-        this.afterTransition.push(() => {
-          this.scrollCallBack(index);
-        });
+      if (!this.inited || cb) {
+        this.onTransitionEnd();
+        this.setActiveIndex(index);
+        if (cb) cb();
+        return;
+      }
+
+      const scrollCallBack = () => {
+        this.scrollCallBack(index);
+      };
+      if (isMoving || index !== this.currentIndex) {
+        if (this.afterTransition.length) {
+          this.flushCallBack();
+        }
+        this.afterTransition.push(scrollCallBack);
       } else {
         this.onTransitionEnd();
+        this.setActiveIndex(index);
       }
     },
     getValidIndex(index) {
@@ -267,6 +292,9 @@ const PickerColums = () => ({
         this.bindTouchEvent(on, true);
       }
     });
+  },
+  beforeUpdate() {
+    if (!this.inited) this.inited = true;
   },
   beforeDestroy() {
     if (this.bindedEvent) this.bindTouchEvent(off, false);

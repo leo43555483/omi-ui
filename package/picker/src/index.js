@@ -13,6 +13,7 @@ const Picker = () => ({
   data() {
     return {
       colums: [],
+      isSetting: false,
     };
   },
   props: {
@@ -147,7 +148,9 @@ const Picker = () => ({
       if (this.cascade) this.updateCascade(columIndex);
       this.$nextTick(() => {
         this.$nextTick(() => {
+          if (this.isSetting) return;
           const values = this.getValues().map((({ uid, ...rest }) => ({ ...rest })));
+          // console.log('values????????change ', values.map((item) => item.value), columIndex);
           this.$emit('change', values, columIndex);
         });
       });
@@ -192,14 +195,22 @@ const Picker = () => ({
       this.$nextTick(() => {
         const { children } = this;
         if (isArray(values)) {
+          // eslint-disable-next-line max-len
           values.reduce((pre, value, index) => pre.then(() => {
-            children[index].setActiveValue(value);
+            this.isSetting = true;
+            return children[index].setActiveValue(value);
           }),
-          Promise.resolve());
+          Promise.resolve()).then(() => {
+            this.isSetting = false;
+          });
         } else if (isNumber(columIndex)) {
           children[columIndex].setActiveValue(values);
         }
       });
+    },
+    // @exposed-api
+    isScrolling() {
+      return this.isMoving;
     },
     getHeader() {
       const { confirmText, cancelText, title } = this;
@@ -235,6 +246,9 @@ const Picker = () => ({
     },
     cursorStyles() {
       return `height: ${this.itemHeight}px`;
+    },
+    isMoving() {
+      return this.children.some((child) => child.isMoving);
     },
   },
   render() {

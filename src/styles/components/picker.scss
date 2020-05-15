@@ -44,6 +44,7 @@
   display: flex;
   justify-content: space-between;
   padding: $picker-header-padding-vertical $picker-header-padding-horiztional;
+  background-color: $picker-header-background;
 }
 .omi-picker__cancel{
   color: $picker-header-cancel-color;
