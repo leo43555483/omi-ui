@@ -29,6 +29,8 @@
           title="请选择时间"
           confirmText="确定"
           cancelText="取消"
+          :max="maxHour"
+          :min="minHour"
         />
       </omi-action-sheet>
     </div>
@@ -101,6 +103,8 @@ export default {
       currentDate: new Date(),
       minDate: new Date(2000, 0, 1, 17, 30),
       maxDate: new Date(2025, 10, 3, 20, 39),
+      maxHour: new Date(2025, 10, 3, 20, 30),
+      minHour: new Date(2000, 10, 3, 1, 20),
       ...actionMap,
     };
   },
