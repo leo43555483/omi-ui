@@ -18,6 +18,7 @@ import Tabs from '../components/Tabs.vue';
 import Picker from '../components/Picker.vue';
 import AddressPicker from '../components/AddressPicker.vue';
 import DatePicker from '../components/DatePicker.vue';
+import Search from '../components/Search.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -120,6 +121,11 @@ const routers = {
       name: 'datePicker',
       path: '/datePicker',
       component: () => createView('DatePicker')(DatePicker),
+    },
+    {
+      name: 'search',
+      path: '/search',
+      component: () => createView('Search')(Search),
     },
   ],
 };

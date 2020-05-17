@@ -4,6 +4,7 @@
 @import './mixins/line.scss';
 @import './mixins/button.scss';
 @import './mixins/picker.scss';
+@import './mixins/input.scss';
 //base
 @import './common/base.scss';
 //transition
@@ -37,3 +38,4 @@
 @import './components/tabs-panel.scss';
 @import './components/bage.scss';
 @import './components/picker.scss';
+@import './components/search.scss';

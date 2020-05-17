@@ -25,6 +25,7 @@ import Bage from '../package/bage';
 import Picker from '../package/picker';
 import AddressPicker from '../package/address-picker';
 import DatePicker from '../package/date-picker';
+import Search from '../package/search';
 
 const components = {
   Form,
@@ -53,6 +54,7 @@ const components = {
   Picker,
   AddressPicker,
   DatePicker,
+  Search,
 };
 
 const install = function (Vue) {

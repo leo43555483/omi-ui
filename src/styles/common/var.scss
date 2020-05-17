@@ -185,7 +185,7 @@ $bage-text-top: -10px!default;
 $bage-text-color: $color-white !default;
 $bage-text-font-size: $font-size-sm !default;
 $bage-text-border-radius: 10px !default;
-$bage-text-horiztioanl-padding: 4px !default;
+$bage-text-horizontal-padding: 4px !default;
 
 //picker
 $picker-colum-background: $color-white !default;
@@ -195,3 +195,15 @@ $picker-header-background: $picker-colum-background !default;
 $picker-header-cancel-color: $color-grey4 !default;
 $picker-header-padding-vertical: $padding-md !default;
 $picker-colum-timing-function: cubic-bezier(0.22, 0.93, 0.36, 1.01) !default;
+
+//search
+$search-content-vertical-padding: 4px !default;
+$search-height: $input-line-height + 2 +$search-content-vertical-padding *2 !default;
+$search-placeholder-warpper-background: $color-white !default;
+$search-placeholder-warpper-padding-left: 8px !default;
+$search-border-radius: 3px !default;
+$search-cancel-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$search-input-padding-left-right: 24px !default;
+$search-cancel-padding-left: 8px !default;
+$search-placeholder-color: $color-grey2 !default;
+$search-cancel-color: $color-blue1 !default;

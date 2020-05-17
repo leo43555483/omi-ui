@@ -1,0 +1,15 @@
+@mixin hide-placeholder() {
+  input::-webkit-input-placeholder {
+    color: transparent;
+  }
+  input:-moz-placeholder {
+    color: transparent;
+  }
+  input::-moz-placeholder {
+    color: transparent;
+  }
+
+  input:-ms-input-placeholder {
+    color: transparent;
+  }
+}

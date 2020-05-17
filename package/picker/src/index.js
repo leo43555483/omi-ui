@@ -150,7 +150,6 @@ const Picker = () => ({
         this.$nextTick(() => {
           if (this.isSetting) return;
           const values = this.getValues().map((({ uid, ...rest }) => ({ ...rest })));
-          // console.log('values????????change ', values.map((item) => item.value), columIndex);
           this.$emit('change', values, columIndex);
         });
       });

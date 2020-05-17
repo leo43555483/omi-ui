@@ -27,7 +27,7 @@
         <div class="omi-cell__content--body"
           :style="customContentStyles"
           :class="cententClass">
-        <slot name="content">
+          <slot name="content">
             <span>{{content}}</span>
           </slot>
         </div>
