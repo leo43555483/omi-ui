@@ -4,7 +4,6 @@
       <div class="omi-search__input--wrapper">
         <div
           class="omi-search__placeholder"
-
           :style="placeholderStyles"
         >
         <div class="omi-search__placeholder--wrapper" ref="placeholder">
@@ -29,7 +28,11 @@
           />
         </div>
         <div class="omi-search__clear" v-show="showClear" @click="onClear">
-          <Icon type="delete"/>
+          <div class="omi-search__clear--btn">
+            <slot name="clear-icon">
+              <Icon type="close" :size="13"/>
+            </slot>
+          </div>
         </div>
       </div>
       <div
@@ -39,7 +42,7 @@
         @click="onCancel"
         ref="cancel"
       >
-        <span>{{cancelText}}</span>
+        <div>{{cancelText}}</div>
       </div>
     </div>
   </div>
@@ -54,6 +57,7 @@ export default {
   components: { Icon },
   data() {
     return {
+      inited: false,
       focused: false,
       cancelStyles: {
         margin: '-999px',
@@ -76,11 +80,14 @@ export default {
       type: String,
       default: '',
     },
+    fixedCancel: {
+      type: Boolean,
+      default: false,
+    },
   },
   watch: {
     showCancel: {
       handler() {
-        this.setCancelStyle();
         this.setFocusStyle();
       },
       immediate: true,
@@ -89,21 +96,25 @@ export default {
   methods: {
     setFocusStyle() {
       this.$nextTick(() => {
+        this.setCancelStyle();
         let offset = 0;
         if (this.showCancel) {
           const { offsetWidth } = this.$el;
           const { placeholder } = this.$refs;
-          const { cancelWidth } = this;
+          const cancelWidth = this.cancelWidth ? this.cancelWidth : this.getCancelWidth();
           const { floor } = Math;
           offset = -floor((offsetWidth / 2) - (placeholder.offsetWidth / 2) - (cancelWidth / 2));
         }
         this.placeholderStyles = {
           transform: `translate3d(${offset}px,0,0)`,
-          left: 0,
         };
+        setTimeout(() => {
+          this.inited = true;
+        }, 16);
       });
     },
     onCancel() {
+      this.$emit('input', '');
       this.$refs.input.blur();
     },
     onClear() {
@@ -118,10 +129,13 @@ export default {
       this.focused = false;
       this.onBlur(e);
     },
+    getCancelWidth() {
+      return this.$refs.cancel.offsetWidth;
+    },
     setCancelStyle() {
       this.$nextTick(() => {
-        if (!this.showCancel) {
-          const cancelWidth = this.$refs.cancel.offsetWidth;
+        if (!this.showCancel && !this.fixedCancel) {
+          const cancelWidth = this.getCancelWidth();
           this.cancelWidth = cancelWidth;
           this.cancelStyles = {
             margin: `-${cancelWidth}px`,
@@ -131,17 +145,28 @@ export default {
         }
       });
     },
+    initial() {
+      const { fixedCancel } = this;
+      const cancelMargin = fixedCancel ? 0 : '-999px';
+      this.cancelStyles = {
+        margin: cancelMargin,
+      };
+    },
   },
   computed: {
     showCancel() {
-      return this.focused || this.showClear;
+      return this.focused || this.showClear || this.fixedCancel;
     },
     showClear() {
       return this.value !== '';
     },
+    showPlaceholder() {
+      return !this.showClear && !this.isComposing;
+    },
     innerClasses() {
       return {
         'omi-search__focused': this.showCancel,
+        'omi-search__animation': this.inited,
       };
     },
     cancelClasses() {
@@ -157,7 +182,7 @@ export default {
     },
     placeholderTextStyle() {
       return {
-        opacity: this.showClear ? 0 : 1,
+        opacity: this.showPlaceholder ? 1 : 0,
       };
     },
     inputStyle() {
@@ -165,6 +190,9 @@ export default {
         width: this.focused ? null : '100%',
       };
     },
+  },
+  beforeMount() {
+
   },
   mounted() {
     this.setCancelStyle();

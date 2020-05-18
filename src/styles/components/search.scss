@@ -23,12 +23,14 @@
   align-items: center;
   justify-content: center;
   color: $search-placeholder-color;
-  transition: transform .2s ease;
 }
 
 .omi-search__placeholder--wrapper {
   display: flex;
-  margin-left: $search-placeholder-warpper-padding-left;
+  .omi-search__search--icon{
+    padding: 0 $search-placeholder-warpper-padding-left;
+    
+  }
 }
 .omi-search__input--wrapper{
   position: relative;
@@ -49,13 +51,13 @@
 .omi-search__cancel,
 .omi-search__clear,
 .omi-search__input--wrapper,
-.omi-search__input,
 .omi-search__placeholder,
 .omi-search__search--icon {
   height: $search-height;
   line-height: $search-height;
 }
 .omi-search__input{
+  height: $search-height;
   @include hide-placeholder();
 }
 
@@ -64,17 +66,46 @@
     padding: 0 $search-input-padding-left-right;
   }
 }
+
+.omi-search__clear,
+.omi-search__clear--btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .omi-search__clear{
   position: absolute;
   top: 0;
   right: 0;
+  margin: 0 $search-clear-horizontal-margin;
   z-index: 1;
+  .omi-search__clear--btn{
+    width: $search-clear-size;
+    height: $search-clear-size;
+    border-radius: 50%;
+    background-color: $search-clear-background;
+    color: $search-clear-color;
+    .omi-close{
+      text-align: center;
+      line-height: $search-clear-button-line-height;
+    }
+  }
 }
 .omi-search__cancel{
+  flex-shrink: 0;
   padding-left: $search-cancel-padding-left;
   opacity: 0;
   color: $search-cancel-color;
-  transition: margin .3s $search-cancel-timing-function
+  
+}
+
+.omi-search__animation{
+  .omi-search__cancel {
+    transition: margin .3s $search-cancel-timing-function
+  }
+  .omi-search__placeholder{
+    transition: transform .3s $search-cancel-timing-function;
+  }
 }
 .omi-search__cancel--show {
   opacity: 1;
