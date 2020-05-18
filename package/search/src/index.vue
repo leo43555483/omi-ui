@@ -25,6 +25,7 @@
             v-on="inputListeners"
             v-bind="$attrs"
             :value="value"
+            :disabled="disabled"
           />
         </div>
         <div class="omi-search__clear" v-show="showClear" @click="onClear">
@@ -68,6 +69,10 @@ export default {
   },
   mixins: [inpuMixin],
   props: {
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
     value: {
       type: String,
       default: '',
@@ -115,10 +120,12 @@ export default {
     },
     onCancel() {
       this.$emit('input', '');
+      this.$emit('cabcel');
       this.$refs.input.blur();
     },
     onClear() {
       this.$emit('input', '');
+      this.$emit('clear');
       this.$refs.input.focus();
     },
     onFocus(e) {

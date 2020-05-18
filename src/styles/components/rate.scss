@@ -1,0 +1,22 @@
+  .omi-rate {
+    display: flex;
+  }
+
+  .omi-rate__wrapper {
+    position: relative;
+    margin: 0 4px;
+  }
+
+  .omi-rate__item--wrapper {
+    display: inline-block;
+    vertical-align: top;
+    color: $rate-border-color;
+  }
+
+  .omi-rate__item--inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    // width: .5em;
+    overflow: hidden;
+  }
