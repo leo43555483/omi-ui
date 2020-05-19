@@ -1,7 +1,7 @@
-import { on, off } from '../../../../src/utils/dom';
+import { on, off, preventDefault } from '../../src/utils/dom';
 
 const THRESH_HOLD = 0.2;
-const TOUCH_DIRECTION_DEGREE = 45;
+const TOUCH_DIRECTION_DEGREE = 5;
 export default {
   data() {
     return {
@@ -10,6 +10,12 @@ export default {
       transformX: 0,
       distance: 0,
     };
+  },
+  watch: {
+    shouldRender(shouldRender) {
+      if (shouldRender) this.bindTouchEvent();
+      else this.unBindTouchEvent();
+    },
   },
   methods: {
     findValidChild(index, isIncrease) {
@@ -20,10 +26,6 @@ export default {
         return this.findValidChild(nextIndex, isIncrease);
       }
       return -1;
-    },
-    getActiveChild(index) {
-      const child = this.children[index];
-      return this.getActiveChildInfo(child);
     },
     setTransform(moveX) {
       const { activeIndex, children } = this;
@@ -37,7 +39,6 @@ export default {
         const {
           activeIndex,
           children,
-          getActiveChild,
           findValidChild,
         } = this;
         const paneWidth = this.getPaneWidth();
@@ -50,8 +51,7 @@ export default {
             currentIndex = findValidChild(activeIndex - 1);
           }
           if (currentIndex !== activeIndex && currentIndex >= 0) {
-            const { activeKey } = getActiveChild(currentIndex);
-            this.$emit('input', activeKey);
+            this.updateIndex(currentIndex);
           }
         }
       });
@@ -62,10 +62,14 @@ export default {
     },
     onTouchMove(e) {
       if (!this.swipleable) return;
-      const { direction } = this;
       this.touchMove(e, TOUCH_DIRECTION_DEGREE);
+      if (!this.inited) this.inited = true;
+      const { direction } = this;
+      // console.log('direction???', direction);
       const isHorizontal = direction === 'horizontal';
-      if (!isHorizontal) return;
+      if (!isHorizontal) {
+        preventDefault(e);
+      }
       this.setTransform(this.moveX);
     },
     onTouchEnd() {
@@ -77,16 +81,29 @@ export default {
       this.resetTouch();
     },
     bindTouchEvent() {
-      if (!this.swipleable || this.scoller) return;
-      this.scoller = this.$refs.pane;
-      on(this.scoller, 'touchstart', this.onTouchStart);
-      on(this.scoller, 'touchmove', this.onTouchMove);
-      on(this.scoller, 'touchend', this.onTouchEnd);
+      this.$nextTick(() => {
+        if (!this.swipleable || this.scoller) return;
+        this.scoller = this.$refs.pane;
+        if (!this.scoller) return;
+        on(this.scoller, 'touchstart', this.onTouchStart);
+        on(this.scoller, 'touchmove', this.onTouchMove, false);
+        on(this.scoller, 'touchend', this.onTouchEnd);
+      });
+    },
+    unBindTouchEvent() {
+      const { scoller } = this;
+      if (scoller) {
+        off(scoller, 'touchstart', this.onTouchStart);
+        off(scoller, 'touchmove', this.onTouchMove);
+        off(scoller, 'touchstart', this.onTouchEnd);
+        this.scoller = null;
+      }
     },
     getTransformString(transformX, property) {
       return `
         transform: translate3d(${transformX}px, 0, 0);
         transition-property: ${property};
+        will-change: property
       `;
     },
     scrollPane() {
@@ -109,10 +126,6 @@ export default {
         'omi-tabs__animated': animated && inited,
       };
     },
-    paneWidth() {
-      const { pane } = this.$refs;
-      return pane && pane.offsetWidth;
-    },
     paneStyles() {
       const {
         isMoving,
@@ -131,11 +144,6 @@ export default {
     this.bindTouchEvent();
   },
   beforeDestroy() {
-    const { scoller } = this;
-    if (scoller) {
-      off(scoller, 'touchstart', this.onTouchStart);
-      off(scoller, 'touchmove', this.onTouchMove);
-      off(scoller, 'touchstart', this.onTouchEnd);
-    }
+    this.unBindTouchEvent();
   },
 };

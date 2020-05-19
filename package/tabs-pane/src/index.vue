@@ -5,13 +5,11 @@
 </template>
 
 <script>
+import injectMixin from '../../mixins/inject';
+
 export default {
   name: 'OmiTabsPane',
-  inject: {
-    tabsParent: {
-      default: null,
-    },
-  },
+  mixins: [injectMixin('tabsParent')],
   props: {
     dot: {
       type: Boolean,
@@ -39,9 +37,6 @@ export default {
     },
   },
   computed: {
-    parent() {
-      return this.tabsParent;
-    },
     show() {
       const { parent, tabName } = this;
       if (!parent) return false;
@@ -61,17 +56,6 @@ export default {
       const { name, getIndex } = this;
       return name !== null ? name : getIndex;
     },
-  },
-  mounted() {
-    if (!this.parent) {
-      throw new Error('tabs-pane must be wrapped by tabs');
-    }
-    this.parent.add(this);
-  },
-  beforeDestroy() {
-    if (this.parent) {
-      this.parent.remove(this);
-    }
   },
 };
 </script>

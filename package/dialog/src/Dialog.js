@@ -3,6 +3,7 @@ import Button from '../../button';
 import Form from '../../form';
 import FormItem from '../../form-item';
 import Input from '../../input';
+import { isPromise } from '../../../src/utils/shared';
 
 const Dialog = () => ({
   name: 'OmiDialog',
@@ -101,18 +102,26 @@ const Dialog = () => ({
       return null;
     },
     handleCancel(e) {
-      this.$emit('cancle', e);
       this.close();
+      this.onCancel(e);
+    },
+    beforeConfirm(...args) {
+      const { onConfirm } = this;
+      const promise = onConfirm(...args);
+      if (isPromise(promise)) {
+        promise.then(() => this.close());
+      } else {
+        this.close();
+      }
     },
     handleConfirm(e) {
       if (this.type === 'prompt') {
         this.$refs.form.validate().then((err) => {
           const arg = this.promptField.value;
-          console.log('arg', arg);
-          this.$emit('confirm', err, arg);
+          this.beforeConfirm(err, arg);
         });
       } else {
-        this.$emit('confirm', e);
+        this.beforeConfirm(e);
       }
     },
     getFooter() {

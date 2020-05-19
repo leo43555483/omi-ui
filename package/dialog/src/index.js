@@ -55,18 +55,6 @@ const Dialog = creator((getInstance, customOptions, typeOtionCache) => (opt) => 
   };
   Object.assign(dialog, option);
 
-  const { onCancel, onConfirm } = dialog;
-  dialog.$on('cancel', (e) => {
-    if (isFunction(onCancel)) onCancel(e);
-  });
-  dialog.$on('confirm', (...args) => {
-    const promise = onConfirm(...args);
-    if (isPromise(promise)) {
-      promise.then(() => dialog.close());
-    } else {
-      dialog.close();
-    }
-  });
   dialog.value = true;
   return dialog;
 });

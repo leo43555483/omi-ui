@@ -20,6 +20,7 @@ import AddressPicker from '../components/AddressPicker.vue';
 import DatePicker from '../components/DatePicker.vue';
 import Search from '../components/Search.vue';
 import Rate from '../components/Rate.vue';
+import ImagePreview from '../components/ImagePreview.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -132,6 +133,11 @@ const routers = {
       name: 'rate',
       path: '/rate',
       component: () => createView('Rate')(Rate),
+    },
+    {
+      name: 'imagepreview',
+      path: '/imagepreview',
+      component: () => createView('ImagePreview')(ImagePreview),
     },
   ],
 };

@@ -70,7 +70,6 @@ export default function () {
       },
       renderOverLay() {
         if (this.$isServer) return;
-        // const { overlay } = this;
         if (!overlay) {
           overlay = this.mountOverlay();
           seed += 1;

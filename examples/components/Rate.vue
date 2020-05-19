@@ -14,11 +14,11 @@
     </div>
     <div class="demo-item">
       <div>自定义尺寸</div>
-      <omi-rate v-model="rate3" :size="32"/>
+      <omi-rate v-model="rate4" :size="32"/>
     </div>
     <div class="demo-item">
       <div>自定义颜色</div>
-      <omi-rate v-model="rate3" fillColor="#35d3c1"/>
+      <omi-rate v-model="rate5" fillColor="#35d3c1"/>
     </div>
   </div>
 </template>
@@ -31,6 +31,8 @@ export default {
       rate: 3,
       rate2: 3,
       rate3: 3,
+      rate4: 3,
+      rate5: 3,
     };
   },
 };

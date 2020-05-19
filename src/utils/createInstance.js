@@ -32,6 +32,7 @@ function createInstance({
     if (instance && isSingle) {
       if (replacement) {
         instance.$destroy();
+        removeElement(instance.$el);
         stack[stack.length - 1] = create();
         return stack[stack.length - 1];
       }

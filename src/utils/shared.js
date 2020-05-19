@@ -135,3 +135,5 @@ export function clone(object) {
   };
   return cloneObject(object);
 }
+
+export function noop() { }

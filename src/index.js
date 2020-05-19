@@ -27,6 +27,7 @@ import AddressPicker from '../package/address-picker';
 import DatePicker from '../package/date-picker';
 import Search from '../package/search';
 import Rate from '../package/rate';
+import ImagePreview from '../package/image-preview';
 
 const components = {
   Form,
@@ -57,6 +58,7 @@ const components = {
   DatePicker,
   Search,
   Rate,
+  ImagePreview: ImagePreview.component,
 };
 
 const install = function (Vue) {

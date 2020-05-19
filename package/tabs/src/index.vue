@@ -34,7 +34,8 @@
 <script>
 import Bage from '../../bage';
 import touchMixin from '../../mixins/touch';
-import panelMixin from './mixins/panel';
+import panelMixin from '../../mixins/panel';
+import providerMixin from '../../mixins/provider';
 import barMixin from './mixins/bar';
 import { unDef } from '../../../src/utils/shared';
 
@@ -47,10 +48,9 @@ export default {
       tabsParent: this,
     };
   },
-  mixins: [touchMixin, panelMixin, barMixin],
+  mixins: [touchMixin, panelMixin, barMixin, providerMixin('tabsParent')],
   data() {
     return {
-      children: [],
       activeKey: DEFAULT_ACTIVE_INDEX,
       activeIndex: DEFAULT_ACTIVE_INDEX,
       inited: false,
@@ -94,6 +94,14 @@ export default {
     },
   },
   methods: {
+    updateIndex(currentIndex) {
+      const { activeKey } = this.getActiveChild(currentIndex);
+      this.$emit('input', activeKey);
+    },
+    getActiveChild(index) {
+      const child = this.children[index];
+      return this.getActiveChildInfo(child);
+    },
     isActive({ tabName }) {
       const { activeKey } = this;
       return {
@@ -104,17 +112,6 @@ export default {
       if (disalbed) return;
       this.$emit('input', tabName);
       this.$emit('clickTab', tabName, label);
-    },
-    remove(child) {
-      const { children } = this;
-      const index = children.indexOf(child);
-      if (index > -1) {
-        this.children.splice(index, 1);
-      }
-    },
-    add(child) {
-      const { children } = this;
-      if (children.indexOf(child) === -1) this.children.push(child);
     },
     getChildIndex(child) {
       return this.children.indexOf(child);
