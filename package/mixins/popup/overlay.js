@@ -53,7 +53,7 @@ export default {
       const OverlayConstructor = Vue.extend(VueOverlay());
       const el = document.createElement('div');
       const Overlay = new OverlayConstructor({ el });
-      Object.assign(Overlay, getProps(overLayProps, this));
+      Object.assign(Overlay, getProps(overLayProps, this.$props));
       this.portal(Overlay.$el);
       Overlay.setZindex(this.getZindex);
       Overlay.$on('clickOverlay', () => {

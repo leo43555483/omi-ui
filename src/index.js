@@ -71,6 +71,7 @@ const install = function (Vue) {
   }
   Vue.prototype.$toast = Toast;
   Vue.prototype.$dialog = Dialog;
+  Vue.prototype.$imagePreview = ImagePreview;
 };
 
 export default {

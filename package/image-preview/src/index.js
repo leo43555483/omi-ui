@@ -27,7 +27,7 @@ const ImagePreview = creator((getInstance, defaultOptions) => (opt) => {
   };
   Object.assign(imagePreview, option);
 
-  imagePreview.show = true;
+  imagePreview.value = true;
   return imagePreview;
 });
 

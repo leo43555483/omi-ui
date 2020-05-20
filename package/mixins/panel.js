@@ -103,7 +103,7 @@ export default {
       return `
         transform: translate3d(${transformX}px, 0, 0);
         transition-property: ${property};
-        will-change: property
+        will-change: transform;
       `;
     },
     scrollPane() {

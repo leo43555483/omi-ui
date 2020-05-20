@@ -3,6 +3,10 @@ export const overLayProps = {
     type: Boolean,
     default: false,
   },
+  overlayClassName: {
+    type: String,
+    default: '',
+  },
 };
 
 const OverLay = () => ({
@@ -31,7 +35,7 @@ const OverLay = () => ({
     if (!this.show) return null;
     return (
       <transition name="fade-in" appear>
-        <div class="omi-overlay" style={this.styles} onClick={this.onClick}></div>
+        <div class={['omi-overlay', this.overlayClassName]} style={this.styles} onClick={this.onClick}></div>
       </transition>
     );
   },

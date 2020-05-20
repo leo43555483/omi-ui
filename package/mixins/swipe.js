@@ -10,6 +10,7 @@ const swipeMixin = (listKey) => ({
       activeIndex: DEFAULT_ACTIVE_INDEX,
       swiperWidth: 0,
       children: [],
+      inited: false,
     };
   },
   watch: {
@@ -17,7 +18,7 @@ const swipeMixin = (listKey) => ({
       this.scrollPane();
     },
     shouldRender(shouldRender) {
-      if (shouldRender) this.setSwiperWidth();
+      if (shouldRender) this.initializeSwipe();
     },
   },
   props: {
@@ -31,8 +32,18 @@ const swipeMixin = (listKey) => ({
       default: true,
       validator: isTrue,
     },
+    initialIndex: {
+      type: Number,
+      default: DEFAULT_ACTIVE_INDEX,
+    },
   },
   methods: {
+    initializeSwipe() {
+      this.setSwiperWidth();
+      this.activeIndex = this.initialIndex;
+      this.inited = false;
+      this.scrollPane();
+    },
     getPaneWidth() {
       return this.swiperWidth || this.$el.offsetWidth;
     },
@@ -42,17 +53,18 @@ const swipeMixin = (listKey) => ({
         this.$emit('change', currentIndex);
       }
     },
-    getSCrollerClasses(className) {
+    getScrollerClasses(className) {
       return {
         'omi-swipe__content--wrapper': true,
         [`${className}--wrapper`]: !unDef(className),
+        'omi-swipe__animated': this.inited,
       };
     },
     getSwipeBody(className) {
       return (getList) => (
         <div class={['omi-swipe__body', className]} ref="pane">
           <div
-            class={this.getSCrollerClasses(className)}
+            class={this.getScrollerClasses(className)}
             style={this.swipeBodyStyles}
           >
             {getList('omi-swipe__item', this.itemStyle)}
@@ -83,7 +95,7 @@ const swipeMixin = (listKey) => ({
 
   },
   mounted() {
-    this.setSwiperWidth();
+    this.initializeSwipe();
   },
 });
 

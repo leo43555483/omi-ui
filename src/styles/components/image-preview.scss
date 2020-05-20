@@ -12,6 +12,7 @@
 }
 .omi-imgae-preview__body{
   width: 100%;
+  overflow: hidden;
 }
 .omi-image-preview__footer{
   position: absolute;
@@ -33,4 +34,14 @@
   max-width: 100%;
   max-height: 100%;
   overflow: hidden;
+}
+.omi-image-preview__overlay{
+  background-color: $image-preview-overlay-background;
+}
+.omi-image-preview__close{
+  position: absolute;
+  top: $image-preview-overlay-close-offset;
+  right: $image-preview-overlay-close-offset;
+  color: $image-preview-overlay-close-color;
+  z-index: 1;
 }
