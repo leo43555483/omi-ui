@@ -223,3 +223,18 @@ $image-preview-indicator-font-size: $font-size-base !default;
 $image-preview-overlay-background: rgba(0, 0, 0, 0.85) !default;
 $image-preview-overlay-close-offset: 16px !default;
 $image-preview-overlay-close-color: $color-white !default;
+
+//image
+$image-placeholder-background: #e8e8e8 !default;
+
+//tabbar
+$tabbar-background: $color-white !default;
+//tabbar-item
+$tabbar-item-icon-margin-bottom: 4px !default;
+$tabbar-item-text-size: $font-size-base !default;
+$tabbar-item-vertical-padding: 6px !default;
+$tabbar-item-active-color: $color-blue1 !default;
+$tabbar-dot-top: 0 !default;
+$tabbar-dot-right: 0 !default;
+$tabbar-bage-top: -3px !default;
+$tabbar-bage-left: 70% !default;

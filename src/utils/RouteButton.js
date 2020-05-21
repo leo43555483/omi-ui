@@ -69,7 +69,6 @@ const RouteButton = () => ({
       const props = {
         props: routeAttrs,
       };
-      console.log('props', props);
       return (
         <RouterLink {...props} class={tagClass}>{child}</RouterLink>
       );

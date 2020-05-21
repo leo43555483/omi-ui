@@ -3,14 +3,21 @@
     <div class="demo-item">
       <omi-button @click="onClick" block>预览</omi-button>
     </div>
-    <omi-image-preview v-model="show" :images="images"></omi-image-preview>
+    <omi-image-preview
+      v-model="show"
+      :images="images"
+      :onClose="onClose"
+      lazy-load
+    ></omi-image-preview>
     <div class="demo-item img-list">
-      <img
+      <omi-image
+        class="demo-image__item"
+        placeholder-height="180px"
         v-for="(img, index) in images"
         :key="index"
         :src="img"
         @click="() => onClickImg(index)"
-      >
+      />
     </div>
   </div>
 </template>
@@ -34,7 +41,16 @@ export default {
       this.$imagePreview({
         images: this.images,
         initialIndex: index,
+        onClose() {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+            }, 100);
+          });
+        },
       });
+    },
+    onClose() {
     },
     onClick() {
       this.show = true;
@@ -44,11 +60,11 @@ export default {
 </script>
 
 <style lang="scss">
+.demo-image__item{
+  margin: 10px 0;
+}
 .img-list{
   display: flex;
   flex-direction: column;
-  img {
-    max-width: 100%;
-  }
 }
 </style>

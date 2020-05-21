@@ -1,0 +1,22 @@
+.omi-image{
+  position: relative;
+  width: 100%;
+}
+.omi-image__placeholder{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.omi-image__loading,
+.omi-image__error {
+  height: 100%;
+  background-color: $image-placeholder-background;
+}
+
+.omi-image__img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}

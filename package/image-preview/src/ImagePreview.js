@@ -1,11 +1,13 @@
 import popMixin from '../../mixins/popup';
 import swipeMixin from '../../mixins/swipe';
 import Icon from '../../icon';
+import Image from '../../image';
 import props from './props';
 import { unDef, isString, isPromise } from '../../../src/utils/shared';
 
 const ImagePreview = () => ({
   name: 'OmiImagePreview',
+  inheritAttrs: false,
   mixins: [popMixin(), swipeMixin('images')],
   props: {
     ...props,
@@ -53,13 +55,23 @@ const ImagePreview = () => ({
     getBody() {
       const genList = this.getSwipeBody('omi-imgae-preview__body');
       let children;
+      const imageProps = {
+        attrs: this.$attrs,
+        props: {
+          placeholderHeight: this.placeholderHeight,
+        },
+      };
       return genList((swipeCls, itemStyle) => {
         children = this.images.map((img) => (
           <div
             class={[swipeCls, 'omi-image-preview__item']}
             style={itemStyle}
           >
-            {!unDef(img) && isString(img) && <img class="omi-image-preview__img" src={img}/>}
+            {
+              !unDef(img)
+              && isString(img)
+              && <Image class="omi-image-preview__img" src={img} {...imageProps}/>
+            }
           </div>
         ));
         this.children = children;

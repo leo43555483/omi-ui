@@ -28,6 +28,9 @@ import DatePicker from '../package/date-picker';
 import Search from '../package/search';
 import Rate from '../package/rate';
 import ImagePreview from '../package/image-preview';
+import Image from '../package/image';
+import Tabbar from '../package/tab-bar';
+import TabbarItem from '../package/tab-bar-item';
 
 const components = {
   Form,
@@ -58,7 +61,10 @@ const components = {
   DatePicker,
   Search,
   Rate,
-  ImagePreview: ImagePreview.component,
+  ImagePreview: ImagePreview.Component,
+  Image,
+  Tabbar,
+  TabbarItem,
 };
 
 const install = function (Vue) {

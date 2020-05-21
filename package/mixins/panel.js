@@ -9,6 +9,7 @@ export default {
       scoller: null,
       transformX: 0,
       distance: 0,
+      isSwiping: false,
     };
   },
   watch: {
@@ -64,8 +65,8 @@ export default {
       if (!this.swipleable) return;
       this.touchMove(e, TOUCH_DIRECTION_DEGREE);
       if (!this.inited) this.inited = true;
+      this.isSwiping = true;
       const { direction } = this;
-      // console.log('direction???', direction);
       const isHorizontal = direction === 'horizontal';
       if (!isHorizontal) {
         preventDefault(e);
@@ -78,6 +79,7 @@ export default {
         this.findNextActive(moveX, offsetX);
         this.isMoving = false;
       }
+      this.isSwiping = false;
       this.resetTouch();
     },
     bindTouchEvent() {
@@ -100,11 +102,13 @@ export default {
       }
     },
     getTransformString(transformX, property) {
-      return `
+      const willChange = this.isSwiping ? 'transform' : null;
+      let styles = `
         transform: translate3d(${transformX}px, 0, 0);
         transition-property: ${property};
-        will-change: transform;
       `;
+      if (this.isSwiping) styles += `will-change: ${willChange};`;
+      return styles;
     },
     scrollPane() {
       if (!this.animated) return;

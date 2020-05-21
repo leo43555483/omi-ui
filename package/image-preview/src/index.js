@@ -31,5 +31,5 @@ const ImagePreview = creator((getInstance, defaultOptions) => (opt) => {
   return imagePreview;
 });
 
-ImagePreview.component = VueImagePreview;
+ImagePreview.Component = VueImagePreview;
 export default ImagePreview;

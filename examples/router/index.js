@@ -21,6 +21,8 @@ import DatePicker from '../components/DatePicker.vue';
 import Search from '../components/Search.vue';
 import Rate from '../components/Rate.vue';
 import ImagePreview from '../components/ImagePreview.vue';
+import Images from '../components/Image.vue';
+import Tabbar from '../components/Tabbar.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -138,6 +140,16 @@ const routers = {
       name: 'imagepreview',
       path: '/imagepreview',
       component: () => createView('ImagePreview')(ImagePreview),
+    },
+    {
+      name: 'image',
+      path: '/image',
+      component: () => createView('Images')(Images),
+    },
+    {
+      name: 'tabbar',
+      path: '/tabbar',
+      component: () => createView('Tabbar')(Tabbar),
     },
   ],
 };
