@@ -109,12 +109,12 @@ export default {
     formatPercentage() {
       const { max } = this;
       const result = Math.ceil(this.percentage * 1);
-      return result >= max ? max : result;
+      return result > max ? max : result;
     },
     perimeterRate() {
       const { perimeter, max } = this;
       const percentage = this.formatPercentage;
-      if (percentage >= max) return null;
+      if (percentage > max) return null;
       const { ceil } = Math;
       const result = ceil((percentage / 100) * perimeter);
       return result;

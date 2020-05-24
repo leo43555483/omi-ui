@@ -10,8 +10,10 @@
 //transition
 @import './transition/fade.scss';
 @import './transition/slide.scss';
-@import './transition/loading.scss';
 @import './transition/pop.scss';
+//animation
+@import './animation/loading.scss';
+@import './animation/skeleton.scss';
 //component
 @import './components/nav-bar.scss';
 @import './components/form-item.scss';
@@ -45,3 +47,5 @@
 @import './components/image.scss';
 @import './components/tab-bar.scss';
 @import './components/tab-bar-item.scss';
+@import './components/skeleton.scss';
+@import './components/uploader.scss';

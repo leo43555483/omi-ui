@@ -238,3 +238,27 @@ $tabbar-dot-top: 0 !default;
 $tabbar-dot-right: 0 !default;
 $tabbar-bage-top: -3px !default;
 $tabbar-bage-left: 70% !default;
+
+//skeleton
+$skeleton-background: #f2f3f5 !default;
+$skeleton-to-background: #d9d9d9 !default;
+$skeleton-avatar-margin-right: 16px !default;
+$skeleton-height: 16px !default;
+$skeleton-button-margin-top: 16px !default;
+$skeleton-border-radius: 24px !default;
+$skeleton-animate-item-background: linear-gradient(90deg, $skeleton-background 15%, $skeleton-to-background 35%, $skeleton-background 70%) !default;
+$skeleton-animate-duration: 2s !default;
+
+//uploader
+$uploader-size: 80px !default;
+$uploader-border-radius: 6px !default;
+$uploader-background: #f7f8fa !default;
+$uploader-add-color: $color-grey4 !default;
+$uploader-close-offset-top: 6px !default;
+$uploader-close-offset-right: 6px !default;
+$uploader-close-wrapper-size: 14px !default;
+$uploader-close-background: $color-white !default;
+$uploader-close-color: $color-grey2 !default;
+$uploader-preview-margin: 6px !default;
+$uploader-success-color: $color-success !default;
+$uploader-error-color: $color-white!default;

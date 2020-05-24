@@ -3,7 +3,7 @@ import { noop } from '../../../src/utils/shared';
 const DEFAULT_INITIAL_INDEX = 0;
 const OVERLAY_CLASSNAME = 'omi-image-preview__overlay';
 const DEFAULT_PLACEHOLER_HEIGHT = '150px';
-const DEFAULT_PLACEHOLER_WIDTH = '100%';
+
 const props = {
   images: {
     type: Array,

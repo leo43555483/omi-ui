@@ -35,6 +35,7 @@ export default {
     },
     setActive(activeIndex) {
       this.$emit('input', activeIndex);
+      this.$emit('change', activeIndex);
     },
     isActiveItem(childIndex) {
       return childIndex === this.value;

@@ -1,0 +1,47 @@
+.omi-skeleton{
+  display: flex;
+  overflow: hidden;
+}
+.omi-skeleton-avatar {
+  margin-right: $skeleton-avatar-margin-right;
+  flex-shrink: 0;
+  background-color: $skeleton-background;
+}
+.omi-skeleton__avatar--round{
+  border-radius: 50%;
+}
+.omi-skeleton__button--round li,
+.omi-skeleton__button--round h3 {
+  border-radius: $skeleton-border-radius;
+}
+.omi-skeleton__body{
+  width: 100%;
+}
+.omi-skeleton__content{
+  list-style: none;
+  padding: 0;
+}
+
+.omi-skeleton__title,
+.omi-skeleton__content li {
+  height: $skeleton-height;
+  margin-top: $skeleton-button-margin-top;
+  background-color: $skeleton-background
+}
+.omi-skeleton__title {
+  margin: 0 0 16px 0;
+}
+
+//animation
+@mixin skeleton-animation {
+  animation: skeleton-loading $skeleton-animate-duration ease infinite;
+}
+.omi-skeleton__animate{
+  .omi-skeleton-avatar,
+  .omi-skeleton__title,
+  .omi-skeleton__content li{
+    background: $skeleton-animate-item-background;
+    background-size: 400%;
+    @include skeleton-animation();
+  }
+}

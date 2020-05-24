@@ -10,7 +10,7 @@ import CheckboxGroup from '../package/checkbox-group';
 import Redio from '../package/radio';
 import RadioGroup from '../package/radio-group';
 import Icon from '../package/icon';
-import Circle from '../package/cirlce';
+import Circle from '../package/circle';
 import Switch from '../package/switch';
 import Toast from '../package/toast';
 import Collapse from '../package/collapse';
@@ -31,6 +31,8 @@ import ImagePreview from '../package/image-preview';
 import Image from '../package/image';
 import Tabbar from '../package/tab-bar';
 import TabbarItem from '../package/tab-bar-item';
+import Skeleton from '../package/skeleton';
+import Uploader from '../package/uploader';
 
 const components = {
   Form,
@@ -65,6 +67,8 @@ const components = {
   Image,
   Tabbar,
   TabbarItem,
+  Skeleton,
+  Uploader,
 };
 
 const install = function (Vue) {

@@ -1,0 +1,84 @@
+
+.omi-uploader__preview,
+.omi-uploader__upload{
+  position: relative;
+  width: $uploader-size;
+  height: $uploader-size;
+  background-color: $uploader-background;
+  border-radius: $uploader-border-radius;
+  overflow: hidden;
+}
+.omi-uploader__upload{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .omi-add{
+    color: $uploader-add-color;
+  }
+}
+.omi-uploader__inner{
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.omi-uploader__input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.omi-uploader__preview--mask,
+.omi-uploader__close {
+  position: absolute;
+}
+.omi-uploader__preview--mask{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.7)
+}
+.omi-uploader__progress{
+  .omi-circle{
+    display: block;
+    color: #fff
+  }
+}
+.omi-uploader__status{
+  .omi-success{
+    color: $uploader-success-color;
+  }
+  .omi-prompt{
+    color: $uploader-error-color;
+  }
+}
+.omi-uploader__close{
+  width: $uploader-close-wrapper-size;
+  height: $uploader-close-wrapper-size;
+  top: $uploader-close-offset-top;
+  right: $uploader-close-offset-right;
+  background-color: $uploader-close-background;
+  border-radius: 100%;
+  z-index: 1;
+  .omi-icon-font{
+    color: $uploader-close-color;
+  }
+}
+.omi-uploader__image{
+  width: 100%;
+  height: 100%;
+  .omi-image__img{
+    width: 100%;
+    object-fit: cover;
+  }
+}
+.omi-uploader__preview{
+  margin: 0 $uploader-preview-margin $uploader-preview-margin 0;
+}

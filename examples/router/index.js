@@ -23,6 +23,8 @@ import Rate from '../components/Rate.vue';
 import ImagePreview from '../components/ImagePreview.vue';
 import Images from '../components/Image.vue';
 import Tabbar from '../components/Tabbar.vue';
+import Skeleton from '../components/Skeleton.vue';
+import Uploader from '../components/Uploader.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -30,6 +32,9 @@ function createView(id) {
 Vue.use(VueRouter);
 const routers = {
   mode: 'history',
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
   routes: [
     {
       name: 'home',
@@ -150,6 +155,16 @@ const routers = {
       name: 'tabbar',
       path: '/tabbar',
       component: () => createView('Tabbar')(Tabbar),
+    },
+    {
+      name: 'skeleton',
+      path: '/skeleton',
+      component: () => createView('Skeleton')(Skeleton),
+    },
+    {
+      name: 'uploader',
+      path: '/uploader',
+      component: () => createView('Uploader')(Uploader),
     },
   ],
 };
