@@ -154,7 +154,9 @@ $dialog-title-padding: $padding-sm*2 $padding-sm 0 $padding-sm !default;
 $dialog-title-font-weight: 600 !default;
 $dialog-content-line-height: 22px !default;
 $dialog-content-font-size: $font-size-base !default;
-$dialog-content-padding-bottom: $padding-sm !default;
+$dialog-content-margin-top: $padding-sm !default;
+$dialog-content-margin-bottom: $padding-sm !default;
+$dialog-header-margin-bottom: $padding-sm !default;
 $dialog-form-margin-top: 10px !default;
 $dialog-input-border-radius: 2px !default;
 $dialog-input-padding: 4px !default;
@@ -274,3 +276,9 @@ $index-box-indexs-list-border-radius: 10px !default;
 $index-box-tip-size: 30px !default;
 $index-box-tip-top: 2px !default;
 $index-box-tip-left: -40px !default;
+
+//swipe-action
+$swipe-action-horizontal-padding: $cell-horizontal-padding !default;
+$swipe-action-vertical-padding: 0 !default;
+$swipe-action-background: $color-white !default;
+$swipe-action-extra-padding: 10px !default;

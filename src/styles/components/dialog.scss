@@ -22,11 +22,12 @@
 
 .omi-dialog__header {
   padding: $dialog-title-padding;
+  margin-bottom: $dialog-header-margin-bottom;
   font-weight: $dialog-title-font-weight;
 }
 .omi-dialog__body{
-  padding-top: $dialog-content-padding-bottom;
-  padding-bottom: $dialog-content-padding-bottom;
+  margin-top: $dialog-content-margin-top;
+  margin-bottom: $dialog-content-margin-bottom;
   .omi-input{
     padding: $dialog-input-padding;
     border: 1px solid $theme-border-color;

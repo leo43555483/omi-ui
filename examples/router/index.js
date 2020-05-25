@@ -27,6 +27,7 @@ import Skeleton from '../components/Skeleton.vue';
 import Uploader from '../components/Uploader.vue';
 import NavBar from '../components/NavBar.vue';
 import IndexBox from '../components/IndexBox.vue';
+import SwipeAction from '../components/SwipeAction.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -177,6 +178,11 @@ const routers = {
       name: 'indexbox',
       path: '/indexbox',
       component: () => createView('IndexBox')(IndexBox),
+    },
+    {
+      name: 'swipeaction',
+      path: '/swipeaction',
+      component: () => createView('SwipeAction')(SwipeAction),
     },
   ],
 };

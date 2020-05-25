@@ -36,6 +36,7 @@ import Skeleton from '../package/skeleton';
 import Uploader from '../package/uploader';
 import IndexBox from '../package/index-box';
 import IndexAnchor from '../package/index-anchor';
+import SwipeAction from '../package/swipe-action';
 
 const components = {
   Form,
@@ -75,6 +76,7 @@ const components = {
   NavBar,
   IndexBox,
   IndexAnchor,
+  SwipeAction,
 };
 
 const install = function (Vue) {

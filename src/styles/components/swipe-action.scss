@@ -1,0 +1,65 @@
+
+.omi-swipe-action__content {
+  display: flex;
+  position: relative;
+  width: 100%;
+  padding: $swipe-action-vertical-padding $swipe-action-horizontal-padding;
+  align-items: center;
+  background-color: $swipe-action-background;
+}
+
+.omi-swipe-action__moving .omi-swipe-action__transform {
+  transition: none;
+  will-change: transform;
+}
+
+.omi-swipe-action__transform {
+  transition: all .25s ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.omi-swipe-action__content .omi-swipe-action__item--extra {
+  flex-basis: 30%;
+  text-align: right;
+}
+
+.omi-swipe-action__item--extra,
+.omi-swipe-action__item--text {
+  padding-top:$swipe-action-extra-padding;
+  padding-bottom:$swipe-action-extra-padding;
+}
+
+.omi-swipe-action__content .omi-swipe-action__item--text {
+  flex: 1;
+  width: auto;
+  text-align: left;
+  overflow: hidden;
+}
+
+.omi-swipe-action__wrap {
+  position: relative;
+  overflow: hidden;
+  .omi-cell__inner{
+    padding: 0;
+    background-color: #fff;
+  }
+}
+
+.omi-swipe-action__actions {
+  position: absolute;
+  height: 100%;
+  display: flex;
+}
+
+.omi-swipe-action__left {
+  left: 0;
+}
+
+.omi-swipe-action__right {
+  right: 0;
+}
+
+.omi-swipe-action__no--event {
+  user-select: none;
+}
