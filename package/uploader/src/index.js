@@ -20,6 +20,7 @@ const DEFUALT_STATUS_ICON_SIZE = 42;
 const DEFAULT_CIRCLE_RADIUS = 25;
 const Uploader = () => ({
   name: 'OmiUploader',
+  inheritAttrs: false,
   model: {
     prop: 'fileList',
   },
@@ -156,6 +157,23 @@ const Uploader = () => ({
       this.$emit('delete', file);
     },
     getUploader() {
+      const CustomUploader = this.$slots.uploader;
+      if (CustomUploader) {
+        return (
+          <div class="omi-uploader__upload--custom">
+            {CustomUploader}
+            <input
+              ref="uploader"
+              class="omi-uploader__input"
+              type="file"
+              onChange={this.onChange}
+              accept={this.accept}
+              disabled={this.disabled}
+              {...{ attrs: this.$attrs }}
+            />
+        </div>
+        );
+      }
       return (
         <div class="omi-uploader__upload">
           <Icon type="add" size={ADD_DEFAULT_SIZE}/>
@@ -225,6 +243,14 @@ const Uploader = () => ({
       return this.fileList.map((file, index) => {
         const isImageFile = isImage(file);
         let Inner = null;
+        const CustomPreview = this.$scopedSlots.preview;
+        if (CustomPreview) {
+          return (
+            <div class="omi-upload__preview--custom">
+              {CustomPreview(file)}
+            </div>
+          );
+        }
         if (isImageFile) {
           Inner = (
             <div class="omi-uploader__image">
@@ -238,7 +264,7 @@ const Uploader = () => ({
         } else {
           Inner = (
             <div class="omi-uploader__file">
-              {<Icon type="document_fill" />}
+              {<Icon type="document" size={32}/>}
               <span>{file.name}</span>
             </div>
           );

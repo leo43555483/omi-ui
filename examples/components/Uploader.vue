@@ -17,6 +17,43 @@
         :onExceed="onExceed"
       ></omi-uploader>
     </div>
+    <div class="demo-item">
+      <p>自定义上传按钮</p>
+      <omi-uploader
+        v-model="fileList3"
+        :afterAdd="afterAdd"
+      >
+        <template #uploader>
+          <div class="demo-uploader__upload">
+            <omi-button>点击上传</omi-button>
+          </div>
+        </template>
+      </omi-uploader>
+    </div>
+    <div class="demo-item">
+      <p>自定义预览内容</p>
+      <omi-uploader
+        v-model="fileList4"
+        :afterAdd="afterAdd"
+        accept=".text,.doc"
+        multiple
+      >
+        <template #uploader>
+          <div class="demo-uploader__upload">
+            <omi-button>点击上传</omi-button>
+          </div>
+        </template>
+        <template #preview="{file, progress}">
+          <div class="demo-uploader__preview">
+            <div class="demo-upload__preview--file">
+              <omi-icon type="document" :size="14"></omi-icon>
+              <div class="demo-file__name">{{file.name}}</div>
+            </div>
+            <div class="demo-file__progress">{{progress}}%</div>
+          </div>
+        </template>
+      </omi-uploader>
+    </div>
   </div>
 </template>
 
@@ -27,6 +64,8 @@ export default {
     return {
       fileList: [],
       fileList2: [],
+      fileList3: [],
+      fileList4: [],
     };
   },
   methods: {
@@ -49,6 +88,30 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss">
+.omi-uploader__upload--custom{
+  position: relative;
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.omi-upload__preview--custom{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .demo-uploader__preview{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.demo-upload__preview--file{
+  display: flex;
+  align-items: center;
+}
+.demo-file__name, .demo-file__progress{
+  font-size: 12px;
+}
 </style>

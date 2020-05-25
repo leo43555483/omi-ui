@@ -8,10 +8,17 @@
   border-radius: $uploader-border-radius;
   overflow: hidden;
 }
-.omi-uploader__upload{
+.omi-uploader__file,
+.omi-uploader__upload {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.omi-uploader__file{
+  width: 100%;
+  height: 100%;
+}
+.omi-uploader__upload{
   .omi-add{
     color: $uploader-add-color;
   }
