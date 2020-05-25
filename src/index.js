@@ -1,4 +1,5 @@
 import Form from '../package/form';
+import NavBar from '../package/nav-bar';
 import FormItem from '../package/form-item';
 import Input from '../package/input';
 import Cell from '../package/cell';
@@ -33,6 +34,8 @@ import Tabbar from '../package/tab-bar';
 import TabbarItem from '../package/tab-bar-item';
 import Skeleton from '../package/skeleton';
 import Uploader from '../package/uploader';
+import IndexBox from '../package/index-box';
+import IndexAnchor from '../package/index-anchor';
 
 const components = {
   Form,
@@ -69,6 +72,9 @@ const components = {
   TabbarItem,
   Skeleton,
   Uploader,
+  NavBar,
+  IndexBox,
+  IndexAnchor,
 };
 
 const install = function (Vue) {

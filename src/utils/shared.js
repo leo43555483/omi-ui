@@ -136,4 +136,13 @@ export function clone(object) {
   return cloneObject(object);
 }
 
+export function getCharacter() {
+  const list = [];
+  const char = 'A'.charCodeAt();
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < 26; i++) {
+    list.push(String.fromCharCode(char + i));
+  }
+  return list;
+}
 export function noop() { }

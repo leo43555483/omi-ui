@@ -25,6 +25,8 @@ import Images from '../components/Image.vue';
 import Tabbar from '../components/Tabbar.vue';
 import Skeleton from '../components/Skeleton.vue';
 import Uploader from '../components/Uploader.vue';
+import NavBar from '../components/NavBar.vue';
+import IndexBox from '../components/IndexBox.vue';
 
 function createView(id) {
   return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
@@ -165,6 +167,16 @@ const routers = {
       name: 'uploader',
       path: '/uploader',
       component: () => createView('Uploader')(Uploader),
+    },
+    {
+      name: 'navbar',
+      path: '/navbar',
+      component: () => createView('NavBar')(NavBar),
+    },
+    {
+      name: 'indexbox',
+      path: '/indexbox',
+      component: () => createView('IndexBox')(IndexBox),
     },
   ],
 };

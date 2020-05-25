@@ -90,3 +90,12 @@ export function getBoundingClientRect(el) {
   }
   return rect;
 }
+
+export function getRootPageYOffset() {
+  return (
+    window.pageYOffset
+    || document.body.scrollTop
+    || document.documentElement.scrollTop
+    || 0
+  );
+}

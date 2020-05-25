@@ -1,0 +1,41 @@
+.omi-index-box__wrapper {
+  text-align: left;
+  background-color: $index-box-background;
+}
+
+.omi-index-box__list {
+  position: fixed;
+  display: flex;
+  right: $index-box-indexs-list-offset-right;
+  top: 50%;
+  flex-direction: column;
+  transform: translateY(-50%);
+  padding: 0;
+  z-index: 1;
+  align-items: center;
+  list-style: none;
+  font-size: $index-box-indexs-list-font-size;
+  background-color: $index-box-indexs-list-background;
+  border-radius: $index-box-indexs-list-border-radius;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.omi-index-box__tip {
+  position: absolute;
+  top: $index-box-tip-top;
+  left: $index-box-tip-left;
+  width: $index-box-tip-size;
+  height: $index-box-tip-size;
+  text-align: center;
+  line-height: $index-box-tip-size;
+  background-color: rgba(1, 1, 1, .2);
+  border-radius: 50%;
+}
+.omi-index-box__item{
+  width: 100%;
+  text-align: center;
+}
+.omi-index-box__touching {
+  user-select: none;
+}

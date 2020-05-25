@@ -3,6 +3,7 @@
   align-items: center;
   flex-basis: $nav-bar-left-basis;
   padding: 0 $padding-md;
+  color: $nav-bar-left-color;
 }
 .omi-nav-bar__middle{
   flex-basis: $nav-bar-middle-basis;
@@ -11,6 +12,8 @@
 .omi-nav-bar__right{
   flex-basis: $nav-bar-right-basis;
   padding: 0 $padding-md;
+  text-align: center;
+  color: $nav-bar-right-color;
 }
 .omi-nav-bar{
   display: flex;

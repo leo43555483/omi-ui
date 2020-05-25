@@ -32,6 +32,8 @@ $padding-xs: 10px !default;
 //nav-bar
 $nav-bar-line-height: 34px !default;
 $nav-bar-left-basis: 20% !default;
+$nav-bar-left-color: $color-blue1 !default;
+$nav-bar-right-color: $color-blue1 !default;
 $nav-bar-middle-basis: 60% !default;
 $nav-bar-right-basis:$nav-bar-left-basis !default;
 
@@ -261,4 +263,14 @@ $uploader-close-background: $color-white !default;
 $uploader-close-color: $color-grey2 !default;
 $uploader-preview-margin: 6px !default;
 $uploader-success-color: $color-success !default;
-$uploader-error-color: $color-white!default;
+$uploader-error-color: $color-white !default;
+
+//index-box
+$index-box-background: $color-white !default;
+$index-box-indexs-list-offset-right: 8px !default;
+$index-box-indexs-list-font-size: $font-size-sm !default;
+$index-box-indexs-list-background: rgba(1, 1, 1, .2) !default;
+$index-box-indexs-list-border-radius: 10px !default;
+$index-box-tip-size: 30px !default;
+$index-box-tip-top: 2px !default;
+$index-box-tip-left: -40px !default;
