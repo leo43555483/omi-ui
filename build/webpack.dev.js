@@ -1,7 +1,7 @@
 const merge = require('webpack-merge');
 const path = require('path');
 const webpack = require('webpack'); 
-const ProgressBarPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -40,7 +40,7 @@ module.exports = merge(webpackBase, {
 				process.env.NODE_ENV
 			),
 		}),
-    new ProgressBarPlugin(),
+    new MiniCssExtractPlugin(),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
