@@ -1,8 +1,5 @@
 <template>
-  <Cell
-    class="omi-swipe-action__wrap"
-    :class="{ 'omi-swipe-action__moving': isMoving }"
-  >
+  <Cell class="omi-swipe-action__wrap" :class="{ 'omi-swipe-action__moving': isMoving }">
     <template #content>
       <div
         v-if="showSlot('left')"
@@ -34,7 +31,7 @@
           <slot name="extra"></slot>
         </div>
         <slot name="arrow">
-          <Icon type="enter" v-if="showArrow"/>
+          <Icon type="enter" v-if="showArrow" />
         </slot>
       </div>
     </template>
@@ -135,7 +132,9 @@ export default {
       if (offsetY > offsetX && offsetY > MINI_DISTANCE) return true;
       return false;
     },
-    // @exposed-api
+    /**
+     * @vue2doc-exposed-api:close
+    */
     close() {
       this.restPosition(0);
     },
@@ -255,7 +254,7 @@ export default {
       const actionWith = this.clientWith[slideArea];
       // 判断是否超过操作按钮宽度,以及是否触及边缘
       if ((actionWith !== 0 && abs(distance) >= abs(actionWith))
-      || this.isOverBorder(slideArea, this.moveX)) {
+        || this.isOverBorder(slideArea, this.moveX)) {
         return true;
       }
       return false;

@@ -7,6 +7,7 @@
 </template>
 
 <script>
+// default max
 const DEFAULT_MAX = 99;
 export default {
   name: 'OmiBage',

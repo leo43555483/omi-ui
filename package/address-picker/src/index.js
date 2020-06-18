@@ -58,6 +58,7 @@ const AddressPicker = () => ({
       this.$emit('change', ...params);
     },
     formateData() {
+      if (!this.data) return;
       const provinceMap = {};
       const cityMap = {};
       const { provinceList, cityList, areaList } = this.data;
@@ -92,7 +93,11 @@ const AddressPicker = () => ({
       });
       this.address = provinces;
     },
-    // @exposed-api
+
+    /**
+     * @vue2doc-exposed-api:getValues
+     * @return {Array} values
+    */
     getValues() {
       return this.$refs.picker.getValues().map(({ label, value }) => ({ label, value }));
     },

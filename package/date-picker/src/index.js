@@ -9,15 +9,24 @@ const DatePicker = () => ({
     ...pickerProps,
   },
   methods: {
-    // @exposed-api
+    /**
+     * @vue2doc-exposed-api:getValues
+     * @return {Array} values
+    */
     getValues() {
       return this.$refs.picker.getPicker().getValues();
     },
-    // @exposed-api
+    /**
+     * @vue2doc-exposed-api:setValues
+     * @return {Array} values
+    */
     setValues(values = null, columIndex) {
       return this.$refs.picker.setActiveValue(values, columIndex);
     },
-    // @exposed-api
+    /**
+     * @vue2doc-exposed-api:isScrolling
+     * @return {Boolean} values
+    */
     isScrolling() {
       return this.$refs.picker.getPicker().isScrolling();
     },

@@ -2,10 +2,8 @@ module.exports = {
   entry: [
     {
       entry: './package',
+      ignore: ['mixins'],
     },
   ],
-  include: [],
-  exclide: [],
-  mime: ['js', 'vue', 'jsx'],
-  ext: 'md',
+  mime: ['js', 'vue'],
 };
