@@ -1,4 +1,3 @@
-
 import popMixin from '../../mixins/popup';
 import { isFunction } from '../../../src/utils/shared';
 import Loading from '../../loading';
@@ -78,7 +77,7 @@ const ActionSheet = () => ({
       if (!this.loading) return null;
       return (
         <div class="omi-action-sheet__loading omi-icon__wrapper">
-          <Loading spinner={this.spinner}/>
+          <Loading spinner={this.spinner} />
         </div>
       );
     },
@@ -104,7 +103,9 @@ const ActionSheet = () => ({
                   class={[...originClass, className, disableClass]}
                   style={this.contentStyles}
                   onClick={this.onSelect(item)}
-                >{content}</li>
+                >
+                  {content}
+                </li>
               );
             })}
           </ul>
@@ -129,10 +130,7 @@ const ActionSheet = () => ({
         title = (
           <div class="omi-action-sheet__title--wrapper" style={this.titleStyles}>
             <div class="omi-action-sheet__title">{this.title}</div>
-            {
-              this.subtitle
-              && <div class="omi-action-sheet__subtitle">{this.subtitle}</div>
-            }
+            {this.subtitle && <div class="omi-action-sheet__subtitle">{this.subtitle}</div>}
           </div>
         );
       }
@@ -159,7 +157,7 @@ const ActionSheet = () => ({
   },
   computed: {
     shouldRenderHeader() {
-      return this.$slots.header || this.title || this.subtitle;
+      return this.$slots.header || this.title || this.subtitle || this.$slots['left-icon'];
     },
     contentStyles() {
       return this.getTextALign(this.contentAlign);
@@ -183,31 +181,24 @@ const ActionSheet = () => ({
   render() {
     if (!this.shouldRender) return null;
     return (
-      <transition
-        name="slide-in-bottom"
-        onAfterEnter={this.onOpen}
-        onAfterLeave={this.onclose}
-      >
+      <transition name="slide-in-bottom" onAfterEnter={this.onOpen} onAfterLeave={this.onclose}>
         <div class={this.wapperClasses} style={this.actionStyles}>
-          {
-            this.shouldRenderHeader
-            && <div class="omi-action-sheet__header">
-              {
-                this.$slots['left-icon'] && <div class="omi-action-sheet__header--icon">
-                  {this.$slots['left-icon']}
-                </div>
-              }
+          {this.shouldRenderHeader && (
+            <div class="omi-action-sheet__header">
+              {this.$slots['left-icon'] && (
+                <div class="omi-action-sheet__header--icon">{this.$slots['left-icon']}</div>
+              )}
               {this.getHeader()}
               {this.getCloseIcon()}
             </div>
-          }
+          )}
           <div class="omi-action-sheet__content">
             {this.getLoadingContent()}
             {this.getContent()}
             {this.getCloseButton()}
           </div>
         </div>
-      </transition >
+      </transition>
     );
   },
 });

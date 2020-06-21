@@ -57,6 +57,10 @@ export default function createMixin({
         if (this.isDisabled) return;
         this.check();
       },
+      /**
+       * @vue2doc-exposed-api:check
+       * @param {Boolean}
+       */
       check(isChecked = !this.isChecked) {
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
@@ -164,7 +168,9 @@ export default function createMixin({
           <div class={this.inputClasses} style={this.inputStyles}>
             {this.getCheckIcon()}
           </div>
-          <div class={`${classPrefix}__text`}>{this.getSlots('default') || (text && <span>{text}</span>)}</div>
+          <div class={`${classPrefix}__text`}>
+            {this.getSlots('default') || (text && <span>{text}</span>)}
+          </div>
         </div>
       );
     },

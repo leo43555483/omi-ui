@@ -1,17 +1,17 @@
-.omi-tabbar-item{
+.omi-tabbar-item {
   flex: 1;
   text-align: center;
-  .omi-cell__inner{
+  .omi-cell__inner {
     padding: $tabbar-item-vertical-padding 0;
     align-items: center;
     flex-direction: column;
-    .omi-bage__dot{
+    .omi-badge__dot {
       top: $tabbar-dot-top;
       right: $tabbar-dot-right;
     }
-    .omi-bage__text{
-      top: $tabbar-bage-top;
-      left: $tabbar-bage-left;
+    .omi-badge__text {
+      top: $tabbar-badge-top;
+      left: $tabbar-badge-left;
     }
   }
 }
@@ -19,14 +19,14 @@
 .omi-tabbar-item__text {
   line-height: 1;
 }
-.omi-tabbar-item__icon{
+.omi-tabbar-item__icon {
   margin-bottom: $tabbar-item-icon-margin-bottom;
 }
-.omi-tabbar-item__text{
+.omi-tabbar-item__text {
   font-size: $tabbar-item-text-size;
 }
-.omi-tabbar-item__active{
-  .omi-cell__inner{
+.omi-tabbar-item__active {
+  .omi-cell__inner {
     color: $tabbar-item-active-color;
   }
 }

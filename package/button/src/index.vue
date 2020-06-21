@@ -19,7 +19,14 @@ import Loading from '../../loading';
 import { oneOf, createClassMap } from '../../../src/utils/shared';
 
 const BUTTON_SIZE = ['large', 'normal', 'small', 'mini'];
-const BUTTON_TYPE = ['default', 'primary', 'danger', 'info', 'warning', 'success'];
+const BUTTON_TYPE = [
+  'default',
+  'primary',
+  'danger',
+  'info',
+  'warning',
+  'success',
+];
 const BUTTON_NATIVE_TYPE = ['submit', 'button', 'reset'];
 const BUTTON_SHAPE = ['square', 'round'];
 export default {
@@ -87,7 +94,12 @@ export default {
     },
     buttonClass() {
       const {
-        type, size, typeClassesMap, sizeClassesMap, shapeClassesMap, block,
+        type,
+        size,
+        typeClassesMap,
+        sizeClassesMap,
+        shapeClassesMap,
+        block,
       } = this;
       const [square, round] = BUTTON_SHAPE;
       const shape = this.round ? round : square;
@@ -101,6 +113,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>

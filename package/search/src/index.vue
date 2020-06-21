@@ -2,20 +2,17 @@
   <div class="omi-search omi-search__wrapper">
     <div class="omi-search__inner" :class="innerClasses">
       <div class="omi-search__input--wrapper">
-        <div
-          class="omi-search__placeholder"
-          :style="placeholderStyles"
-        >
-        <div class="omi-search__placeholder--wrapper" ref="placeholder">
-          <div class="omi-search__search--icon">
-            <slot name="search-icon">
-              <Icon type="search"/>
-            </slot>
+        <div class="omi-search__placeholder" :style="placeholderStyles">
+          <div class="omi-search__placeholder--wrapper" ref="placeholder">
+            <div class="omi-search__search--icon">
+              <slot name="search-icon">
+                <Icon type="search" />
+              </slot>
+            </div>
+            <div class="omi-search__placeholder--text" :style="placeholderTextStyle">
+              <span>{{placeholder}}</span>
+            </div>
           </div>
-          <div class="omi-search__placeholder--text" :style="placeholderTextStyle">
-            <span>{{placeholder}}</span>
-          </div>
-        </div>
         </div>
         <div class="omi-search__content">
           <input
@@ -31,7 +28,7 @@
         <div class="omi-search__clear" v-show="showClear" @click="onClear">
           <div class="omi-search__clear--btn">
             <slot name="clear-icon">
-              <Icon type="close" :size="13"/>
+              <Icon type="close" :size="13" />
             </slot>
           </div>
         </div>
@@ -106,9 +103,13 @@ export default {
         if (this.showCancel) {
           const { offsetWidth } = this.$el;
           const { placeholder } = this.$refs;
-          const cancelWidth = this.cancelWidth ? this.cancelWidth : this.getCancelWidth();
+          const cancelWidth = this.cancelWidth
+            ? this.cancelWidth
+            : this.getCancelWidth();
           const { floor } = Math;
-          offset = -floor((offsetWidth / 2) - (placeholder.offsetWidth / 2) - (cancelWidth / 2));
+          offset = -floor(
+            offsetWidth / 2 - placeholder.offsetWidth / 2 - cancelWidth / 2
+          );
         }
         this.placeholderStyles = {
           transform: `translate3d(${offset}px,0,0)`,
@@ -120,7 +121,7 @@ export default {
     },
     onCancel() {
       this.$emit('input', '');
-      this.$emit('cabcel');
+      this.$emit('cancel');
       this.$refs.input.blur();
     },
     onClear() {
@@ -198,9 +199,7 @@ export default {
       };
     },
   },
-  beforeMount() {
-
-  },
+  beforeMount() {},
   mounted() {
     this.setCancelStyle();
   },

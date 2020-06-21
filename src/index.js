@@ -22,7 +22,7 @@ import LoadMore from '../package/load-more';
 import PullRefresh from '../package/pull-refresh';
 import Tabs from '../package/tabs';
 import TabsPane from '../package/tabs-pane';
-import Bage from '../package/bage';
+import Badge from '../package/badge';
 import Picker from '../package/picker';
 import AddressPicker from '../package/address-picker';
 import DatePicker from '../package/date-picker';
@@ -61,7 +61,7 @@ const components = {
   PullRefresh,
   Tabs,
   TabsPane,
-  Bage,
+  Badge,
   Picker,
   AddressPicker,
   DatePicker,

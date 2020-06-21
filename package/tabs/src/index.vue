@@ -1,5 +1,5 @@
 <template>
-  <div class="omi-tabs ">
+  <div class="omi-tabs">
     <div class="omi-tabs__bar omi-border__bottom">
       <div class="omi-tabs__bar--list" ref="bar" role="tablist">
         <div
@@ -12,18 +12,14 @@
           :style="labelStyle"
           @click="() => onClick(item)"
         >
-          <bage
-            :dot="item.dot"
-            :text="item.bageText"
-            :maxNumber="item.bageMaxNumber"
-          >
+          <badge :dot="item.dot" :text="item.badgeText" :maxNumber="item.badgeMaxNumber">
             <span>{{item.label}}</span>
-          </bage>
+          </badge>
         </div>
         <div class="omi-tabs__bar--line" :class="lineClass" :style="lineStyle"></div>
       </div>
     </div>
-    <div class="omi-tabs__list" >
+    <div class="omi-tabs__list">
       <div ref="pane" class="omi-tabs__list--inner" :class="animatedClass" :style="paneStyles">
         <slot />
       </div>
@@ -32,7 +28,7 @@
 </template>
 
 <script>
-import Bage from '../../bage';
+import Badge from '../../badge';
 import touchMixin from '../../mixins/touch';
 import panelMixin from '../../mixins/panel';
 import providerMixin from '../../mixins/provider';
@@ -56,7 +52,7 @@ export default {
       inited: false,
     };
   },
-  components: { Bage },
+  components: { Badge },
   props: {
     titleScrollDuration: {
       type: Number,
@@ -129,7 +125,7 @@ export default {
       };
     },
     getActive() {
-      const [child] = this.children.filter((item) => item.tabName === this.value);
+      const [child] = this.children.filter(item => item.tabName === this.value);
       return this.getActiveChildInfo(child);
     },
     show(animated, cb = () => {}) {

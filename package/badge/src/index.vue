@@ -1,7 +1,7 @@
 <template>
-  <div class="omi-bage">
-    <sup v-if="dot" class="omi-bage__dot"></sup>
-    <sup v-else-if="text" class="omi-bage__text">{{text | overFlow}}</sup>
+  <div class="omi-badge">
+    <sup v-if="dot" class="omi-badge__dot"></sup>
+    <sup v-else-if="text" class="omi-badge__text">{{text | overFlow}}</sup>
     <slot />
   </div>
 </template>
@@ -10,7 +10,7 @@
 // default max
 const DEFAULT_MAX = 99;
 export default {
-  name: 'OmiBage',
+  name: 'OmiBadge',
   props: {
     text: {
       type: [String, Number],

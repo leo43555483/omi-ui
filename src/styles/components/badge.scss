@@ -1,0 +1,30 @@
+.omi-badge {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+.omi-badge__dot {
+  position: absolute;
+  right: $badge-dot-right;
+  height: $badge-dot-size;
+  width: $badge-dot-size;
+  top: $badge-dot-top;
+  background-color: $badge-dot-background;
+  border-radius: 100%;
+}
+.omi-badge__text {
+  position: absolute;
+  top: $badge-text-top;
+  left: 100%;
+  height: $badge-text-height;
+  padding: 0 $badge-text-horizontal-padding;
+  text-align: center;
+  border-radius: $badge-text-border-radius;
+  white-space: nowrap;
+  line-height: $badge-text-height;
+  z-index: 4;
+  font-size: $badge-text-font-size;
+  color: $badge-text-color;
+  background-color: $badge-text-background;
+}

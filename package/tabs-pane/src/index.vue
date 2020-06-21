@@ -15,11 +15,11 @@ export default {
       type: Boolean,
       default: false,
     },
-    bageText: {
+    badgeText: {
       type: [String, Number],
       default: '',
     },
-    bageMaxNumber: {
+    badgeMaxNumber: {
       type: Number,
       default: null,
     },

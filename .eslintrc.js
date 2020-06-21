@@ -3,15 +3,13 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: [
-    'plugin:vue/essential',
-    'airbnb-base',
-  ],
+  extends: ['plugin:vue/essential', 'airbnb-base'],
   parserOptions: {
     parser: 'babel-eslint',
   },
+  plugins: ['prettier'],
   rules: {
-    'no-param-reassign': ["error", { "props": false }],
+    'no-param-reassign': ['error', { props: false }],
     'no-restricted-syntax': 0,
     'import/export': 0,
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -19,10 +17,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: [
-        '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.spec.{j,t}s?(x)',
-      ],
+      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
       env: {
         jest: true,
       },

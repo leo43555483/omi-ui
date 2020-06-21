@@ -35,7 +35,7 @@ $nav-bar-left-basis: 20% !default;
 $nav-bar-left-color: $color-blue1 !default;
 $nav-bar-right-color: $color-blue1 !default;
 $nav-bar-middle-basis: 60% !default;
-$nav-bar-right-basis:$nav-bar-left-basis !default;
+$nav-bar-right-basis: $nav-bar-left-basis !default;
 
 //form-item
 $form-item-title-width: 80px !default;
@@ -73,7 +73,7 @@ $button-info: $color-blue2 !default;
 $button-info-color: $color-white !default;
 //button size
 $button-normal-height: 40px !default;
-$button-normal-padding:$padding-md !default;
+$button-normal-padding: $padding-md !default;
 $button-small-height: 30px !default;
 $button-small-padding: $button-normal-padding - 4 !default;
 $button-mini-height: 20px !default;
@@ -88,7 +88,7 @@ $loading-duration: 1s !default;
 
 //checkbox
 $checkbox-input-size: 18px !default;
-$checkbox-border-color:$theme-border-color !default;
+$checkbox-border-color: $theme-border-color !default;
 $checkbox-checked-background: $color-blue1 !default;
 $checkbox-checked-color: $color-white !default;
 $checkbox-vertical-padding: $padding-xs - 2 !default;
@@ -103,8 +103,8 @@ $switch-size: 24px !default;
 $switch-border-size: 1px !default;
 $switch-border-color: transparent !default;
 $switch-node-border-color: rgba(210, 210, 210, 0.3) !default;
-$switch-empty-color: rgba(221, 221, 221, .8) !default;
-$switch-node-color:$color-white !default;
+$switch-empty-color: rgba(221, 221, 221, 0.8) !default;
+$switch-node-color: $color-white !default;
 $switch-active-background: $color-success !default;
 
 $toast-width: 60px !default;
@@ -121,10 +121,10 @@ $collapse-item-content-padding: $cell-horizontal-padding !default;
 $collapse-item-content-background: $color-white !default;
 $collapse-content-color: $color-grey2 !default;
 $collapse-content-font-size: $font-size-base !default;
-$collapse-item-disable-color:$color-disable !default;
+$collapse-item-disable-color: $color-disable !default;
 
 //overlay
-$overlay-background: rgba(0, 0, 0, .5) !default;
+$overlay-background: rgba(0, 0, 0, 0.5) !default;
 
 //action-sheet
 $action-sheet-max-height: 50% !default;
@@ -137,7 +137,7 @@ $action-sheet-header-horizontal-pading: $action-sheet-item-horizontal-padding !d
 $action-sheet-item-line-height: 50px !default;
 $action-sheet-cancel-wrapper-padding-top: 5px !default;
 $action-sheet-cancel-wrapper-background: $color-grey1 !default;
-$action-sheet-loading-height: $action-sheet-item-line-height*2 !default;
+$action-sheet-loading-height: $action-sheet-item-line-height * 2 !default;
 $action-sheet-round-radius: 10px 10px 0 0 !default;
 $aciont-sheet-subtitle-font-size: $font-size-base !default;
 $aciont-sheet-subtitle-color: $color-grey2 !default;
@@ -150,7 +150,7 @@ $aciont-sheet-close-weight: 600 !default;
 $dialog-background: $color-white !default;
 $dialog-border-radius: 10px !default;
 $dialog-width: 260px !default;
-$dialog-title-padding: $padding-sm*2 $padding-sm 0 $padding-sm !default;
+$dialog-title-padding: $padding-sm * 2 $padding-sm 0 $padding-sm !default;
 $dialog-title-font-weight: 600 !default;
 $dialog-content-line-height: 22px !default;
 $dialog-content-font-size: $font-size-base !default;
@@ -162,8 +162,8 @@ $dialog-input-border-radius: 2px !default;
 $dialog-input-padding: 4px !default;
 
 //load-more
-$load-more-wrapper-vertical-padding:10px !default;
-$load-more-icon-size:10px !default;
+$load-more-wrapper-vertical-padding: 10px !default;
+$load-more-icon-size: 10px !default;
 $load-more-text-font-size: $font-size-base !default;
 $load-more-text-color: $color-grey4 !default;
 
@@ -174,22 +174,27 @@ $tab-bar-line-height: 3px !default;
 $tab-bar-line-radius: 2px !default;
 $tab-bar-line-background: $color-blue1 !default;
 $tab-bar-background: $color-white !default;
-$tab-list-transition-duration: .35s !default;
-$tab-list-transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96) !default;
+$tab-list-transition-duration: 0.35s !default;
+$tab-list-transition-timing-function: cubic-bezier(
+  0.46,
+  0.03,
+  0.52,
+  0.96
+) !default;
 
-// bage
-$bage-dot-right: -8px !default;
+// badge
+$badge-dot-right: -8px !default;
 
-$bage-dot-size: 6px !default;
-$bage-dot-top: -6px !default;
-$bage-dot-background: $color-red !default;
-$bage-text-background: $color-red !default;
-$bage-text-height: 16px !default;
-$bage-text-top: -10px!default; 
-$bage-text-color: $color-white !default;
-$bage-text-font-size: $font-size-sm !default;
-$bage-text-border-radius: 10px !default;
-$bage-text-horizontal-padding: 4px !default;
+$badge-dot-size: 6px !default;
+$badge-dot-top: -6px !default;
+$badge-dot-background: $color-red !default;
+$badge-text-background: $color-red !default;
+$badge-text-height: 16px !default;
+$badge-text-top: -10px !default;
+$badge-text-color: $color-white !default;
+$badge-text-font-size: $font-size-sm !default;
+$badge-text-border-radius: 10px !default;
+$badge-text-horizontal-padding: 4px !default;
 
 //picker
 $picker-colum-background: $color-white !default;
@@ -202,7 +207,7 @@ $picker-colum-timing-function: cubic-bezier(0.22, 0.93, 0.36, 1.01) !default;
 
 //search
 $search-content-vertical-padding: 4px !default;
-$search-height: $input-line-height + 2 +$search-content-vertical-padding *2 !default;
+$search-height: $input-line-height + 2 + $search-content-vertical-padding * 2 !default;
 $search-placeholder-warpper-background: $color-white !default;
 $search-placeholder-warpper-padding-left: 4px !default;
 $search-border-radius: 3px !default;
@@ -212,7 +217,7 @@ $search-cancel-padding-left: 8px !default;
 $search-placeholder-color: $color-grey3 !default;
 $search-cancel-color: $color-blue1 !default;
 $search-clear-size: 16px !default;
-$search-clear-background: rgba(150, 151, 153, .5) !default;
+$search-clear-background: rgba(150, 151, 153, 0.5) !default;
 $search-clear-color: $color-white !default;
 $search-clear-horizontal-margin: 4px !default;
 $search-clear-button-line-height: 13px !default;
@@ -240,8 +245,8 @@ $tabbar-item-vertical-padding: 6px !default;
 $tabbar-item-active-color: $color-blue1 !default;
 $tabbar-dot-top: 0 !default;
 $tabbar-dot-right: 0 !default;
-$tabbar-bage-top: -3px !default;
-$tabbar-bage-left: 70% !default;
+$tabbar-badge-top: -3px !default;
+$tabbar-badge-left: 70% !default;
 
 //skeleton
 $skeleton-background: #f2f3f5 !default;
@@ -250,7 +255,12 @@ $skeleton-avatar-margin-right: 16px !default;
 $skeleton-height: 16px !default;
 $skeleton-button-margin-top: 16px !default;
 $skeleton-border-radius: 24px !default;
-$skeleton-animate-item-background: linear-gradient(90deg, $skeleton-background 15%, $skeleton-to-background 35%, $skeleton-background 70%) !default;
+$skeleton-animate-item-background: linear-gradient(
+  90deg,
+  $skeleton-background 15%,
+  $skeleton-to-background 35%,
+  $skeleton-background 70%
+) !default;
 $skeleton-animate-duration: 2s !default;
 
 //uploader
@@ -271,7 +281,7 @@ $uploader-error-color: $color-white !default;
 $index-box-background: $color-white !default;
 $index-box-indexs-list-offset-right: 8px !default;
 $index-box-indexs-list-font-size: $font-size-sm !default;
-$index-box-indexs-list-background: rgba(1, 1, 1, .2) !default;
+$index-box-indexs-list-background: rgba(1, 1, 1, 0.2) !default;
 $index-box-indexs-list-border-radius: 10px !default;
 $index-box-tip-size: 30px !default;
 $index-box-tip-top: 2px !default;

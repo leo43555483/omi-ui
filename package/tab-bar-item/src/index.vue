@@ -1,24 +1,16 @@
 <template>
-  <div class="omi-tabbar-item"
-    :class="activeItemClass"
-    @click="onClick"
-    :style="itemStyles"
-  >
+  <div class="omi-tabbar-item" :class="activeItemClass" @click="onClick" :style="itemStyles">
     <RouteButton v-bind="$attrs">
-      <bage
-        :dot="dot"
-        :text="dotText"
-        :maxNumber="dotMaxNumber"
-      >
+      <badge :dot="dot" :text="dotText" :maxNumber="dotMaxNumber">
         <slot name="icon">
           <div class="omi-tabbar-item__icon" v-if="iconType">
-            <Icon :type="iconType" :size="getIconSize"/>
+            <Icon :type="iconType" :size="getIconSize" />
           </div>
         </slot>
         <div class="omi-tabbar-item__text">
           <slot />
         </div>
-      </bage>
+      </badge>
     </RouteButton>
   </div>
 </template>
@@ -27,7 +19,7 @@
 import injectMixin from '../../mixins/inject';
 import RouteButton from '../../../src/utils/RouteButton';
 import Icon from '../../icon';
-import Bage from '../../bage';
+import Badge from '../../badge';
 import { unDef } from '../../../src/utils/shared';
 
 export default {
@@ -35,7 +27,9 @@ export default {
   mixins: [injectMixin('omiTabbar')],
   inheritAttrs: false,
   components: {
-    RouteButton, Icon, Bage,
+    RouteButton,
+    Icon,
+    Badge,
   },
   methods: {
     onClick() {
