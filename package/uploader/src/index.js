@@ -86,7 +86,8 @@ const Uploader = () => ({
       this.$refs.uploader.value = '';
     },
     onChange(e) {
-      const { files } = e.target;
+      const files = [].slice.call(e.target.files);
+      // const { files } = e.target;
       if (this.disabled || !files.length) return;
       if (this.fileList.length >= this.max) {
         this.onExceed();
@@ -106,7 +107,7 @@ const Uploader = () => ({
       this.parseFiles(files);
     },
     parseFiles(files) {
-      let fileList = [];
+      let fileList = files;
       if (!isArray(files)) {
         fileList = [].slice.call(files);
       }

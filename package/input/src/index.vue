@@ -14,12 +14,21 @@
 <script>
 import { oneOf } from '../../../src/utils/shared';
 import filedMixin from '../../mixins/field';
-import inpuMixin from '../../mixins/input';
+import inputMixin from '../../mixins/input';
 
-const INPUT_TYPE = ['text', 'password', 'url', 'email', 'date', 'number', 'tel', 'search'];
+const INPUT_TYPE = [
+  'text',
+  'password',
+  'url',
+  'email',
+  'date',
+  'number',
+  'tel',
+  'search',
+];
 export default {
   name: 'OmiInput',
-  mixins: [filedMixin, inpuMixin],
+  mixins: [filedMixin, inputMixin],
   inheritAttrs: false,
   data() {
     return {

@@ -44,7 +44,7 @@ Vue.use(NavBar);
 | right         | String  | -       | 左侧文本.              |
 | left          | String  | -       | 右侧文本.              |
 
-## Event
+## Events
 
 | name       | params | description         |
 | ---------- | ------ | ------------------- |

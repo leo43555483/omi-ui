@@ -23,7 +23,6 @@ const pcikerRender = () => ({
     },
   },
   methods: {
-    // @exposed-api
     getPicker() {
       return this.$refs.datePicker;
     },

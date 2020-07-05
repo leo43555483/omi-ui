@@ -23,7 +23,7 @@ Vue.use(CheckboxGroup);
 | value       | Array         |         | 选中的值.                |
 | activeColor | String        | -       | checkbox 被选中时的颜色. |
 
-## Event
+## Events
 
 | name   | params | description |
 | ------ | ------ | ----------- |

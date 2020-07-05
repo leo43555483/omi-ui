@@ -1,7 +1,7 @@
 <template>
   <div class="omi-load-more" v-scroll:[immediate]="onScroll">
     <div class="omi-list">
-      <slot/>
+      <slot />
     </div>
     <div class="omi-list__footer" ref="footer">
       <slot name="load-more">
@@ -12,7 +12,7 @@
           <span class="omi-list__load--text">{{errorText}}</span>
         </div>
         <div class="omi-list__footer--status omi-list__loading" v-show="showLoading">
-          <Loading :size="loadingSize"/>
+          <Loading :size="loadingSize" />
           <span class="omi-list__load--text">{{loadingText}}</span>
         </div>
       </slot>
@@ -105,7 +105,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-</style>

@@ -8,6 +8,15 @@
       ></omi-uploader>
     </div>
     <div class="demo-item">
+      <p>限制上传文件尺寸</p>
+      <omi-uploader
+        v-model="fileList5"
+        :afterAdd="afterAdd"
+        :beforeAdd="beforeAdd"
+        multiple
+      ></omi-uploader>
+    </div>
+    <div class="demo-item">
       <p>限制上传数量</p>
       <omi-uploader
         v-model="fileList2"
@@ -66,9 +75,20 @@ export default {
       fileList2: [],
       fileList3: [],
       fileList4: [],
+      fileList5:[],
     };
   },
   methods: {
+    beforeAdd(files) {
+      const isLg2M = files.some(file => {
+        return file.size/(1024*1024*2) > 1;
+      })
+      if(isLg2M) {
+        this.$toast('上传图片不能超过2M');
+        return false;
+      }
+      return true;
+    },
     onExceed() {
       this.$toast('最多上传3张照片');
     },

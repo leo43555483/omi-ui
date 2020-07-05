@@ -42,7 +42,7 @@ Vue.use(Collapse);
 | value     | Array   |         | 当前已经打开的 name 值. |
 | accordion | Boolean | false   | 手风琴模式.             |
 
-## Event
+## Events
 
 | name  | params | description |
 | ----- | ------ | ----------- |

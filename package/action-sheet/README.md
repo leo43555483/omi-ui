@@ -101,7 +101,7 @@ Vue.use(ActionSheet);
 }
 ```
 
-## Event
+## Events
 
 | name   | params         | description                  |
 | ------ | -------------- | ---------------------------- |

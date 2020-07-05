@@ -174,7 +174,11 @@ const Picker = () => ({
         this.colums.splice(columIndex, 1, columNode);
       });
     },
-    // @exposed-api
+    /**
+     * @vue2doc-exposed-api:updateColum
+     * @param {Array} colum
+     * @param {Number} columIndex
+    */
     updateColum(colum, columIndex = 0) {
       if (!isArray(colum)) {
         throw new Error('[omi]:colum should be an array');
@@ -185,11 +189,18 @@ const Picker = () => ({
         if (this.cascade) this.updateCascade(columIndex);
       });
     },
-    // @exposed-api
+    /**
+     * @vue2doc-exposed-api:getValues
+     * @return {Array} values
+    */
     getValues() {
       return this.children.map((child) => child.getActiveValue());
     },
-    // @exposed-api
+    /**
+     * @vue2doc-exposed-api:setValues
+     * @param {Array|Any} values
+     * @param {Number} columIndex
+    */
     setValues(values, columIndex) {
       this.$nextTick(() => {
         const { children } = this;
@@ -207,7 +218,10 @@ const Picker = () => ({
         }
       });
     },
-    // @exposed-api
+    /**
+     * @vue2doc-exposed-api:isScrolling
+     * @return {Boolean}
+    */
     isScrolling() {
       return this.isMoving;
     },

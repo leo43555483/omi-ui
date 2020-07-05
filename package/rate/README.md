@@ -49,7 +49,7 @@ Vue.use(Rate);
 | readonly  | Boolean | false   | 是否只读.     |
 | halfRate  | Boolean | false   | 是否可选半星. |
 
-## Event
+## Events
 
 | name   | params | description |
 | ------ | ------ | ----------- |

@@ -1,4 +1,4 @@
-## Event
+## Events
 
 | name         | params | description |
 | ------------ | ------ | ----------- |

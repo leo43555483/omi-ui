@@ -90,7 +90,7 @@ Vue.use(Checkbox);
 | ----- | ------- | ------ | ------------- |
 | check | Boolean | -      | 是否选中当前. |
 
-## Event
+## Events
 
 | name   | params  | description |
 | ------ | ------- | ----------- |

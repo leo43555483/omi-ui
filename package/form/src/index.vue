@@ -60,11 +60,17 @@ export default {
     onValidate(error, name) {
       this.$emit('validate', error, name);
     },
+    /**
+     * @vue2doc-exposed-api:resetValidate
+     */
     resetValidate() {
-      this.fields.forEach((field) => field.resetValidate());
+      this.fields.forEach(field => field.resetValidate());
     },
+    /**
+     * @vue2doc-exposed-api:validateField
+     */
     validateField(name) {
-      const [target] = this.fields.filter((field) => field.name === name);
+      const [target] = this.fields.filter(field => field.name === name);
       if (target) {
         return target.validate(null);
       }
@@ -76,36 +82,41 @@ export default {
     validateRace(callback) {
       const { fields } = this;
       const errors = [];
-      return fields.reduce((promise, field) => promise.then(() => {
-        if (!errors.length) {
-          return field.validate().then((error) => {
-            if (error) {
-              errors.push(error);
-              if (this.scrollToError) this.scrollToView(field.$el);
-            }
-          });
-        }
-        return Promise.resolve();
-      }),
-      Promise.resolve()).then(() => {
-        let error = null;
-        if (errors.length) {
-          [error] = errors;
-        }
-        if (isFunction(callback)) callback(error);
-        return error;
-      });
+      return fields
+        .reduce(
+          (promise, field) =>
+            promise.then(() => {
+              if (!errors.length) {
+                return field.validate().then(error => {
+                  if (error) {
+                    errors.push(error);
+                    if (this.scrollToError) this.scrollToView(field.$el);
+                  }
+                });
+              }
+              return Promise.resolve();
+            }),
+          Promise.resolve()
+        )
+        .then(() => {
+          let error = null;
+          if (errors.length) {
+            [error] = errors;
+          }
+          if (isFunction(callback)) callback(error);
+          return error;
+        });
     },
     validateAll(callback) {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         const { fields } = this;
         let errors = null;
-        const validators = fields.map((field) => field.validate());
-        Promise.all(validators).then((error) => {
-          errors = error.filter((item) => item);
+        const validators = fields.map(field => field.validate());
+        Promise.all(validators).then(error => {
+          errors = error.filter(item => item);
           if (this.scrollToError) {
             const { name } = errors[0];
-            const [scorllField] = fields.filter((field) => field.name === name);
+            const [scorllField] = fields.filter(field => field.name === name);
             this.scrollToView(scorllField.$el);
           }
 
@@ -117,7 +128,9 @@ export default {
     },
     validate(callback) {
       const { firstValidate } = this;
-      return firstValidate ? this.validateRace(callback) : this.validateAll(callback);
+      return firstValidate
+        ? this.validateRace(callback)
+        : this.validateAll(callback);
     },
   },
 };

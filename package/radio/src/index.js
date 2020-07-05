@@ -1,7 +1,7 @@
 
 import createCheckMixin from '../../mixins/check';
 
-const CheckBox = () => ({
+const Radio = () => ({
   name: 'OmiRadio',
   mixins: [createCheckMixin({
     type: 'radio',
@@ -11,4 +11,4 @@ const CheckBox = () => ({
   })],
 });
 
-export default CheckBox();
+export default Radio();

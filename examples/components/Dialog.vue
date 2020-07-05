@@ -3,7 +3,7 @@
     <div class="demo-item">
       <omi-button block @click="onClick">基本用法</omi-button>
       <omi-button block @click="onClick1">异步确认</omi-button>
-      <omi-button block @click="onClick3">promt</omi-button>
+      <omi-button block @click="onClick3">prompt</omi-button>
     </div>
   </div>
 </template>

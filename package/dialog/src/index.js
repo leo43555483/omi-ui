@@ -2,9 +2,7 @@ import Vue from 'vue';
 import VueDialog from './Dialog';
 import createInstance from '../../../src/utils/createInstance';
 import dialogType from './dialog-type';
-import {
-  isFunction, isPromise, isString, isObject,
-} from '../../../src/utils/shared';
+import { isString, isObject } from '../../../src/utils/shared';
 
 const isServer = () => Vue.prototype.$isServer;
 const [alert] = dialogType;

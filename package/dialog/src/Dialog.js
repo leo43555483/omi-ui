@@ -3,7 +3,8 @@ import Button from '../../button';
 import Form from '../../form';
 import FormItem from '../../form-item';
 import Input from '../../input';
-import { isPromise } from '../../../src/utils/shared';
+import { isPromise, oneOf } from '../../../src/utils/shared';
+import dialogType from './dialog-type';
 
 const Dialog = () => ({
   name: 'OmiDialog',
@@ -19,6 +20,9 @@ const Dialog = () => ({
     type: {
       type: String,
       defualt: 'alert',
+      validator(value) {
+        return oneOf(value, dialogType);
+      },
     },
     clickClose: {
       type: Boolean,

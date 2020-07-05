@@ -45,7 +45,7 @@ Vue.use(Search);
 | placeholder | String  |         | input 占位符.     |
 | fixedCancel | Boolean | false   | 是否固定取消按钮. |
 
-## Event
+## Events
 
 | name   | params | description         |
 | ------ | ------ | ------------------- |

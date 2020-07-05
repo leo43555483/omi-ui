@@ -67,7 +67,7 @@ Click [here](https://github.com/leo43555483/omi-ui/blob/dev/examples/data/addres
 | --------- | ------ | ------ | ----------- |
 | getValues |        | Array  |             |
 
-## Event
+## Events
 
 | name   | params        | description |
 | ------ | ------------- | ----------- |

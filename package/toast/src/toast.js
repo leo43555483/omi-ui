@@ -3,7 +3,8 @@ import toastType from './toast-type';
 import Icon from '../../icon';
 import Loading from '../../loading';
 
-const TOAS_ZINDEX_BASE = 2000;
+const TOAST_ZINDEX_BASE = 2000;
+const TOAST_DEFUALT_TYPE = 'text';
 const Toast = () => ({
   name: 'OmiToast',
   data() {
@@ -44,11 +45,11 @@ const Toast = () => ({
     },
     baseZindex: {
       type: Number,
-      default: TOAS_ZINDEX_BASE,
+      default: TOAST_ZINDEX_BASE,
     },
     type: {
       type: String,
-      default: 'text',
+      default: TOAST_DEFUALT_TYPE,
       validator(value) {
         return oneOf(value, toastType);
       },
