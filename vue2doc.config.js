@@ -29,7 +29,7 @@ module.exports = {
         'form',
         'form-item',
         'image',
-        'index-bos',
+        'index-boxs',
         'index-anchor',
         'swipe-action',
         'tab-bar',

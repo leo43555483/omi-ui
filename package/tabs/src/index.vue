@@ -125,7 +125,7 @@ export default {
       };
     },
     getActive() {
-      const [child] = this.children.filter(item => item.tabName === this.value);
+      const [child] = this.children.filter((item) => item.tabName === this.value);
       return this.getActiveChildInfo(child);
     },
     show(animated, cb = () => {}) {

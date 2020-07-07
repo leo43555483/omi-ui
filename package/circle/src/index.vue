@@ -127,8 +127,8 @@ export default {
       const dashArray = `${perimeterRate}px ${perimeter}px`;
       const linecap = strokeLinecap ? `stroke-linecap: ${strokeLinecap};` : null;
       return `
-        stroke-width: ${sizeString * 1 + 1}px; 
-        stroke: ${customColor}; 
+        stroke-width: ${sizeString * 1 + 1}px;
+        stroke: ${customColor};
         stroke-dasharray: ${dashArray}; ${animate};
         ${linecap}
       `;

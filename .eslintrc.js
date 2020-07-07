@@ -7,9 +7,11 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
-  plugins: ['prettier'],
+  // plugins: ['prettier'],
   rules: {
+    'func-names': 'off',
     'no-param-reassign': ['error', { props: false }],
+    "max-len": ["error", {"code": 200, "ignoreUrls": true}],
     'no-restricted-syntax': 0,
     'import/export': 0,
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',

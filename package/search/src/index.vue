@@ -107,9 +107,7 @@ export default {
             ? this.cancelWidth
             : this.getCancelWidth();
           const { floor } = Math;
-          offset = -floor(
-            offsetWidth / 2 - placeholder.offsetWidth / 2 - cancelWidth / 2
-          );
+          offset = -floor(offsetWidth / 2 - placeholder.offsetWidth / 2 - cancelWidth / 2);
         }
         this.placeholderStyles = {
           transform: `translate3d(${offset}px,0,0)`,
