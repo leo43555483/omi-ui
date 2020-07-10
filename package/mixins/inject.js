@@ -1,4 +1,4 @@
-const inject = (parentKey) => ({
+const inject = (parentKey, unbindParent) => ({
   inject: {
     [parentKey]: {
       default: null,
@@ -6,6 +6,7 @@ const inject = (parentKey) => ({
   },
   computed: {
     parent() {
+      if (unbindParent && this[unbindParent]) return null;
       return this[parentKey];
     },
   },

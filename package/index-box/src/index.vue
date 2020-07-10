@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 <template>
   <div class="omi-index-box__wrapper" @touchend="onTouchEnd">
     <ul

@@ -99,6 +99,4 @@ export default {
   padding-left: 16px;
   background-color: #fff;
 }
-.check-all__button {
-}
 </style>

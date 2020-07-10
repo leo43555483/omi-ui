@@ -3,7 +3,6 @@ import pickerProps, { MONTH, YEAR, TIME } from '../props';
 import { formatDate, getDate } from '../util';
 import { getRange, unDef, isFunction } from '../../../../src/utils/shared';
 
-
 const pcikerRender = () => ({
   inheritAttrs: false,
   data() {
@@ -42,8 +41,7 @@ const pcikerRender = () => ({
       }
       this.$refs.datePicker.setValues(values, columIndex);
       this.$nextTick(() => {
-        this.$nextTick(() => {
-        });
+        this.$nextTick(() => {});
       });
     },
     onChange(values, columIndex) {
@@ -73,12 +71,11 @@ const pcikerRender = () => ({
       }
       return new Date(getRange(date, max, min));
     },
-
   },
   computed: {
     needUpdate() {
       const { updateColums, type } = this;
-      return isFunction(updateColums) && (type !== MONTH && type !== YEAR);
+      return isFunction(updateColums) && type !== MONTH && type !== YEAR;
     },
     colums() {
       const { pickerType, rangMap } = this;
@@ -113,13 +110,7 @@ const pcikerRender = () => ({
       props: this.$attrs,
       on: this.listeners,
     };
-    return (
-      <Picker
-        ref="datePicker"
-        data={this.colums}
-        {...props}
-      />
-    );
+    return <Picker ref="datePicker" data={this.colums} {...props} />;
   },
 });
 

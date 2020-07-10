@@ -1,15 +1,12 @@
 import { getSizeString } from '../../src/utils/shared';
+import injectMixin from './inject';
 import Icon from '../icon';
 
 export default function createMixin({
   type, classPrefix, checkParent, unbindParent,
 }) {
   return {
-    inject: {
-      [checkParent]: {
-        default: null,
-      },
-    },
+    mixins: [injectMixin(checkParent, unbindParent)],
     watch: {
       value(value) {
         this.$emit('change', value);
@@ -77,10 +74,6 @@ export default function createMixin({
       },
     },
     computed: {
-      parent() {
-        if (unbindParent && this[unbindParent]) return null;
-        return this[checkParent];
-      },
       innerStyles() {
         const color = this.customColor;
         return `background-color: ${color}`;
@@ -146,12 +139,6 @@ export default function createMixin({
         },
       },
     },
-    mounted() {
-      if (this.indeterminate) return;
-      const { parent } = this;
-      const has = parent.children.indexOf(this) >= 0;
-      if (parent && parent.children && !has) parent.children.push(this);
-    },
     beforeDestroy() {
       if (this.timer) clearTimeout(this.timer);
     },
@@ -168,9 +155,7 @@ export default function createMixin({
           <div class={this.inputClasses} style={this.inputStyles}>
             {this.getCheckIcon()}
           </div>
-          <div class={`${classPrefix}__text`}>
-            {this.getSlots('default') || (text && <span>{text}</span>)}
-          </div>
+          <div class={`${classPrefix}__text`}>{this.getSlots('default') || (text && <span>{text}</span>)}</div>
         </div>
       );
     },
