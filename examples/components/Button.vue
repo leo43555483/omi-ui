@@ -17,7 +17,8 @@
       <omi-button size="mini" round type="danger">danger1</omi-button>
     </div>
     <div class="demo-button">
-     <omi-button block round type="danger">large danger</omi-button>
+     <omi-button block round type="danger" loading loading-text="loading">large danger</omi-button>
+     <omi-button block round type="danger" disabled>large danger</omi-button>
     </div>
     <div class="demo-button">
       <omi-button size="mini" round type="primary">primary</omi-button>

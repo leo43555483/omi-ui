@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
+    "lint": "eslint --ext .js,.vue package --fix"
   },
   "author": "",
   "license": "ISC",
@@ -25,8 +26,10 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
+    "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.1",
@@ -40,8 +43,16 @@
     "file-loader": "^6.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^4.0.4",
+    "karma": "^5.1.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.2",
+    "karma-mocha": "^2.0.1",
+    "karma-safari-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "0.0.32",
+    "karma-webpack": "^4.0.2",
     "mini-css-extract-plugin": "^0.9.0",
-    "mocha": "^7.1.1",
+    "mocha": "^7.2.0",
     "mocha-webpack": "^1.1.0",
     "node-sass": "^4.14.1",
     "nyc": "^15.0.1",

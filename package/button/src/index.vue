@@ -18,7 +18,7 @@
 import Loading from '../../loading';
 import { oneOf, createClassMap } from '../../../src/utils/shared';
 
-const BUTTON_SIZE = ['large', 'normal', 'small', 'mini'];
+const BUTTON_SIZE = ['normal', 'small', 'mini'];
 const BUTTON_TYPE = [
   'default',
   'primary',
@@ -100,6 +100,7 @@ export default {
         sizeClassesMap,
         shapeClassesMap,
         block,
+        disabled,
       } = this;
       const [square, round] = BUTTON_SHAPE;
       const shape = this.round ? round : square;
@@ -107,8 +108,8 @@ export default {
       const sizeClass = sizeClassesMap ? sizeClassesMap[size] : null;
       const shapeClass = shapeClassesMap ? shapeClassesMap[shape] : null;
       const blockClass = block ? 'omi-btn__block' : null;
-      // const rippleClass = ripple ? 'omi-btn__ripple' : null;
-      return [typeClass, sizeClass, shapeClass, blockClass];
+      const disabledClass = disabled ? 'omi-btn__disable' : null;
+      return [typeClass, sizeClass, shapeClass, blockClass, disabledClass];
     },
   },
 };

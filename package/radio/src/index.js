@@ -1,4 +1,3 @@
-
 import createCheckMixin from '../../mixins/check';
 
 const Radio = () => ({

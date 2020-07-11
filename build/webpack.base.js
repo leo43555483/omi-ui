@@ -1,14 +1,24 @@
 const path = require('path');
+const config = require('../config');
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 module.exports = {
   entry: {},
   output:{},
-  resolve:{},
+  resolve:{
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      '@': resolve('src'),
+    }
+  },
   module:{
     rules: [
       {
         enforce: 'pre',
         test: /\.(vue|jsx|js)$/,
-        exclude: /node_modules/,
+        exclude: config.jsexclude,
         loader: 'eslint-loader'
       },
       {
@@ -28,7 +38,7 @@ module.exports = {
 			    cacheCompression: false,
           sourceMap: true,
         },
-        exclude: /node_modules/,
+        exclude: config.jsexclude,
       },
       {
         test: /\.(scss|css)$/,

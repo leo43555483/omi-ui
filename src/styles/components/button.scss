@@ -48,3 +48,8 @@
 .omi-btn__round{
   border-radius: $button-round-radius;
 }
+.omi-btn__disable{
+  background-color: $button-disable-background;
+  color: $button-disable-color;
+  border-color: $button-disable-background;
+}

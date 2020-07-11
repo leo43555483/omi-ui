@@ -3,7 +3,6 @@ import pickerProps, { MONTH, YEAR, TIME } from '../props';
 import { formatDate, getDate } from '../util';
 import { getRange, unDef, isFunction } from '../../../../src/utils/shared';
 
-
 const pcikerRender = () => ({
   inheritAttrs: false,
   data() {

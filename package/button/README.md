@@ -47,12 +47,12 @@ Vue.use(Button);
 
 | name        | type    | default | description                                                               |
 | ----------- | ------- | ------- | ------------------------------------------------------------------------- |
-| size        | String  | normal  | 尺寸,可选值[ 'large', 'normal', 'small', 'mini'].                         |
+| size        | String  | normal  | 尺寸,可选值['normal', 'small', 'mini'].                         |
 | nativeType  | String  | button  | 原生 type 属性.                                                           |
 | type        | String  | primary | 风格，可选值 [ 'default','primary','danger','info','warning','success' ]. |
 | block       | Boolean | false   | 是否块级显示按钮.                                                         |
 | text        | String  |         | 按钮文本.                                                                 |
-| loadingText | String  |         | 加载时的文本.                                                             |
+| loadingText | String  |         | loading为true显示的文案.                                                             |
 | round       | Boolean | false   | 是否以圆角显示按钮.                                                       |
 | disabled    | Boolean | false   | 是否禁用.                                                                 |
 | loading     | Boolean | false   | 是否显示加载中.                                                           |
