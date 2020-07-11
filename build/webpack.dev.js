@@ -1,6 +1,6 @@
 const merge = require('webpack-merge');
 const path = require('path');
-const webpack = require('webpack'); 
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -11,13 +11,13 @@ module.exports = merge(webpackBase, {
   devtool: 'eval-source-map',
   mode: 'development',
   entry: {
-    app: resolve(__dirname, '../examples/main')
+    app: resolve(__dirname, '../examples/main'),
   },
   output: {
     path: resolve(__dirname, '../examples/dist'),
     filename: '[name].js',
     chunkFilename: '[name].chunk.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   devServer: {
     disableHostCheck: true,
@@ -26,7 +26,7 @@ module.exports = merge(webpackBase, {
     port: 8888,
     open: true,
     publicPath: '/',
-    hot: true
+    hot: true,
   },
   resolve: {
     alias: {
@@ -36,21 +36,19 @@ module.exports = merge(webpackBase, {
   },
   plugins: [
     new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify(
-				process.env.NODE_ENV
-			),
-		}),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
     new MiniCssExtractPlugin(),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
-      filename:'./index.html',
-      template: resolve(__dirname, '../examples/public/index.html')
-  }),
-    new FriendlyErrorsPlugin()
+      filename: './index.html',
+      template: resolve(__dirname, '../examples/public/index.html'),
+    }),
+    new FriendlyErrorsPlugin(),
   ],
 });
 if (process.env.NODE_ENV === 'test') {
-  module.exports.externals = [require('webpack-node-externals')()]
-  module.exports.devtool = 'eval'
+  module.exports.externals = [require('webpack-node-externals')()];
+  module.exports.devtool = 'eval';
 }

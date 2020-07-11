@@ -1,13 +1,13 @@
 <template>
-<div class="omi-index-anchor" :style="{'height': active ? `${height}px` : null}">
-  <div
-    class="omi-index-anchor__inner"
-    :class="{'omi-index-anchor__active':active }"
-    :style="styles"
-  >
-    <slot>{{title}}</slot>
+  <div class="omi-index-anchor" :style="{'height': active ? `${height}px` : null}">
+    <div
+      class="omi-index-anchor__inner"
+      :class="{'omi-index-anchor__active':active }"
+      :style="styles"
+    >
+      <slot>{{title}}</slot>
+    </div>
   </div>
-</div>
 </template>
 
 <script>

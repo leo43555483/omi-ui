@@ -6,15 +6,11 @@
 
 <script>
 import groupMxin from '../../mixins/check-group';
+import provideMixin from '../../mixins/provider';
 
 export default {
   name: 'OmiCheckboxGroup',
-  mixins: [groupMxin],
-  provide() {
-    return {
-      omiCheckGroup: this,
-    };
-  },
+  mixins: [groupMxin, provideMixin('omiCheckGroup')],
   data() {
     return {
       children: [],

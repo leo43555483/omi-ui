@@ -2,30 +2,27 @@
   <div class="demo-checkbox">
     <div class="demo-item">
       <omi-checkbox
-      v-model="checkAll"
-      indeterminate
-      @change="(checked) => onChange(checked,'checkbox', model, list.length)"
-      text="全选"
+        v-model="checkAll"
+        indeterminate
+        @change="(checked) => onChange(checked,'checkbox', model, list.length)"
+        text="全选"
       ></omi-checkbox>
       <omi-checkbox-group horizontal v-model="model" ref="checkbox" active-color="red">
-        <omi-checkbox
-          v-for="item in list"
-          :prop="item"
-          :key="item"
-          text="checkbox"
-        />
+        <omi-checkbox v-for="item in list" :prop="item" :key="item" text="checkbox" />
       </omi-checkbox-group>
     </div>
     <omi-checkbox-group v-model="result" ref="checkbox2" max="3" active-color="red">
       <omi-cell-group title="配合cell使用" :description="description">
-        <omi-cell clickable>
-          <omi-checkbox
-            slot="icon-left"
-            v-model="checkAll2"
-            indeterminate
-            @change="(checked) => onChange(checked, 'checkbox2',result, 3)"
-            text="全选"
-          />
+        <omi-cell class="check-all__button" clickable>
+          <template slot="extra">
+            <omi-checkbox
+              slot="icon-left"
+              v-model="checkAll2"
+              indeterminate
+              @change="(checked) => onChange(checked, 'checkbox2',result, 3)"
+              text="全选"
+            />
+          </template>
         </omi-cell>
         <omi-cell
           v-for="(item,index) in list2"
@@ -35,7 +32,7 @@
           @click="() => onClick(index)"
         >
           <template slot="extra">
-            <omi-checkbox :prop="item" ref="checkItem" @input="onItemChange"/>
+            <omi-checkbox :prop="item" ref="checkItem" @input="onItemChange" />
           </template>
         </omi-cell>
       </omi-cell-group>
@@ -70,7 +67,7 @@ export default {
   methods: {
     onItemChange() {
       if (this.result.length + 1 >= 4) {
-        this.$toast('最多选择4个');
+        this.$toast('最多选择3个');
       }
     },
     onClick(index) {
@@ -91,15 +88,14 @@ export default {
 </script>
 
 <style lang="scss">
-.demo-checkbox{
-  .omi-cell{
-    .omi-checkbox{
+.demo-checkbox {
+  .omi-cell {
+    .omi-checkbox {
       padding: 0;
     }
-
   }
 }
-.demo-item{
+.demo-item {
   padding-left: 16px;
   background-color: #fff;
 }

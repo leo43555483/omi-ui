@@ -6,15 +6,16 @@
 
 <script>
 import groupMxin from '../../mixins/check-group';
+import provideMixin from '../../mixins/provider';
 
 export default {
   name: 'OmiRadioGroup',
-  mixins: [groupMxin],
-  provide() {
-    return {
-      omiRadioGroup: this,
-    };
-  },
+  mixins: [groupMxin, provideMixin('omiRadioGroup')],
+  // provide() {
+  //   return {
+  //     omiRadioGroup: this,
+  //   };
+  // },
   props: {
     value: {
       type: [String, Number, Boolean],
