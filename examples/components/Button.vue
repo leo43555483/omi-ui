@@ -10,7 +10,6 @@
       <omi-button :loading="true" round type="info">info1</omi-button>
       <omi-button :loading="true" round type="warning">warning</omi-button>
     </div>
-    <div>size</div>
     <div class="demo-button">
       <omi-button size="normal" round type="primary">primary1</omi-button>
       <omi-button size="small"  round type="default">defualt1</omi-button>
@@ -18,6 +17,8 @@
     </div>
     <div class="demo-button">
      <omi-button block round type="danger" loading loading-text="loading">large danger</omi-button>
+    </div>
+    <div class="demo-button">
      <omi-button block round type="danger" disabled>large danger</omi-button>
     </div>
     <div class="demo-button">

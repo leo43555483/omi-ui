@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.js",
     "test": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "lint": "eslint --ext .js,.vue package --fix"
+    "lint": "eslint --ext .js,.vue package/ src/ --fix"
   },
   "author": "",
   "license": "ISC",

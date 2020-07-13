@@ -1,7 +1,7 @@
 <template>
   <div class="omi-badge">
     <sup v-if="dot" class="omi-badge__dot"></sup>
-    <sup v-else-if="text" class="omi-badge__text">{{text | overFlow}}</sup>
+    <sup v-else-if="text" class="omi-badge__text">{{overFlow(text)}}</sup>
     <slot />
   </div>
 </template>
@@ -25,9 +25,9 @@ export default {
       default: DEFAULT_MAX,
     },
   },
-  filters: {
+  methods: {
     overFlow(value) {
-      if (/^\d*$/.test(value) && value >= DEFAULT_MAX) {
+      if (/^\d*$/.test(value) && value * 1 >= this.maxNumber) {
         return '99+';
       }
       return value;

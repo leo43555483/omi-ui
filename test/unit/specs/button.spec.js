@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
 import Button from '@/button';
 
-describe('text', () => {
+describe('Button', () => {
   it('text', () => {
     const text = 'test';
     const wrapper = shallowMount(Button, {
@@ -33,13 +33,13 @@ describe('text', () => {
 
   it('block', () => {
     const wrapper = shallowMount(Button, {
-        propsData: { block: true },
-      });
+      propsData: { block: true },
+    });
     expect(wrapper.find('.omi-btn').classes('omi-btn__block')).to.true;
   });
 
   it('type', () => {
-    const types = [ 'default','primary','danger','info','warning','success' ];
+    const types = ['default', 'primary', 'danger', 'info', 'warning', 'success'];
     types.forEach((type) => {
       const wrapper = shallowMount(Button, {
         propsData: { type },
@@ -71,11 +71,9 @@ describe('text', () => {
     const text = 'text Slots';
     const wrapper = shallowMount(Button, {
       slots: {
-        default: `<span class="textSlot">${text}</span>`
+        default: `<span class="textSlot">${text}</span>`,
       },
     });
-    expect(wrapper.find('.textSlot').text()).contains(text);;
+    expect(wrapper.find('.textSlot').text()).contains(text);
   });
 });
-
-
