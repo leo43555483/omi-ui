@@ -101,6 +101,11 @@ export function getUid() {
   };
 }
 
+export function isUnitString(str) {
+  if (!isString(str) || unDef(str)) return false;
+  return /^\d+(px|rem|%|vw|em|vh|vmin|vmax)$/g.test(str);
+}
+
 export function clone(object) {
   const parents = [];
   const children = [];

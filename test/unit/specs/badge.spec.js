@@ -30,12 +30,12 @@ describe('Badge', () => {
 
   it('default slots', () => {
     const text = 'badge Slots';
-    const wrapper = shallowMount(Button, {
+    const wrapper = shallowMount(Badge, {
       slots: {
         default: `<span class="badgeSlot">${text}</span>`,
       },
     });
-    expect(wrapper.find('.omi-badge').contains('.badgeSlot')).to.true
+    expect(wrapper.find('.omi-badge').contains('.badgeSlot')).to.true;
     expect(wrapper.find('.badgeSlot').text()).contains(text);
   });
 });

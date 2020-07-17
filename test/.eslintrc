@@ -9,5 +9,9 @@
   },
   "parserOptions": {
     "ecmaVersion": 2017
+  },
+  "rules": {
+    "no-unused-expressions": 0,
+    "import/no-unresolved": 0
   }
 }

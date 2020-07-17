@@ -17,12 +17,15 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
   },
-  overrides: [
-    {
-      files: ['**/__test__/*.{j,t}s?(x)', '**/test/unit/**/*.spec.{j,t}s?(x)'],
-      env: {
-        mocha: true,
-      },
-    },
-  ],
+  // overrides: [
+  //   {
+  //     files: ['test/unit/**/*.spec.{j,t}s?(x)'],
+  //     env: {
+  //       mocha: true,
+  //     },
+  //     plugins: [
+  //       "mocha"
+  //     ],
+  //   },
+  // ],
 };

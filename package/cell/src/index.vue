@@ -11,7 +11,8 @@
       <div class="omi-cell__left--icon" v-if="renderSlot('left-icon')">
         <slot name="left-icon"></slot>
       </div>
-      <div class="omi-cell__title"
+      <div
+        class="omi-cell__title"
         :class="titleClass"
         :style="customTitleStyles"
         v-if="renderTitle"
@@ -23,15 +24,13 @@
           <div v-if="label" class="omi-cell__label">{{label}}</div>
         </slot>
       </div>
-      <div class="omi-cell__content" v-if="renderSlot('content') || content">
-        <div class="omi-cell__content--body"
-          :style="customContentStyles"
-          :class="cententClass">
+      <div class="omi-cell__content" :class="contentClass" v-if="renderSlot('content') || content">
+        <div class="omi-cell__content--body" :style="customContentStyles">
           <slot name="content">
             <span>{{content}}</span>
           </slot>
         </div>
-        <slot name="description"/>
+        <slot name="description" />
       </div>
       <div class="omi-cell__extra" v-if="renderSlot('extra')">
         <slot name="extra"></slot>
@@ -48,13 +47,19 @@
 <script>
 import Icon from '../../icon';
 import RouteButton, { routeButtonProps } from '../../../src/utils/RouteButton';
+import { isUnitString, getSizeString } from '../../../src/utils/shared';
 
 const {
-  to, append, tag, replace, event,
+  to,
+  append,
+  tag,
+  replace,
+  event,
 } = routeButtonProps;
+
 export default {
   name: 'OmiCell',
-  inheritAttrs: true,
+  inheritAttrs: false,
   props: {
     to,
     replace,
@@ -77,7 +82,7 @@ export default {
       type: String,
       default: '',
     },
-    cententClass: {
+    contentClass: {
       type: String,
       default: '',
     },
@@ -134,7 +139,13 @@ export default {
       if (this.titleStyle) return this.titleStyle;
       let styles = '';
       if (this.titleWidth) {
-        styles = `flex: none; width: ${this.titleWidth}px;`;
+        let titleWidth = null;
+        if (isUnitString(this.titleWidth)) {
+          titleWidth = this.titleWidth;
+        } else if (/^\d+/.test(this.titleWidth)) {
+          titleWidth = `${getSizeString(this.titleWidth)[0]}px`;
+        }
+        styles = `flex: none; width: ${titleWidth};`;
       }
       return `${styles}text-align: ${this.titleAlign}`;
     },
@@ -145,7 +156,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-</style>

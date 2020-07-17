@@ -9,7 +9,6 @@ describe('Button', () => {
     const wrapper = shallowMount(Button, {
       propsData: { text },
     });
-    // wrapper.find('button').trigger('click');
     expect(wrapper.find('.omi-btn__text').text()).contains(text);
   });
 
@@ -67,6 +66,7 @@ describe('Button', () => {
     });
     expect(wrapper.find('.omi-btn').classes('omi-btn__disable')).to.true;
   });
+
   it('text slots', () => {
     const text = 'text Slots';
     const wrapper = shallowMount(Button, {

@@ -64,8 +64,8 @@ Vue.use(Cell);
 | href         | String        | -       | 跳转的地址，等同于 a 标签的 href 属性.                                    |
 | rightArrow   | Boolean       | false   | 是否显示右侧箭头.                                                         |
 | clickable    | Boolean       | false   | 是否为可点击.                                                             |
-| titleClass   | String        |         | 标题的样式名.                                                             |
-| cententClass | String        |         | 内容的样式名.                                                             |
+| titleClass   | String        |         | 标题部分的样式名.                                                             |
+| contentClass | String        |         | 内容部分的样式名.                                                             |
 | titleStyle   | String        | -       | 标题的样式.                                                               |
 | contentStyle | String        | -       | 内容的样式.                                                               |
 | title        | String        |         | 标题文本.                                                                 |
