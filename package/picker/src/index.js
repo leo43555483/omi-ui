@@ -87,6 +87,7 @@ const Picker = () => ({
         uid: item.key || genUid(`colum-${columIndex}`),
       }));
       const defaultIndex = this.getDefaultIndex(node, columIndex);
+
       return {
         data,
         defaultIndex,
@@ -109,7 +110,9 @@ const Picker = () => ({
       while (parent && isArray(parent.children)) {
         const columNode = formateColumPayload(parent, i);
         colums.push(columNode);
-        parent = parent.children[columNode.defaultIndex];
+        const { children } = parent;
+        const { defaultIndex } = columNode;
+        parent = !unDef(children[defaultIndex]) ? children[defaultIndex] : children[DEFAULT_INDEX];
         i += 1;
       }
       return colums;

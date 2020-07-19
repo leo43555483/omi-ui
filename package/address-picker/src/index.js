@@ -62,9 +62,14 @@ const AddressPicker = () => ({
       const provinceMap = {};
       const cityMap = {};
       const { provinceList, cityList, areaList } = this.data;
-      const provinces = formateAddres(provinceList, PROVINCE, provinceMap);
+      const provinces = formateAddres(
+        provinceList, PROVINCE, provinceMap, null, null, unDef(cityList),
+      );
 
-      const cities = formateAddres(cityList, CTIY, cityMap, PROVINCE);
+      const cities = formateAddres(
+        cityList, CTIY, cityMap, PROVINCE, null, unDef(areaList),
+      );
+
       formateAddres(areaList, AREA, null, CTIY, (node, code) => {
         const { province: provinceCode, city: cityCode, area: areaCode } = code;
         const parentKey = `${provinceCode}${cityCode}`;
@@ -76,11 +81,13 @@ const AddressPicker = () => ({
           cityMap[areaCode] = cities.length - 1;
         }
       }, true);
+
       cities.forEach((city) => {
         const { parentCode, selfCode } = city;
         const index = provinceMap[parentCode];
-        if (!unDef(index)) provinces[index].children.push(city);
-        else {
+        if (!unDef(index) && !unDef(provinces[index]) && !unDef(provinces[index].children)) {
+          provinces[index].children.push(city);
+        } else {
           const isOverSea = parentCode * 1 >= 90;
           if (isOverSea) {
             const overSeaIndex = provinceMap['90'];

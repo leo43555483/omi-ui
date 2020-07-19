@@ -7,9 +7,6 @@ module.exports = function (config) {
     files: [
       './index.js',
     ],
-    // plugins: [
-    //   'karma-webpack', 'karma-coverage',
-    // ],
     preprocessors: {
       './index.js': ['webpack', 'sourcemap'],
     },
@@ -26,6 +23,6 @@ module.exports = function (config) {
       ],
     },
 
-    browsers: ['Chrome', 'Safari'],
+    browsers: ['Chrome'],
   });
 };

@@ -45,10 +45,23 @@
   justify-content: space-between;
   padding: $picker-header-padding-vertical $picker-header-padding-horiztional;
   background-color: $picker-header-background;
+  .omi-picker__title{
+    flex: 4 1;
+    text-align: center;
+  }
 }
+
+.omi-picker__cancel,
+.omi-picker__confirm {
+  flex: 1 1;
+}
+
 .omi-picker__cancel{
+  text-align: left;
   color: $picker-header-cancel-color;
 }
+
 .omi-picker__confirm{
+  text-align: right;
   color: $picker-header-confirm-color;
 }

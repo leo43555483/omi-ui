@@ -44,21 +44,20 @@ Vue.use(AddressPicker);
 
 ```
 
-Key is a 6-digit zip code, the first two are state or province codes, the middle two are city codes, last two are area codes,
-like*130104*, 13 is NO. of province, 01 is NO. of city, 04 is NO. of area.
+*key* 为6位数邮政编码, 其中前两位为省或州的编码, 中间两位为市级编码, 最后两位为区县编码, 例如*130104*, 13是省级编码, 01为市级编码, 04位区编码. 
 Click [here](https://github.com/leo43555483/omi-ui/blob/dev/examples/data/address.js) for detail.
 
 ## Props
 
 | name         | type     | default      | description                                                            |
 | ------------ | -------- | ------------ | ---------------------------------------------------------------------- |
-| defaultIndex | Number   | 0            | The index of the selected item by default.                             |
+| defaultIndex | Number   | 0            | 指定该值后将会在初始状态时默认滚动到相应下标的位置，如果指定下标选项不存在则滚动到第一个选项.                             |
 | data         | Object   | -            | [description](#data-structure)                                         |
-| title        | String   |              | Picker title.                                                          |
-| confirmText  | String   |              | Text of confirm button. If not set, the cancel button is not displayed |
-| cancelText   | String   |              | Text of cancel button. If not set, the cancel button is not displayed  |
-| onConfirm    | Function | function(){} | Callback when click confirm button.                                    |
-| onCancel     | Function | function(){} | Callback when click cancel button.                                     |
+| title        | String   |              | 标题.                                                          |
+| confirmText  | String   |              | 确认按钮的文案，若未设置则不会显示. |
+| cancelText   | String   |              | 取消按钮的文案，若未设置则不会显示.  |
+| onConfirm    | Function | function(){} | 点击确认按钮时触发.                                    |
+| onCancel     | Function | function(){} | 点击取消按钮时触发.                                     |
 
 ## Methods
 

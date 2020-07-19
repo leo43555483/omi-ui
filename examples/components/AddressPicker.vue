@@ -17,6 +17,24 @@
         />
       </omi-action-sheet>
     </div>
+    <div class="demo-item">
+      <omi-address-picker
+        :data="address"
+        title="请选择地区"
+        :onConfirm="onConfirm"
+        :onCancel="onCancel"
+        @change="onChange"
+      />
+    </div>
+    <div class="demo-item">
+      <omi-address-picker
+        ref="addressPicker"
+        :data="address"
+        title="请选择地区"
+        cancelText="取消"
+        confirmText="确认"
+      />
+    </div>
   </div>
 </template>
 <script>

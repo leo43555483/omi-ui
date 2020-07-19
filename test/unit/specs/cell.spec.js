@@ -1,4 +1,3 @@
-
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import Cell from '@/cell';

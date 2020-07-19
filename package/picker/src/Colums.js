@@ -2,7 +2,7 @@
 import injectMixin from '../../mixins/inject';
 import touchMixin from '../../mixins/touch';
 import { on, off, preventDefault } from '../../../src/utils/dom';
-import { getRange } from '../../../src/utils/shared';
+import { getRange, unDef } from '../../../src/utils/shared';
 
 // Minimum distance to trigger scrolling
 const TRIGGER_MINI_DISTANCE = 15;
@@ -26,7 +26,7 @@ const PickerColums = () => ({
   mixins: [injectMixin('omiPicker'), touchMixin],
   data() {
     return {
-      currentIndex: this.defaultIndex,
+      currentIndex: 0,
       currentDuration: 0,
       startDate: 0,
       startTransformY: 0,
@@ -64,11 +64,11 @@ const PickerColums = () => ({
   watch: {
     data() {
       const { defaultIndex } = this;
-      this.scrollTo(null, defaultIndex);
+      this.scrollTo(null, this.getValidDefaultIndex(defaultIndex));
     },
     defaultIndex(index) {
       if (this.isMoving) return;
-      this.scrollTo(null, index);
+      this.scrollTo(null, this.getValidDefaultIndex(index));
     },
   },
   methods: {
@@ -121,6 +121,9 @@ const PickerColums = () => ({
         'will-change': isMoving ? 'transform' : null,
       };
     },
+    getValidDefaultIndex(index) {
+      return unDef(this.data[index]) ? 0 : index;
+    },
     getListItem() {
       const {
         getItemClasses,
@@ -129,11 +132,11 @@ const PickerColums = () => ({
       } = this;
       return this.data.map((item, index) => (
           <li
-          onClick={() => onClickItem(index)}
-          style={getItemStyle(index)}
-          role="button"
-          class={getItemClasses(index)}
-          key={item.uid}
+            onClick={() => onClickItem(index)}
+            style={getItemStyle(index)}
+            role="button"
+            class={getItemClasses(index)}
+            key={item.uid}
           >
             {item.label}
           </li>
@@ -291,6 +294,8 @@ const PickerColums = () => ({
       if (!this.bindedEvent) {
         this.bindTouchEvent(on, true);
       }
+      const defaultIndex = this.getValidDefaultIndex(this.defaultIndex);
+      if (defaultIndex !== this.currentIndex) this.scrollTo(null, defaultIndex);
     });
   },
   beforeUpdate() {
