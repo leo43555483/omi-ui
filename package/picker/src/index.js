@@ -132,9 +132,9 @@ const Picker = () => ({
       this.colums = this.formatColum();
     },
     // test
-    getChildAfterTransition(index) {
-      return this.children[index].afterTransition;
-    },
+    // getChildAfterTransition(index) {
+    //   return this.children[index].afterTransition;
+    // },
     // // test
     // getChildActiveIndex(index) {
     //   return this.children[index].currentIndex;
@@ -151,6 +151,7 @@ const Picker = () => ({
     // getInited(index) {
     //   return this.children[index].inited;
     // },
+
     updateCascade(columIndex) {
       const { data, getActiveIndexs } = this;
       const activeIndexs = getActiveIndexs();

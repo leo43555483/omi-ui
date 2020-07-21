@@ -101,6 +101,8 @@ describe('AddressPicker', () => {
       },
     );
 
+    await wrapper.vm.$nextTick();
+
     const colum = wrapper.findAll('.omi-picker-colum__list').at(0);
     const item = colum.findAll('.omi-picker-colum__list--item').at(1);
     item.trigger('click');
@@ -109,7 +111,38 @@ describe('AddressPicker', () => {
     colum.trigger('transitionend');
     await wrapper.vm.$nextTick();
 
+    expect(item.classes()).to.include('omi-picker-colum__list--active');
     expect(wrapper.vm.isScrolling()).to.false;
     expect(onChange).to.be.calledOnce;
+
+    const [values] = wrapper.emitted('change');
+    expect(values[0][0].value).to.equal('120000');
+  });
+
+  it('getValues method', async () => {
+    const data = {
+      provinceList: {
+        110000: 'province1',
+        120000: 'province2',
+        120001: 'province3',
+      },
+    };
+
+    const wrapper = createAdressPicker({ data });
+
+    await wrapper.vm.$nextTick();
+
+    const colum = wrapper.findAll('.omi-picker-colum__list').at(0);
+    const item = colum.findAll('.omi-picker-colum__list--item').at(2);
+    item.trigger('click');
+
+    await wrapper.vm.$nextTick();
+    colum.trigger('transitionend');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.vm.isScrolling()).to.false;
+
+    const [values] = wrapper.vm.getValues();
+    expect(values.value).to.equal('120001');
   });
 });

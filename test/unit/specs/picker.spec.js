@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import { mount } from '@vue/test-utils';
 import Picker from '@/picker';
+// import { wait } from '../utils/shared';
 
 chai.use(sinonChai);
 
@@ -42,8 +43,9 @@ describe('Picker', () => {
     await wrapper.vm.$nextTick();
 
     expect(item.classes()).to.include('omi-picker-colum__list--active');
-    const target = wrapper.vm.getTarget(0);
-    expect(target[0]).to.true;
+
     expect(onChange).to.be.calledOnce;
+    const [values] = wrapper.emitted('change');
+    expect(values[0][0].value).to.equal('chaozhou');
   });
 });
