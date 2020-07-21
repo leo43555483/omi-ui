@@ -3,4 +3,11 @@ export function fromArray(target) {
   return Array.prototype.slice.call(target);
 }
 
-export function noop() { }
+export function wait(cb = null, delay = 50) {
+  return new Promise((r) => {
+    setTimeout(() => {
+      if (cb) cb();
+      r();
+    }, delay);
+  });
+}

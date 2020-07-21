@@ -38,11 +38,11 @@ const AddressPicker = () => ({
     },
     onConfirm: {
       type: Function,
-      default: () => { },
+      default: () => {},
     },
     onCancel: {
       type: Function,
-      default: () => { },
+      default: () => {},
     },
   },
   watch: {
@@ -62,25 +62,28 @@ const AddressPicker = () => ({
       const provinceMap = {};
       const cityMap = {};
       const { provinceList, cityList, areaList } = this.data;
-      const provinces = formateAddres(
-        provinceList, PROVINCE, provinceMap, null, null, unDef(cityList),
-      );
+      const provinces = formateAddres(provinceList, PROVINCE, provinceMap, null, null, unDef(cityList));
 
-      const cities = formateAddres(
-        cityList, CTIY, cityMap, PROVINCE, null, unDef(areaList),
-      );
+      const cities = formateAddres(cityList, CTIY, cityMap, PROVINCE, null, unDef(areaList));
 
-      formateAddres(areaList, AREA, null, CTIY, (node, code) => {
-        const { province: provinceCode, city: cityCode, area: areaCode } = code;
-        const parentKey = `${provinceCode}${cityCode}`;
-        const cityIndex = cityMap[parentKey];
-        if (!unDef(cityIndex)) {
-          cities[cityIndex].children.push(node);
-        } else {
-          cities.push(node);
-          cityMap[areaCode] = cities.length - 1;
-        }
-      }, true);
+      formateAddres(
+        areaList,
+        AREA,
+        null,
+        CTIY,
+        (node, code) => {
+          const { province: provinceCode, city: cityCode, area: areaCode } = code;
+          const parentKey = `${provinceCode}${cityCode}`;
+          const cityIndex = cityMap[parentKey];
+          if (!unDef(cityIndex)) {
+            cities[cityIndex].children.push(node);
+          } else {
+            cities.push(node);
+            cityMap[areaCode] = cities.length - 1;
+          }
+        },
+        true,
+      );
 
       cities.forEach((city) => {
         const { parentCode, selfCode } = city;
@@ -104,9 +107,17 @@ const AddressPicker = () => ({
     /**
      * @vue2doc-exposed-api:getValues
      * @return {Array} values
-    */
+     */
     getValues() {
       return this.$refs.picker.getValues().map(({ label, value }) => ({ label, value }));
+    },
+
+    /**
+     * @vue2doc-exposed-api:isScrolling
+     * @return {Boolean}
+     */
+    isScrolling() {
+      return this.$refs.picker.isScrolling();
     },
   },
   render() {
@@ -119,7 +130,7 @@ const AddressPicker = () => ({
         confirmText={this.confirmText}
         cancelText={this.cancelText}
         defaultIndex={this.defaultIndex}
-        onChnage={this.onChange}
+        onChange={this.onChange}
         {...{
           props: {
             onConfirm: () => this.onConfirm(),

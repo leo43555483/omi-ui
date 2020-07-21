@@ -2,7 +2,7 @@
 import injectMixin from '../../mixins/inject';
 import touchMixin from '../../mixins/touch';
 import { on, off, preventDefault } from '../../../src/utils/dom';
-import { getRange, unDef } from '../../../src/utils/shared';
+import { getRange, unDef, isFunction } from '../../../src/utils/shared';
 
 // Minimum distance to trigger scrolling
 const TRIGGER_MINI_DISTANCE = 15;
@@ -125,21 +125,17 @@ const PickerColums = () => ({
       return unDef(this.data[index]) ? 0 : index;
     },
     getListItem() {
-      const {
-        getItemClasses,
-        getItemStyle,
-        onClickItem,
-      } = this;
+      const { getItemClasses, getItemStyle, onClickItem } = this;
       return this.data.map((item, index) => (
-          <li
-            onClick={() => onClickItem(index)}
-            style={getItemStyle(index)}
-            role="button"
-            class={getItemClasses(index)}
-            key={item.uid}
-          >
-            {item.label}
-          </li>
+        <li
+          onClick={() => onClickItem(index)}
+          style={getItemStyle(index)}
+          role="button"
+          class={getItemClasses(index)}
+          key={item.uid}
+        >
+          {item.label}
+        </li>
       ));
     },
     onTouchStart(e) {
@@ -171,11 +167,10 @@ const PickerColums = () => ({
     onTouchEnd() {
       const timeDiff = Date.now() - this.startDate;
       const distance = this.transformY - this.fingerStartY;
-      const needScroll = (timeDiff < TRIGGER_MINI_TIME)
-        && (Math.abs(distance) >= TRIGGER_MINI_DISTANCE);
+      const needScroll = timeDiff < TRIGGER_MINI_TIME && Math.abs(distance) >= TRIGGER_MINI_DISTANCE;
       if (needScroll) {
         const { duration } = this;
-        const offset = ((distance / timeDiff) * SPEED_COEFFICIENT) * duration;
+        const offset = (distance / timeDiff) * SPEED_COEFFICIENT * duration;
 
         const destination = this.transformY + offset;
         this.scrollTo(-destination);
@@ -215,11 +210,7 @@ const PickerColums = () => ({
       this.$emit('change');
     },
     scrollTo(offset, currentIndex = null, cb = null) {
-      const {
-        itemHeight,
-        getValidIndex,
-        isMoving,
-      } = this;
+      const { itemHeight, getValidIndex, isMoving } = this;
       let index = currentIndex;
       if (currentIndex === null) {
         index = getValidIndex(offset / itemHeight);
@@ -231,16 +222,20 @@ const PickerColums = () => ({
         if (!this.isMoving) this.isMoving = true;
       }
       this.transformY = -transformY;
-      if (!this.inited || cb) {
+
+
+      if (!this.inited || isFunction(cb)) {
         this.onTransitionEnd();
         this.setActiveIndex(index);
-        if (cb) cb();
+
+        if (isFunction(cb)) cb();
         return;
       }
 
       const scrollCallBack = () => {
         this.scrollCallBack(index);
       };
+
       if (isMoving || index !== this.currentIndex) {
         if (this.afterTransition.length) {
           this.flushCallBack();
@@ -295,21 +290,24 @@ const PickerColums = () => ({
         this.bindTouchEvent(on, true);
       }
       const defaultIndex = this.getValidDefaultIndex(this.defaultIndex);
-      if (defaultIndex !== this.currentIndex) this.scrollTo(null, defaultIndex);
+      if (defaultIndex !== this.currentIndex) {
+        this.scrollTo(null, defaultIndex);
+      } else {
+        this.inited = true;
+      }
     });
   },
   beforeUpdate() {
-    if (!this.inited) this.inited = true;
+    if (!this.inited) {
+      this.inited = true;
+    }
   },
   beforeDestroy() {
     if (this.bindedEvent) this.bindTouchEvent(off, false);
   },
   render() {
     return (
-      <div class="omi-picker-colum"
-        ref="wrapper"
-        style={this.wrapperStyles}
-      >
+      <div class="omi-picker-colum" ref="wrapper" style={this.wrapperStyles}>
         <ul class="omi-picker-colum__list" style={this.ListStyles} ref="list">
           {this.getListItem()}
         </ul>

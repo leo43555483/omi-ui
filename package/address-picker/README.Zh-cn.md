@@ -69,4 +69,4 @@ Click [here](https://github.com/leo43555483/omi-ui/blob/dev/examples/data/addres
 
 | name   | params        | description |
 | ------ | ------------- | ----------- |
-| change | values: Array | -           |
+| change | values: Array | 滚动结束后触发.           |

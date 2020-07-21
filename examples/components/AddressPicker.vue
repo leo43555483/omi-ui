@@ -19,6 +19,7 @@
     </div>
     <div class="demo-item">
       <omi-address-picker
+      ref="picker2"
         :data="address"
         title="请选择地区"
         :onConfirm="onConfirm"
@@ -50,7 +51,7 @@ export default {
   },
   methods: {
     onChange(values) {
-      console.log('onChange', values);
+      console.log('onChange', values, this.$refs.picker2.isScrolling());
     },
     onConfirm() {
       const values = this.$refs.picker.getValues();
