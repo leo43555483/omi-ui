@@ -4,7 +4,7 @@ import sinonChai from 'sinon-chai';
 import { mount } from '@vue/test-utils';
 import AddressPicker from '@/address-picker';
 import address from '../mock/address';
-import { fromArray, wait } from '../utils/shared';
+import { fromArray } from '../utils/shared';
 
 chai.use(sinonChai);
 const createAdressPicker = (props = {}, opt = {}) => {
