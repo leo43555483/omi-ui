@@ -1,4 +1,4 @@
-import { isFunction } from '../../../src/utils/shared';
+import { isFunction, unDef } from '../../../src/utils/shared';
 
 export const PROVINCE = 'province';
 export const CTIY = 'city';
@@ -26,6 +26,7 @@ const getAddressCode = (code) => {
 };
 export function generateCascade() { }
 export function formateAddres(list, type, map, parentKey, cb, isLeaf = false) {
+  if (unDef(list)) return [];
   return Object.keys(list).map((code, index) => {
     const label = list[code];
     const addressCode = getAddressCode(code);

@@ -63,11 +63,11 @@ const Picker = () => ({
     },
     onConfirm: {
       type: Function,
-      default: () => { },
+      default: () => {},
     },
     onCancel: {
       type: Function,
-      default: () => { },
+      default: () => {},
     },
   },
   watch: {
@@ -87,6 +87,7 @@ const Picker = () => ({
         uid: item.key || genUid(`colum-${columIndex}`),
       }));
       const defaultIndex = this.getDefaultIndex(node, columIndex);
+
       return {
         data,
         defaultIndex,
@@ -109,7 +110,9 @@ const Picker = () => ({
       while (parent && isArray(parent.children)) {
         const columNode = formateColumPayload(parent, i);
         colums.push(columNode);
-        parent = parent.children[columNode.defaultIndex];
+        const { children } = parent;
+        const { defaultIndex } = columNode;
+        parent = !unDef(children[defaultIndex]) ? children[defaultIndex] : children[DEFAULT_INDEX];
         i += 1;
       }
       return colums;
@@ -128,12 +131,32 @@ const Picker = () => ({
       }
       this.colums = this.formatColum();
     },
+    // test
+    getChildAfterTransition(index) {
+      return this.children[index].afterTransition;
+    },
+    // // test
+    // getChildActiveIndex(index) {
+    //   return this.children[index].currentIndex;
+    // },
+    // // test
+    // getChildMoving(index) {
+    //   return this.children[index].isMoving;
+    // },
+    // // test
+    // getTarget(index) {
+    //   return this.children[index].targetIndex;
+    // },
+    // // test
+    // getInited(index) {
+    //   return this.children[index].inited;
+    // },
     updateCascade(columIndex) {
       const { data, getActiveIndexs } = this;
       const activeIndexs = getActiveIndexs();
       let i = 0;
       let parent = { children: data };
-      while ((i <= columIndex) && isArray(parent.children)) {
+      while (i <= columIndex && isArray(parent.children)) {
         parent = parent.children[activeIndexs[i]];
         i += 1;
       }
@@ -149,7 +172,7 @@ const Picker = () => ({
       this.$nextTick(() => {
         this.$nextTick(() => {
           if (this.isSetting) return;
-          const values = this.getValues().map((({ uid, ...rest }) => ({ ...rest })));
+          const values = this.getValues().map(({ uid, ...rest }) => ({ ...rest }));
           this.$emit('change', values, columIndex);
         });
       });
@@ -164,7 +187,7 @@ const Picker = () => ({
           duration={this.duration}
           onChange={() => this.onChange(index)}
           duration={this.duration}
-          />
+        />
       ));
     },
 
@@ -178,7 +201,7 @@ const Picker = () => ({
      * @vue2doc-exposed-api:updateColum
      * @param {Array} colum
      * @param {Number} columIndex
-    */
+     */
     updateColum(colum, columIndex = 0) {
       if (!isArray(colum)) {
         throw new Error('[omi]:colum should be an array');
@@ -192,7 +215,7 @@ const Picker = () => ({
     /**
      * @vue2doc-exposed-api:getValues
      * @return {Array} values
-    */
+     */
     getValues() {
       return this.children.map((child) => child.getActiveValue());
     },
@@ -200,19 +223,23 @@ const Picker = () => ({
      * @vue2doc-exposed-api:setValues
      * @param {Array|Any} values
      * @param {Number} columIndex
-    */
+     */
     setValues(values, columIndex) {
       this.$nextTick(() => {
         const { children } = this;
         if (isArray(values)) {
           // eslint-disable-next-line max-len
-          values.reduce((pre, value, index) => pre.then(() => {
-            this.isSetting = true;
-            return children[index].setActiveValue(value);
-          }),
-          Promise.resolve()).then(() => {
-            this.isSetting = false;
-          });
+          values
+            .reduce(
+              (pre, value, index) => pre.then(() => {
+                this.isSetting = true;
+                return children[index].setActiveValue(value);
+              }),
+              Promise.resolve(),
+            )
+            .then(() => {
+              this.isSetting = false;
+            });
         } else if (isNumber(columIndex)) {
           children[columIndex].setActiveValue(values);
         }
@@ -221,7 +248,7 @@ const Picker = () => ({
     /**
      * @vue2doc-exposed-api:isScrolling
      * @return {Boolean}
-    */
+     */
     isScrolling() {
       return this.isMoving;
     },
@@ -230,17 +257,17 @@ const Picker = () => ({
       if (unDef(confirmText) && unDef(cancelText) && unDef(title)) return null;
       return (
         <div class="omi-picker__header">
-          {
-            cancelText && (<div class="omi-picker__cancel" onClick={this.handleCancel}>
-            {this.cancelText}
-            </div>)
-          }
-          {title && (<div class="omi-picker__title">{title}</div>)}
-          {
-            confirmText && <div class="omi-picker__confirm" onClick={this.handleConfirm}>
-            {this.confirmText}
+          {cancelText && (
+            <div class="omi-picker__cancel" onClick={this.handleCancel}>
+              {this.cancelText}
             </div>
-          }
+          )}
+          {title && <div class="omi-picker__title">{title}</div>}
+          {confirmText && (
+            <div class="omi-picker__confirm" onClick={this.handleConfirm}>
+              {this.confirmText}
+            </div>
+          )}
         </div>
       );
     },
@@ -271,10 +298,7 @@ const Picker = () => ({
         <div class="omi-picker-colums__wrapper">
           {this.getColums()}
           <div class="omi-picker-colums__mask" style={this.maskStyles}></div>
-          <div
-            class="omi-picker-colums__cursor omi-picker-border__top-bottom"
-            style={this.cursorStyles}
-          ></div>
+          <div class="omi-picker-colums__cursor omi-picker-border__top-bottom" style={this.cursorStyles}></div>
         </div>
       </div>
     );
