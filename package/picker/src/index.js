@@ -151,6 +151,7 @@ const Picker = () => ({
     // getInited(index) {
     //   return this.children[index].inited;
     // },
+
     updateCascade(columIndex) {
       const { data, getActiveIndexs } = this;
       const activeIndexs = getActiveIndexs();
