@@ -201,8 +201,8 @@ Vue.use(Picker);
 | duration     | Number       | 800          | 滚动效果时间.                 |
 | cascade      | Boolean      | false        | 是否启用级联模式.             |
 | data         | Array        |              | 详情下方说明.                 |
-| valueKey     | String       |              | 指定 value 属性 key 名.       |
-| labelKey     | String       |              | 指定 label 属性 key 名.       |
+| valueKey     | String       |              | 根据获取value的值.       |
+| labelKey     | String       |              | 根据该属性获取label的值.       |
 | defaultIndex | Array Number | 0            | 默认选中值对下标.             |
 | onConfirm    | Function     | function(){} | 点击确认按钮时调用.           |
 | onCancel     | Function     | function(){} | 点击取消按钮时调用.           |
@@ -210,11 +210,22 @@ Vue.use(Picker);
 ## Data Structure
 
 ```js
-{
-  label: String,
-  value: Any,
-  children: Array,
-}
+[
+  //colum1
+  [
+    //row
+    {
+      label: String,
+      value: Any,
+      children: Array,
+    }
+  ],
+
+  //colum2
+  [
+    //row
+  ]
+]
 ```
 
 使用级联模式请务必保持各兄弟节点有相同的深度,若某一节点没有子节点请用`children:[]`进行占位.

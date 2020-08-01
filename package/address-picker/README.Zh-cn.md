@@ -60,10 +60,9 @@ Click [here](https://github.com/leo43555483/omi-ui/blob/dev/examples/data/addres
 | onCancel     | Function | function(){} | 点击取消按钮时触发.                                     |
 
 ## Methods
-
 | name      | params | return | description |
 | --------- | ------ | ------ | ----------- |
-| getValues |        | Array  |             |
+| getValues |        | Array  | 返回当前选中值.            |
 
 ## Events
 

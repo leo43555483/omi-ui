@@ -1,8 +1,8 @@
 <template>
   <div class="omi-picker-demo">
-    <!-- <div class="demo-item">
+    <div class="demo-item">
       <omi-picker ref="picker1" cascade :data="colums" @change="onChange"></omi-picker>
-    </div> -->
+    </div>
     <div class="demo-item" >
       <omi-picker
         ref="picker"
@@ -13,9 +13,9 @@
         @change="onChange3"
       ></omi-picker>
     </div>
-    <!-- <div class="demo-item">
-      <omi-picker ref="picker2" cascade :data="colums3"  @change="onChange2"></omi-picker>
-    </div> -->
+    <div class="demo-item">
+      <omi-picker ref="picker2" :duration="900" cascade :data="colums3"  @change="onChange2"></omi-picker>
+    </div>
   </div>
 </template>
 

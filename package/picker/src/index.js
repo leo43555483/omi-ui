@@ -132,9 +132,9 @@ const Picker = () => ({
       this.colums = this.formatColum();
     },
     // test
-    getChildAfterTransition(index) {
-      return this.children[index].afterTransition;
-    },
+    // getChildAfterTransition(index) {
+    //   return this.children[index].afterTransition;
+    // },
     // // test
     // getChildActiveIndex(index) {
     //   return this.children[index].currentIndex;
@@ -187,6 +187,7 @@ const Picker = () => ({
           duration={this.duration}
           onChange={() => this.onChange(index)}
           duration={this.duration}
+          itemHeight={this.itemHeight}
         />
       ));
     },
