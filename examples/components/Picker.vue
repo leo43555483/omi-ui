@@ -9,12 +9,21 @@
         :data="colums2"
         confirmText="确认"
         cancelText="取消"
+        @change="onChange"
         :onConfirm="onConfirm"
-        @change="onChange3"
       ></omi-picker>
     </div>
     <div class="demo-item">
-      <omi-picker ref="picker2" :duration="900" cascade :data="colums3"  @change="onChange2"></omi-picker>
+      <omi-picker
+        ref="picker2"
+        :duration="900"
+        confirmText="确认"
+        cancelText="取消"
+        cascade
+        :data="colums3"
+        @change="onChange2"
+        :onConfirm="onConfirm1"
+      ></omi-picker>
     </div>
   </div>
 </template>
@@ -82,33 +91,37 @@ export default {
     };
   },
   methods: {
-    onChange3() {
-      console.log('chamge???');
-    },
     onChange(values, columIndex) {
       const [city] = values;
       console.log('onChange', values, columIndex);
-      if (city === 'dongguan' && columIndex === 0) {
+      if (city.value === 'dongguan' && columIndex === 0) {
         const fresh = [].concat(this.colums2[2]);
         this.$refs.picker.updateColum(fresh, 0);
-        this.$refs.picker.setValues('shantou', 1);
-      } else if (columIndex === 0) {
-        const fresh = [].concat(this.colums2[1]);
-        this.$refs.picker.updateColum(fresh, 1);
+        this.$refs.picker.setValues('dongguan', 1);
       }
     },
     onChange2(values, columIndex) {
       const [city] = values;
-      if (columIndex === 0 && city === 'jieyang') {
-        this.$refs.picker2.setValues(['shenzhen', 'nanshan']);
+      console.log('result?????');
+      if (columIndex === 0 && city.value === 'jieyang') {
+        this.$refs.picker2.setValues('shenzhen', 0);
+        // this.$refs.picker2.setValues(['', 'nanshan']);
       }
     },
     onConfirm() {
       const result = this.$refs.picker.getValues();
       console.log('result', result);
     },
+    onConfirm1() {
+      if (this.$refs.picker2.isScrolling()) return;
+      const result = this.$refs.picker2.getValues();
+      console.log('get result', result);
+    },
   },
   mounted() {
+    this.$nextTick(() => {
+      this.$refs.picker.setValues(['chaozhou', 'shanwei', 'zhaoqing']);
+    });
     setTimeout(() => {
       this.colums3 = [].concat(this.colums);
     }, 2000);

@@ -153,6 +153,7 @@ const Picker = () => ({
     // },
 
     updateCascade(columIndex) {
+      console.log('update columIndex', columIndex);
       const { data, getActiveIndexs } = this;
       const activeIndexs = getActiveIndexs();
       let i = 0;
@@ -230,11 +231,10 @@ const Picker = () => ({
       this.$nextTick(() => {
         const { children } = this;
         if (isArray(values)) {
-          // eslint-disable-next-line max-len
           values
             .reduce(
               (pre, value, index) => pre.then(() => {
-                this.isSetting = true;
+                if (!this.isSetting) this.isSetting = true;
                 return children[index].setActiveValue(value);
               }),
               Promise.resolve(),

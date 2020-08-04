@@ -75,7 +75,13 @@ const PickerColums = () => ({
     // @exposed-api
     getActiveValue() {
       const { data, currentIndex } = this;
-      if (data[currentIndex]) return data[currentIndex];
+      const payload = data[currentIndex];
+      if (payload) {
+        return {
+          label: data[currentIndex].label,
+          value: data[currentIndex].value,
+        };
+      }
       return {};
     },
     // @exposed-api
@@ -206,11 +212,13 @@ const PickerColums = () => ({
       };
     },
     scrollCallBack(index) {
-      this.setActiveIndex(index);
+      if (this.currentIndex !== index) this.setActiveIndex(index);
       this.$emit('change');
     },
     scrollTo(offset, currentIndex = null, cb = null) {
       const { itemHeight, getValidIndex, isMoving } = this;
+
+
       let index = currentIndex;
       if (currentIndex === null) {
         index = getValidIndex(offset / itemHeight);
@@ -223,23 +231,24 @@ const PickerColums = () => ({
       }
       this.transformY = -transformY;
 
+      const scrollCallBack = () => {
+        this.scrollCallBack(index);
+        if (isFunction(cb)) cb();
+      };
 
       if (!this.inited || isFunction(cb)) {
         this.onTransitionEnd();
         this.setActiveIndex(index);
+        scrollCallBack();
 
-        if (isFunction(cb)) cb();
         return;
       }
-
-      const scrollCallBack = () => {
-        this.scrollCallBack(index);
-      };
 
       if (isMoving || index !== this.currentIndex) {
         if (this.afterTransition.length) {
           this.flushCallBack();
         }
+
         this.afterTransition.push(scrollCallBack);
       } else {
         this.onTransitionEnd();

@@ -40,9 +40,9 @@ const pcikerRender = () => ({
         });
       }
       this.$refs.datePicker.setValues(values, columIndex);
-      this.$nextTick(() => {
-        this.$nextTick(() => {});
-      });
+      // this.$nextTick(() => {
+      //   this.$nextTick(() => {});
+      // });
     },
     onChange(values, columIndex) {
       if (this.needUpdate) this.updateColums(values);
