@@ -199,9 +199,62 @@ describe('Picker', () => {
 
     result = wrapper.vm.getValues();
     expect(result[1].value).to.equal('dongguan');
-    // expect(item.classes()).to.include('omi-picker-colum__list--active');
-    // expect(onChange).to.be.calledOnce;
-    // const [values] = wrapper.emitted('change');
-    // expect(values[0][0].value).to.equal('chaozhou');
+  });
+
+  it('updateColum', async () => {
+    const data = [
+      [
+        { label: '珠海', value: 'zhuhai' },
+        { label: '潮州', value: 'chaozhou' },
+      ],
+      [
+        { label: '东莞', value: 'dongguan' },
+        { label: '汕尾', value: 'shanwei' },
+      ],
+      [
+        { label: '揭阳', value: 'jieyang' },
+        { label: '肇庆', value: 'zhaoqing' },
+      ],
+    ];
+
+    const colum2fresh = [
+      { label: '广州', value: 'guangzhou' },
+      { label: '惠州', value: 'huizhou' },
+    ];
+    const colum3fresh = [
+      { label: '北京', value: 'beijing' },
+      { label: '上海', value: 'shanghai' },
+    ];
+    const wrapper = createPicker({ data });
+
+    await wrapper.vm.$nextTick();
+    const colum = wrapper.findAll('.omi-picker-colum__list').at(0);
+    const item = colum.findAll('.omi-picker-colum__list--item').at(1);
+    item.trigger('click');
+    await wrapper.vm.$nextTick();
+
+    colum.trigger('transitionend');
+    await wrapper.vm.$nextTick();
+
+    wrapper.vm.updateColum(colum2fresh, 1);
+    wrapper.vm.updateColum(colum3fresh, 2);
+
+
+    const assert = (columIndex, origin) => {
+      const options = wrapper
+        .findAll('.omi-picker-colum__list')
+        .at(columIndex)
+        .findAll('.omi-picker-colum__list--item');
+
+      fromArray(options).forEach((option, index) => {
+        const text = option.text();
+        const expection = origin[index].label;
+        expect(text).to.equal(expection);
+      });
+    };
+    await wrapper.vm.$nextTick();
+
+    assert(1, colum2fresh);
+    assert(2, colum3fresh);
   });
 });

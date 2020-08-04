@@ -105,7 +105,6 @@ export default {
       console.log('result?????');
       if (columIndex === 0 && city.value === 'jieyang') {
         this.$refs.picker2.setValues('shenzhen', 0);
-        // this.$refs.picker2.setValues(['', 'nanshan']);
       }
     },
     onConfirm() {

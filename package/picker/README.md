@@ -240,6 +240,6 @@ Vue.use(Picker);
 | name        | params                                   | return  | description   |
 | ----------- | ---------------------------------------- | ------- | ----------------------------- |
 | updateColum | colum:Array <br>columIndex:Number        | -       |  更新列数据,第一个参数为需要更新的列数据，第二个参数为需要更新的列的下标. |
-| getValues   |                                          | Array   | 获取选中值，只在滚动结束后才会返回值.   |
-| setValues   | values: Array\|Any<br>columIndex: Number |         | 设置选中值。<br>1.如果*values*是 *Array*类型那数组中的每一位对应列的值,如:`value = ['a','b','c']` 第一至第三列则分别选中'a','b','c'. ***(注意：cascade模式请勿使用改方式！)*** <br>2.如果*values*非数组那么需指定需要设置的列下标作为第二个参数. |
-| isScrolling |                                          | Boolean | 是否正在滚动中.  |
+| getValues   | -                                         | Array   | 获取选中值，只在滚动结束后才会返回值.   |
+| setValues   | values: Array\|Any<br>columIndex: Number |         | 设置选中值。<br>1.如果*values*是 *Array*类型那数组中的每一位对应列的值,如:`value = ['a','b','c']` 第一至第三列则分别选中'a','b','c'. ***(注意：cascade模式请勿使用此方式！)*** <br>2.如果*values*非数组那么需指定需要设置的列下标作为第二个参数. |
+| isScrolling | -                                         | Boolean | 是否正在滚动中.  |

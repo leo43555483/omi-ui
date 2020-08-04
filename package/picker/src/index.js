@@ -131,29 +131,8 @@ const Picker = () => ({
       }
       this.colums = this.formatColum();
     },
-    // test
-    // getChildAfterTransition(index) {
-    //   return this.children[index].afterTransition;
-    // },
-    // // test
-    // getChildActiveIndex(index) {
-    //   return this.children[index].currentIndex;
-    // },
-    // // test
-    // getChildMoving(index) {
-    //   return this.children[index].isMoving;
-    // },
-    // // test
-    // getTarget(index) {
-    //   return this.children[index].targetIndex;
-    // },
-    // // test
-    // getInited(index) {
-    //   return this.children[index].inited;
-    // },
 
     updateCascade(columIndex) {
-      console.log('update columIndex', columIndex);
       const { data, getActiveIndexs } = this;
       const activeIndexs = getActiveIndexs();
       let i = 0;
