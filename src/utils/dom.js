@@ -18,7 +18,6 @@ if (!isServer) {
   } catch (e) {}
 }
 
-
 let animateId;
 export function scrollLeft(el, distance, duration) {
   cancelAnimation(animateId);

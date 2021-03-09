@@ -10,7 +10,6 @@ function unbind(el) {
   scroller.removeEventListener('scroll', handler);
 }
 
-
 function bindScroll(el, binding) {
   const { value } = binding;
   let callback = null;

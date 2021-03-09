@@ -1,4 +1,3 @@
-
 import injectMixin from '../../mixins/inject';
 import touchMixin from '../../mixins/touch';
 import { on, off, preventDefault } from '../../../src/utils/dom';
@@ -217,7 +216,6 @@ const PickerColums = () => ({
     },
     scrollTo(offset, currentIndex = null, cb = null) {
       const { itemHeight, getValidIndex, isMoving } = this;
-
 
       let index = currentIndex;
       if (currentIndex === null) {
