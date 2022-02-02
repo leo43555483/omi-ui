@@ -1,4 +1,4 @@
-import vue from 'Vue';
+import vue from 'vue';
 
 export function isArray(value) {
   return Array.isArray(value);
