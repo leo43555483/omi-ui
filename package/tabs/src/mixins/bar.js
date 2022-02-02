@@ -1,4 +1,4 @@
-import { scrollLeft } from '../../../../src/utils/dom';
+import { scrollLeft } from '../../../utils/dom';
 
 const toFixed = (num) => num.toFixed(5);
 const MAX_TITLE_NUMBER = 4;
@@ -50,7 +50,7 @@ export default {
     },
     lineStyle() {
       return `
-        width:${this.labelRateWidth}%; 
+        width:${this.labelRateWidth}%;
         transform: translateX(${this.lineOffset}%) translateZ(0)
       `;
     },

@@ -22,9 +22,9 @@
 
 <script>
 import Loading from '../../loading';
-import scroll from '../../../src/directives/scroll';
-import { getBoundingClientRect } from '../../../src/utils/dom';
-import { isFunction } from '../../../src/utils/shared';
+import scroll from '../../directives/scroll';
+import { getBoundingClientRect } from '../../utils/dom';
+import { isFunction } from '../../utils/shared';
 
 const DEFAULT_OFFSET = 10;
 const DEFAULT_LOADING_SIZE = 18;

@@ -1,6 +1,6 @@
 import Loading from '../../loading';
 import Icon from '../../icon';
-import { unDef } from '../../../src/utils/shared';
+import { unDef } from '../../utils/shared';
 
 const isNumber = (value) => /^\d*$/.test(value);
 const formatSize = (value) => {

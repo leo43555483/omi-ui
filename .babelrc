@@ -1,5 +1,28 @@
 {
   "env": {
+    "lib": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "loose": true
+          }
+        ],
+        "@vue/babel-preset-jsx"
+      ]
+    },
+    "esmodule": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "loose": false,
+            "modules": false
+          }
+        ],
+        "@vue/babel-preset-jsx"
+      ]
+    },
     "development": {
       "presets": [
 				"@vue/babel-preset-jsx",

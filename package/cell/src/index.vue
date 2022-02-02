@@ -46,8 +46,8 @@
 
 <script>
 import Icon from '../../icon';
-import RouteButton, { routeButtonProps } from '../../../src/utils/RouteButton';
-import { isUnitString, getSizeString } from '../../../src/utils/shared';
+import RouteButton, { routeButtonProps } from '../../utils/RouteButton';
+import { isUnitString, getSizeString } from '../../utils/shared';
 
 const {
   to,

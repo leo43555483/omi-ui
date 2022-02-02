@@ -16,7 +16,7 @@
 
 <script>
 import Loading from '../../loading';
-import { oneOf, createClassMap } from '../../../src/utils/shared';
+import { oneOf, createClassMap } from '../../utils/shared';
 
 const BUTTON_SIZE = ['normal', 'small', 'mini'];
 const BUTTON_TYPE = [

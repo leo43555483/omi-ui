@@ -1,4 +1,4 @@
-import { isDate } from '../../../src/utils/shared';
+import { isDate } from '../../utils/shared';
 
 export function getDate(range) {
   const [max, min] = range;

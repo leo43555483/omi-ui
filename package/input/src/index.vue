@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { oneOf } from '../../../src/utils/shared';
+import { oneOf } from '../../utils/shared';
 import filedMixin from '../../mixins/field';
 import inputMixin from '../../mixins/input';
 

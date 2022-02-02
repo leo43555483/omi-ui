@@ -1,7 +1,7 @@
 import Colums, { DEFAULT_ITEM_HEIGHT, DEFAULT_DURATION, MAX_VISIBLE_ITEM } from './Colums';
 import {
   isNumber, isArray, getUid, unDef,
-} from '../../../src/utils/shared';
+} from '../../utils/shared';
 import provideMixin from '../../mixins/provider';
 
 const genUid = getUid();

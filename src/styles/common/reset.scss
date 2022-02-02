@@ -11,3 +11,6 @@ body{
 a:focus, input:focus, button:focus, textarea:focus, [class*='omi-']:focus{
   outline: none;
 }
+[type="search"] {
+  border: none;
+}

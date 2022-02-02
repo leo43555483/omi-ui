@@ -3,7 +3,7 @@ import swipeMixin from '../../mixins/swipe';
 import Icon from '../../icon';
 import Image from '../../image';
 import props from './props';
-import { unDef, isString, isPromise } from '../../../src/utils/shared';
+import { unDef, isString, isPromise } from '../../utils/shared';
 
 const ImagePreview = () => ({
   name: 'OmiImagePreview',

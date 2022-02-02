@@ -1,4 +1,4 @@
-import { isFunction, unDef } from '../../../src/utils/shared';
+import { isFunction, unDef } from '../../utils/shared';
 
 export const PROVINCE = 'province';
 export const CTIY = 'city';

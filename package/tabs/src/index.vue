@@ -33,7 +33,7 @@ import touchMixin from '../../mixins/touch';
 import panelMixin from '../../mixins/panel';
 import providerMixin from '../../mixins/provider';
 import barMixin from './mixins/bar';
-import { unDef } from '../../../src/utils/shared';
+import { unDef } from '../../utils/shared';
 
 const DEFAULT_ACTIVE_INDEX = 0;
 const DEFAULT_TITLE_SCROLL_DURATION = 300;

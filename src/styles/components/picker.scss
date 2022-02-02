@@ -1,3 +1,5 @@
+@import '../mixins/picker.scss';
+
 .omi-picker-colums__wrapper{
   display: flex;
   position: relative;
@@ -5,6 +7,10 @@
   background-color: $picker-colum-background;
   .omi-picker-colum{
     flex: 1;
+  }
+  .omi-picker-colums__cursor, 
+  .omi-picker-colums__mask{
+    position: absolute;
   }
 }
 .omi-picker-colum__list{
@@ -32,7 +38,6 @@
   pointer-events: none;
 }
 .omi-picker-colums__cursor{
-  position: absolute;
   width: 100%;
   left: 0;
   top: 50%;

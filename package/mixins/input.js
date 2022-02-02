@@ -1,4 +1,4 @@
-import { isKorean, isFunction } from '../../src/utils/shared';
+import { isKorean, isFunction } from '../utils/shared';
 
 export default {
   data() {

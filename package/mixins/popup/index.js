@@ -1,6 +1,6 @@
 import portal from '../portal';
-import overLayMixin from './overlay';
-import { on, off, removeElement } from '../../../src/utils/dom';
+import overLayMixin from '../overlay';
+import { on, off, removeElement } from '../../utils/dom';
 
 let overlay = null;
 const baseZindex = 1000;

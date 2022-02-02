@@ -30,7 +30,7 @@ import IndexBox from '../components/IndexBox.vue';
 import SwipeAction from '../components/SwipeAction.vue';
 
 function createView(id) {
-  return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView.js').then((r) => r.default(id, c));
+  return (c) => import(/* webpackChunkName: "chunk " */ '../views/createView').then((r) => r.default(id, c));
 }
 Vue.use(VueRouter);
 const routers = {

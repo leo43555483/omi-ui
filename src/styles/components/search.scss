@@ -1,3 +1,6 @@
+@import '../mixins/input.scss';
+@import './icon.scss';
+
 .omi-search__wrapper {
   width: 100%;
   overflow: hidden;
@@ -45,7 +48,6 @@
   z-index: 1;
   .omi-input__inner{
     background-color: transparent;
-    
   }
 }
 .omi-search__cancel,
@@ -58,6 +60,7 @@
 }
 .omi-search__input{
   height: $search-height;
+  width:100%;
   @include hide-placeholder();
 }
 

@@ -1,6 +1,7 @@
 import Toast from './src';
 
 Toast.install = function (Vue) {
-  Vue.component(Toast.name, Toast);
+  Vue.prototype.$toast = Toast;
+  Vue.component(Toast.Component.name, Toast);
 };
 export default Toast;

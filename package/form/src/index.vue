@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { isFunction } from '../../../src/utils/shared';
+import { isFunction } from '../../utils/shared';
 
 export default {
   name: 'OmiForm',

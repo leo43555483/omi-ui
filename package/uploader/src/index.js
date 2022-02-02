@@ -1,7 +1,7 @@
 import Icon from '../../icon';
 import {
   isPromise, oneOf, isArray, noop,
-} from '../../../src/utils/shared';
+} from '../../utils/shared';
 import { parseFile, isImage } from './utils';
 import Image from '../../image';
 import Loading from '../../loading';

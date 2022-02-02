@@ -1,4 +1,4 @@
-import { oneOf, isDate } from '../../../src/utils/shared';
+import { oneOf, isDate } from '../../utils/shared';
 
 export const DATE = 'date';
 export const YEAR = 'year';

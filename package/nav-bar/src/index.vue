@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import Icon from '../../icon';
+
 export default {
   name: 'OmiNavBar',
   props: {
@@ -30,6 +32,9 @@ export default {
     left: {
       type: String,
     },
+  },
+  components: {
+    [Icon.name]: Icon,
   },
   methods: {
     onClick(e, type) {

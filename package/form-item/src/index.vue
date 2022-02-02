@@ -32,11 +32,13 @@
 
 <script>
 import AsyncValidator from 'async-validator';
-import { getValueByName } from '../../../src/utils/shared';
+import { getValueByName } from '../../utils/shared';
+import Cell from '../../cell';
 
 const STATUS_VALIDATING = 'validating';
 const STATUS_FAILED = 'failed';
 const STATUS_SUCCESS = 'success';
+
 export default {
   name: 'OmiFormItem',
   inheritAttrs: false,
@@ -89,6 +91,9 @@ export default {
       type: String,
       default: '',
     },
+  },
+  components: {
+    [Cell.name]: Cell,
   },
   methods: {
     validate(trigger, callback = () => { }) {

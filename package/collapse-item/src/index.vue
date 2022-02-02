@@ -34,8 +34,8 @@
 <script>
 import Cell from '../../cell';
 
-import { throttle } from '../../../src/utils/shared';
-import { doubleAnimation } from '../../../src/utils/polyfill';
+import { throttle } from '../../utils/shared';
+import { doubleAnimation } from '../../utils/polyfill';
 
 export default {
   name: 'OmiCollapseItem',

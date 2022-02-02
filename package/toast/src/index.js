@@ -1,10 +1,10 @@
-import Vue from 'vue';
 import VueToast from './toast';
 import toastType from './toast-type';
-import { isObject, isString } from '../../../src/utils/shared';
-import createInstance from '../../../src/utils/createInstance';
+import {
+  isObject, isString, isServer, isFunction,
+} from '../../utils/shared';
+import createInstance from '../../utils/createInstance';
 
-const isServer = () => Vue.prototype.$isServer;
 const DEFAULT_OPTION = {
   type: 'text',
   icon: '',
@@ -27,13 +27,14 @@ const creator = createInstance({
   replacement: false,
   appendToBody: true,
 });
+
 const Toast = creator((
   getInstance,
   customOptions,
   typeOtionCache,
   zIndex,
 ) => (opt) => {
-  if (isServer()) return {};
+  if (isServer) return {};
   const toast = getInstance();
   const type = opt.type || customOptions.type;
   const option = {
@@ -42,13 +43,19 @@ const Toast = creator((
     ...getOption(opt),
   };
   Object.assign(toast, option);
-  toast.close = () => { toast.value = false; };
-  toast.onClose = () => {
-    clearTimeout(toast.timer);
-    option.onClose(toast);
-    Toast.removeInstance(toast);
-  };
-  toast.value = true;
+  if (!isFunction(toast.close)) {
+    toast.close = () => {
+      Object.assign(toast, { value: false });
+    };
+  }
+  if (!isFunction(toast.onClose)) {
+    toast.onClose = () => {
+      clearTimeout(toast.timer);
+      Toast.removeInstance(toast);
+    };
+  }
+
+  Object.assign(toast, { value: true });
   toast.setZindex(zIndex);
   if (toast.timer) clearTimeout(toast.timer);
   const { durations } = option;
@@ -70,4 +77,5 @@ toastType.forEach((method) => {
     return Toast(option);
   };
 });
+Toast.Component = VueToast;
 export default Toast;

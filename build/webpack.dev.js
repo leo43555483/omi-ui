@@ -2,13 +2,14 @@ const merge = require('webpack-merge');
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+// const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpackBase = require('./webpack.base');
+const webpackBase = require('./webpack.dev.base');
 const resolve = path.resolve;
 module.exports = merge(webpackBase, {
-  devtool: 'eval-source-map',
+  // devtool: 'eval-source-map',
+  // devtool: 'source-map',
   mode: 'development',
   entry: {
     app: resolve(__dirname, '../examples/main'),
@@ -19,6 +20,7 @@ module.exports = merge(webpackBase, {
     chunkFilename: '[name].chunk.js',
     publicPath: '/',
   },
+  // devtool: "inline-source-map",
   devServer: {
     disableHostCheck: true,
     host: '0.0.0.0',
@@ -45,7 +47,7 @@ module.exports = merge(webpackBase, {
       filename: './index.html',
       template: resolve(__dirname, '../examples/public/index.html'),
     }),
-    new FriendlyErrorsPlugin(),
+    // new FriendlyErrorsPlugin(),
   ],
 });
 if (process.env.NODE_ENV === 'test') {

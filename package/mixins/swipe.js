@@ -1,5 +1,5 @@
 import panelMixin from './panel';
-import { isArray, unDef } from '../../src/utils/shared';
+import { isArray, unDef } from '../utils/shared';
 
 const isTrue = (value) => value === true;
 const DEFAULT_ACTIVE_INDEX = 0;

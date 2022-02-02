@@ -5,7 +5,7 @@ import {
   CTIY,
   AREA,
 } from './util';
-import { unDef } from '../../../src/utils/shared';
+import { unDef } from '../../utils/shared';
 
 const DEFAULT_INDEX = 0;
 const AddressPicker = () => ({

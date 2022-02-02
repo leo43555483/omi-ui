@@ -1,3 +1,6 @@
+@import'../mixins/line.scss';
+@import'./cell.scss';
+
 .omi-form-item {
   position: relative;
   overflow: hidden;

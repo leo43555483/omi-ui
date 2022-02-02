@@ -1,4 +1,4 @@
-import { oneOf, isFunction } from '../../../src/utils/shared';
+import { oneOf, isFunction } from '../../utils/shared';
 import toastType from './toast-type';
 import Icon from '../../icon';
 import Loading from '../../loading';

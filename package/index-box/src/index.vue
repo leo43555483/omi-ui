@@ -28,8 +28,8 @@ import {
   getScrollTop,
   getBoundingClientRect,
   getRootPageYOffset,
-} from '../../../src/utils/dom';
-import { getCharacter } from '../../../src/utils/shared';
+} from '../../utils/dom';
+import { getCharacter } from '../../utils/shared';
 
 export default {
   name: 'OmiIndexBox',

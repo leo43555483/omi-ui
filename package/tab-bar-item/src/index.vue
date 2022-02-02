@@ -17,14 +17,14 @@
 
 <script>
 import injectMixin from '../../mixins/inject';
-import RouteButton from '../../../src/utils/RouteButton';
+import RouteButton from '../../utils/RouteButton';
 import Icon from '../../icon';
 import Badge from '../../badge';
-import { unDef } from '../../../src/utils/shared';
+import { unDef } from '../../utils/shared';
 
 export default {
-  name: 'OmiTabbarItem',
-  mixins: [injectMixin('omiTabbar')],
+  name: 'OmiTabBarItem',
+  mixins: [injectMixin('omiTabBar')],
   inheritAttrs: false,
   components: {
     RouteButton,

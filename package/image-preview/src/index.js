@@ -1,9 +1,6 @@
-import Vue from 'vue';
 import VueImagePreview from './ImagePreview';
-import createInstance from '../../../src/utils/createInstance';
-import { isObject } from '../../../src/utils/shared';
-
-const isServer = () => Vue.prototype.$isServer;
+import createInstance from '../../utils/createInstance';
+import { isObject, isServer, noop } from '../../utils/shared';
 
 const DEFAULT_OPTION = {
   images: [],
@@ -16,7 +13,7 @@ const creator = createInstance({
   banMultiple: true,
 });
 const ImagePreview = creator((getInstance, defaultOptions) => (opt) => {
-  if (isServer()) return {};
+  if (isServer) return noop;
   if (!isObject(opt)) {
     throw new Error('[omi ui]: Expected Object with option');
   }
@@ -32,4 +29,5 @@ const ImagePreview = creator((getInstance, defaultOptions) => (opt) => {
 });
 
 ImagePreview.Component = VueImagePreview;
+// ImagePreview.name = VueImagePreview;
 export default ImagePreview;

@@ -13,7 +13,7 @@ $color-red: red !default;
 $color-success: #1fbf6f !default;
 $color-disable: #c6c5c5 !default;
 $theme-color: $color-black !default;
-$theme-border-color: #d2d2d299 !default;
+$theme-border-color: #d2d2d2 !default;
 $theme-background-color: $color-white !default;
 
 //font
@@ -49,7 +49,7 @@ $cell-arrow-color: $color-grey2 !default;
 $cell-content-body-margin: 4px !default;
 $cell-group-title-color: $color-grey2 !default;
 $cell-group-line-height: 20px !default;
-$cell-group-vertical-padding: $cell-horizontal-padding/2 !default;
+$cell-group-vertical-padding: calc($cell-horizontal-padding / 2) !default;
 
 //input
 $input-line-height: $cell-line-height !default;
@@ -88,8 +88,8 @@ $loading-default-color: $color-grey4 !default;
 $loading-duration: 1s !default;
 
 //checkbox
-$checkbox-input-size: 18px !default;
 $checkbox-border-color: $theme-border-color !default;
+$checkbox-input-size: 18px !default;
 $checkbox-checked-background: $color-blue1 !default;
 $checkbox-checked-color: $color-white !default;
 $checkbox-vertical-padding: $padding-xs - 2 !default;

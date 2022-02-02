@@ -1,4 +1,4 @@
-import { on, off, preventDefault } from '../../src/utils/dom';
+import { on, off, preventDefault } from '../utils/dom';
 
 const THRESH_HOLD = 0.2;
 const TOUCH_DIRECTION_DEGREE = 5;

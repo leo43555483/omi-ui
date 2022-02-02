@@ -30,8 +30,8 @@ import Search from '../package/search';
 import Rate from '../package/rate';
 import ImagePreview from '../package/image-preview';
 import Image from '../package/image';
-import Tabbar from '../package/tab-bar';
-import TabbarItem from '../package/tab-bar-item';
+import TabBar from '../package/tab-bar';
+import TabBarItem from '../package/tab-bar-item';
 import Skeleton from '../package/skeleton';
 import Uploader from '../package/uploader';
 import IndexBox from '../package/index-box';
@@ -69,8 +69,8 @@ const components = {
   Rate,
   ImagePreview: ImagePreview.Component,
   Image,
-  Tabbar,
-  TabbarItem,
+  TabBar,
+  TabBarItem,
   Skeleton,
   Uploader,
   NavBar,
@@ -93,8 +93,7 @@ const install = function (Vue) {
 };
 
 export default {
-  version: '',
+  version: `${process.env.PACKAGE_VERSION}`,
   install,
-  ...components,
-  Toast,
+  components,
 };

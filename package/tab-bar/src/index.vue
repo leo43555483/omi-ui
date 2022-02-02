@@ -9,8 +9,8 @@ import providerMixin from '../../mixins/provider';
 
 const DEFAULT_ITEM_INDEX = 0;
 export default {
-  name: 'OmiTabbar',
-  mixins: [providerMixin('omiTabbar')],
+  name: 'OmiTabBar',
+  mixins: [providerMixin('omiTabBar')],
   props: {
     value: {
       type: [String, Number],

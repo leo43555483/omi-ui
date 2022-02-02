@@ -1,4 +1,4 @@
-import { isString } from '../../src/utils/shared';
+import { isString } from '../utils/shared';
 
 const getElement = (selector) => document.querySelector(selector);
 export default function () {

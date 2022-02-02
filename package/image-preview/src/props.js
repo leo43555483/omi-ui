@@ -1,4 +1,4 @@
-import { noop } from '../../../src/utils/shared';
+import { noop } from '../../utils/shared';
 
 const DEFAULT_INITIAL_INDEX = 0;
 const OVERLAY_CLASSNAME = 'omi-image-preview__overlay';

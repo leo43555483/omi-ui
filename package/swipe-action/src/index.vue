@@ -41,7 +41,7 @@
 <script>
 import Cell from '../../cell';
 import Icon from '../../icon';
-import { isFunction } from '../../../src/utils/shared';
+import { isFunction } from '../../utils/shared';
 
 const DEFAULT_THRESHOLD = 0.5;
 const STATUS_ARRIVE = 'arrive';

@@ -1,4 +1,4 @@
-import { getSizeString } from '../../src/utils/shared';
+import { getSizeString } from '../utils/shared';
 import injectMixin from './inject';
 import Icon from '../icon';
 

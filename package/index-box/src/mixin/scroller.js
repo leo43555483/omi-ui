@@ -1,5 +1,5 @@
-import { getScroller, on, off } from '../../../../src/utils/dom';
-import { throttle } from '../../../../src/utils/shared';
+import { getScroller, on, off } from '../../../utils/dom';
+import { throttle } from '../../../utils/shared';
 
 const DEFAULT_DURATION = 16;
 export default {

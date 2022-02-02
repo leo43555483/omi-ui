@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { oneOf } from '../../../src/utils/shared';
+import { oneOf } from '../../utils/shared';
 
 const DEFAULT_ROW = 3;
 const DEFAULT_AVATAR_SIZE = 32;

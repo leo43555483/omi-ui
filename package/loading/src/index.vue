@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import { getSizeString } from '../../../src/utils/shared';
+import { getSizeString } from '../../utils/shared';
 
 export default {
   name: 'OmiLoading',

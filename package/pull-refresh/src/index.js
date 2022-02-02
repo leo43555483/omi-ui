@@ -7,7 +7,7 @@ import {
   getScroller,
   getScrollTop,
   preventDefault,
-} from '../../../src/utils/dom';
+} from '../../utils/dom';
 import statusMixin,
 {
   STATUS_RESET,

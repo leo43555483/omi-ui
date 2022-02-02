@@ -1,5 +1,5 @@
 import popMixin from '../../mixins/popup';
-import { isFunction } from '../../../src/utils/shared';
+import { isFunction } from '../../utils/shared';
 import Loading from '../../loading';
 import Icon from '../../icon';
 

@@ -1,8 +1,7 @@
-
 import injectMixin from '../../mixins/inject';
 import touchMixin from '../../mixins/touch';
-import { on, off, preventDefault } from '../../../src/utils/dom';
-import { getRange, unDef, isFunction } from '../../../src/utils/shared';
+import { on, off, preventDefault } from '../../utils/dom';
+import { getRange, unDef, isFunction } from '../../utils/shared';
 
 // Minimum distance to trigger scrolling
 const TRIGGER_MINI_DISTANCE = 15;
@@ -217,9 +216,8 @@ const PickerColums = () => ({
     },
     scrollTo(offset, currentIndex = null, cb = null) {
       const { itemHeight, getValidIndex, isMoving } = this;
-
-
       let index = currentIndex;
+
       if (currentIndex === null) {
         index = getValidIndex(offset / itemHeight);
       }

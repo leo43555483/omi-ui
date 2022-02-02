@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { getSizeString, oneOf, isObject } from '../../../src/utils/shared';
+import { getSizeString, oneOf, isObject } from '../../utils/shared';
 
 const STROKE_LINECAP = ['butt', 'round', 'square'];
 

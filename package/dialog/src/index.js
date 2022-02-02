@@ -1,10 +1,8 @@
-import Vue from 'vue';
 import VueDialog from './Dialog';
-import createInstance from '../../../src/utils/createInstance';
+import createInstance from '../../utils/createInstance';
 import dialogType from './dialog-type';
-import { isString, isObject } from '../../../src/utils/shared';
+import { isString, isObject, isServer } from '../../utils/shared';
 
-const isServer = () => Vue.prototype.$isServer;
 const [alert] = dialogType;
 const DEFAULT_OPTION = {
   type: alert,
@@ -42,7 +40,7 @@ const creator = createInstance({
   banMultiple: true,
 });
 const Dialog = creator((getInstance, customOptions, typeOtionCache) => (opt) => {
-  if (isServer()) return {};
+  if (isServer) return {};
   const dialog = getInstance();
   const type = (opt && opt.type) || customOptions.type;
   const option = {

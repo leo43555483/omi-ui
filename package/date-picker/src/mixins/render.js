@@ -1,7 +1,7 @@
 import Picker from '../../../picker';
 import pickerProps, { MONTH, YEAR, TIME } from '../props';
 import { formatDate, getDate } from '../util';
-import { getRange, unDef, isFunction } from '../../../../src/utils/shared';
+import { getRange, unDef, isFunction } from '../../../utils/shared';
 
 const pcikerRender = () => ({
   inheritAttrs: false,
