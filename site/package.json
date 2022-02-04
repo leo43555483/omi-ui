@@ -5,6 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --report",
+    "deploy": "npm run build && npm run docker:image && npm run docker:serve",
+    "docker:image": "docker build -t omi-ngx:latest .",
+    "docker:serve": "docker run --name omi-ui -d -p 9002:80 omi-ngx:latest",
+    "docker:clean": "docker rm -f omi-ui && docker image rm omi-ngx",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

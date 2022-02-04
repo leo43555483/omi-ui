@@ -17,7 +17,7 @@ var ImagePreview = creator(function (getInstance, defaultOptions) {
   return function (opt) {
     if (isServer) return noop;
 
-    if (!isObject(opt)) {
+    if (opt && !isObject(opt)) {
       throw new Error('[omi ui]: Expected Object with option');
     }
 
