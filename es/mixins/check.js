@@ -1,5 +1,5 @@
 import { getSizeString } from '../utils/shared.js';
-import injectMixin from './inject.js';
+import inject from './inject.js';
 import '../icon/index.js';
 import Icon from '../icon/src/index.vue.js';
 
@@ -9,7 +9,7 @@ function createMixin(_ref) {
       checkParent = _ref.checkParent,
       unbindParent = _ref.unbindParent;
   return {
-    mixins: [injectMixin(checkParent, unbindParent)],
+    mixins: [inject(checkParent, unbindParent)],
     watch: {
       value: function value(_value) {
         this.$emit('change', _value);

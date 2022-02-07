@@ -27,10 +27,8 @@ function importPages () {
       })
     }
   })
-  console.log('routes', routes)
   return routes
 }
-importPages()
 
 function createView (id) {
   return (c) => import('../views/createView').then((r) => r.default(id, c))

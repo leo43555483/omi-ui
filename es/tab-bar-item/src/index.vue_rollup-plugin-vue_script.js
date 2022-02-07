@@ -1,15 +1,15 @@
-import injectMixin from '../../mixins/inject.js';
+import inject from '../../mixins/inject.js';
 import RouteButton from '../../utils/RouteButton.js';
 import '../../icon/index.js';
 import '../../badge/index.js';
 import { unDef } from '../../utils/shared.js';
-import Icon from '../../icon/src/index.vue.js';
 import Badge from '../../badge/src/index.vue.js';
+import Icon from '../../icon/src/index.vue.js';
 
 //
 var script = {
   name: 'OmiTabBarItem',
-  mixins: [injectMixin('omiTabBar')],
+  mixins: [inject('omiTabBar')],
   inheritAttrs: false,
   components: {
     RouteButton: RouteButton,

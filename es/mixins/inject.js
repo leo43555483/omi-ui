@@ -20,6 +20,4 @@ var inject = function inject(parentKey, unbindParent) {
   };
 };
 
-var injectMixin = inject;
-
-export { injectMixin as default };
+export { inject as default };

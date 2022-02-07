@@ -1,10 +1,10 @@
 import groupMxin from '../../mixins/check-group.js';
-import providerMixin from '../../mixins/provider.js';
+import provider from '../../mixins/provider.js';
 
 //
 var script = {
   name: 'OmiCheckboxGroup',
-  mixins: [groupMxin, providerMixin('omiCheckGroup')],
+  mixins: [groupMxin, provider('omiCheckGroup')],
   data: function data() {
     return {
       children: []

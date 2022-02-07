@@ -110,6 +110,4 @@ var swipeMixin = function swipeMixin(listKey) {
   };
 };
 
-var swipeMixin$1 = swipeMixin;
-
-export { swipeMixin$1 as default };
+export { swipeMixin as default };

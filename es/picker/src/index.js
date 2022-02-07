@@ -1,6 +1,6 @@
 import Colums, { DEFAULT_ITEM_HEIGHT, DEFAULT_DURATION, MAX_VISIBLE_ITEM } from './Colums.js';
 import { isArray, isNumber, unDef, getUid } from '../../utils/shared.js';
-import providerMixin from '../../mixins/provider.js';
+import provider from '../../mixins/provider.js';
 
 var _excluded = ["uid"];
 
@@ -13,7 +13,7 @@ var DEFAULT_INDEX = 0;
 var Picker = function Picker() {
   return {
     name: 'OmiPicker',
-    mixins: [providerMixin('omiPicker')],
+    mixins: [provider('omiPicker')],
     data: function data() {
       return {
         colums: [],

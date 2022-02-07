@@ -83,6 +83,5 @@ toastType.forEach(function (method) {
   };
 });
 Toast.Component = VueToast;
-var Toast$1 = Toast;
 
-export { Toast$1 as default };
+export { Toast as default };

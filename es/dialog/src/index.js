@@ -80,6 +80,5 @@ Dialog.confirm = function (title, content) {
 };
 
 Dialog.Component = VueDialog;
-var Dialog$1 = Dialog;
 
-export { Dialog$1 as default };
+export { Dialog as default };

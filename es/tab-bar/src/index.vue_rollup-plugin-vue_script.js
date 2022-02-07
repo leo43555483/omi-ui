@@ -1,10 +1,10 @@
-import providerMixin from '../../mixins/provider.js';
+import provider from '../../mixins/provider.js';
 
 //
 var DEFAULT_ITEM_INDEX = 0;
 var script = {
   name: 'OmiTabBar',
-  mixins: [providerMixin('omiTabBar')],
+  mixins: [provider('omiTabBar')],
   props: {
     value: {
       type: [String, Number],

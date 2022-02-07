@@ -1,5 +1,5 @@
 import touchMixin from '../../mixins/touch.js';
-import providerMixin from '../../mixins/provider.js';
+import provider from '../../mixins/provider.js';
 import scrollerMixin from './mixin/scroller.js';
 import { getBoundingClientRect, getScrollTop, getRootPageYOffset } from '../../utils/dom.js';
 import { getCharacter } from '../../utils/shared.js';
@@ -15,7 +15,7 @@ var script = {
       anchorIndex: null
     };
   },
-  mixins: [touchMixin, scrollerMixin, providerMixin('omiIndexBox')],
+  mixins: [touchMixin, scrollerMixin, provider('omiIndexBox')],
   props: {
     fixAnchor: {
       type: Boolean,

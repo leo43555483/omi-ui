@@ -1,10 +1,10 @@
 import groupMxin from '../../mixins/check-group.js';
-import providerMixin from '../../mixins/provider.js';
+import provider from '../../mixins/provider.js';
 
 //
 var script = {
   name: 'OmiRadioGroup',
-  mixins: [groupMxin, providerMixin('omiRadioGroup')],
+  mixins: [groupMxin, provider('omiRadioGroup')],
   // provide() {
   //   return {
   //     omiRadioGroup: this,

@@ -32,6 +32,4 @@ var ImagePreview = creator(function (getInstance, defaultOptions) {
 });
 ImagePreview.Component = VueImagePreview; // ImagePreview.name = VueImagePreview;
 
-var ImagePreview$1 = ImagePreview;
-
-export { ImagePreview$1 as default };
+export { ImagePreview as default };

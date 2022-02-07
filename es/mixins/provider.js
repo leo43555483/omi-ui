@@ -30,6 +30,4 @@ var provider = function provider(parentKey) {
   };
 };
 
-var providerMixin = provider;
-
-export { providerMixin as default };
+export { provider as default };

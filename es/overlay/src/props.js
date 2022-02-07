@@ -8,6 +8,5 @@ var overLayProps = {
     default: ''
   }
 };
-var overLayProps$1 = overLayProps;
 
-export { overLayProps$1 as default };
+export { overLayProps as default };

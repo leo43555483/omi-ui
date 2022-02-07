@@ -1,9 +1,9 @@
-import injectMixin from '../../mixins/inject.js';
+import inject from '../../mixins/inject.js';
 
 //
 var script = {
   name: 'OmiTabsPane',
-  mixins: [injectMixin('tabsParent')],
+  mixins: [inject('tabsParent')],
   props: {
     dot: {
       type: Boolean,

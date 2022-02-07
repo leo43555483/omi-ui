@@ -46,6 +46,4 @@ var OverLay = function OverLay() {
   };
 };
 
-var OverLay$1 = OverLay;
-
-export { OverLay$1 as default };
+export { OverLay as default };

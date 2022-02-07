@@ -1,7 +1,7 @@
 import '../../badge/index.js';
 import touchMixin from '../../mixins/touch.js';
 import panelMixin from '../../mixins/panel.js';
-import providerMixin from '../../mixins/provider.js';
+import provider from '../../mixins/provider.js';
 import barMixin from './mixins/bar.js';
 import { unDef } from '../../utils/shared.js';
 import Badge from '../../badge/src/index.vue.js';
@@ -16,7 +16,7 @@ var script = {
       tabsParent: this
     };
   },
-  mixins: [touchMixin, panelMixin, barMixin, providerMixin('tabsParent')],
+  mixins: [touchMixin, panelMixin, barMixin, provider('tabsParent')],
   data: function data() {
     return {
       activeKey: DEFAULT_ACTIVE_INDEX,

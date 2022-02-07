@@ -35,6 +35,5 @@ var props = {
     default: DEFAULT_PLACEHOLER_HEIGHT
   }
 };
-var props$1 = props;
 
-export { props$1 as default };
+export { props as default };

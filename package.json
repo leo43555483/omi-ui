@@ -15,12 +15,7 @@
     "components",
     "frontend"
   ],
-  "sideEffects": [
-    "es/style/*",
-    "lib/style/*",
-    "*.scss",
-    "*.css"
-  ],
+  
   "scripts": {
     "build:style": "node ./build/style.js",
     "build:components": "node ./build/index.js",

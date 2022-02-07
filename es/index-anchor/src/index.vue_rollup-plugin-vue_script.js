@@ -1,9 +1,9 @@
-import injectMixin from '../../mixins/inject.js';
+import inject from '../../mixins/inject.js';
 
 //
 var script = {
   name: 'OmiIndexAnchor',
-  mixins: [injectMixin('omiIndexBox')],
+  mixins: [inject('omiIndexBox')],
   data: function data() {
     return {
       offsetTop: 0,

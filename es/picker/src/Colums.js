@@ -1,4 +1,4 @@
-import injectMixin from '../../mixins/inject.js';
+import inject from '../../mixins/inject.js';
 import touchMixin from '../../mixins/touch.js';
 import { preventDefault, on, off } from '../../utils/dom.js';
 import { unDef, getRange, isFunction } from '../../utils/shared.js';
@@ -22,7 +22,7 @@ var getTransformFromDom = function getTransformFromDom(el) {
 var PickerColums = function PickerColums() {
   return {
     name: 'OmiPickColums',
-    mixins: [injectMixin('omiPicker'), touchMixin],
+    mixins: [inject('omiPicker'), touchMixin],
     data: function data() {
       return {
         currentIndex: 0,

@@ -20,6 +20,4 @@ WORKDIR ${FRONT_PATH_NAME}
 
 COPY ./dist ./
 
-# COPY --from=frontend ${FRONT_PATH_NAME}/dist /usr/share/nginx/html
-
 EXPOSE 80 443

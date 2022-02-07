@@ -17,8 +17,12 @@
     "vue": "^2.6.11",
     "vue-lazyload": "^1.3.3",
     "vue-router": "^3.2.0",
-    "omi": "git+https://gitee.com/happyzhl/omi-ui.git#dev-doc"
+    "omi": "file:/Users/ah/projects/omi-ui-latest"
   },
+  "sideEffects": [
+    "*.scss",
+    "*.css"
+  ],
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
